@@ -38,6 +38,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </head>
 <body>
 
+<!-- LOGIN PAGE -->
 <div id="loginPage" class="min-h-screen flex items-center justify-center">
   <div class="bg-[#1e293b] rounded-2xl p-8 w-full max-w-md shadow-2xl">
     <div class="text-center mb-8">
@@ -54,64 +55,154 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
   </div>
 </div>
 
+<!-- ADMIN DASHBOARD -->
 <div id="adminPanel" class="hidden">
+  <!-- Sidebar -->
   <div class="sidebar">
     <div class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-700">
       <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
         <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
-      <div><div class="text-white font-bold text-sm">DFW Sales</div><div class="text-yellow-500 text-xs">Admin Panel</div></div>
+      <div>
+        <div class="text-white font-bold text-sm">DFW Sales</div>
+        <div class="text-yellow-500 text-xs">Admin Panel</div>
+      </div>
     </div>
-    <div class="sidebar-link active" onclick="showSection('dashboard')">Dashboard</div>
-    <div class="sidebar-link" onclick="showSection('products')">Products</div>
-    <div class="sidebar-link" onclick="showSection('addProduct')">Add Product</div>
-    <div class="sidebar-link" onclick="showSection('settings')">Settings</div>
-    <div class="sidebar-link" onclick="showSection('backup')">Backup / Restore</div>
-    <div class="sidebar-link" onclick="showSection('viewSite')">View Website</div>
-    <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">Logout</div>
+    <div class="sidebar-link active" onclick="showSection('dashboard')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 001 1h3a1 1 0 001-1v-10l2-2"/></svg>
+      Dashboard
+    </div>
+    <div class="sidebar-link" onclick="showSection('products')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+      Products
+    </div>
+    <div class="sidebar-link" onclick="showSection('addProduct')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+      Add Product
+    </div>
+    <div class="sidebar-link" onclick="showSection('settings')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      Settings
+    </div>
+    <div class="sidebar-link" onclick="showSection('backup')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Backup / Restore
+    </div>
+    <div class="sidebar-link" onclick="showSection('viewSite')">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+      View Website
+    </div>
+    <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+      Logout
+    </div>
   </div>
 
+  <!-- Main Content Area -->
   <div class="main-content">
+    <!-- Dashboard Section -->
     <div id="section-dashboard">
       <h1 class="text-3xl font-bold text-white mb-6">Dashboard</h1>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Total Products</div><div class="stat-number" id="statProducts">0</div></div>
-        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Total Value</div><div class="stat-number" id="statValue">£0</div></div>
-        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Categories</div><div class="stat-number" id="statCategories">0</div></div>
+        <div class="stat-card">
+          <div class="text-gray-400 text-sm mb-2">Total Products</div>
+          <div class="stat-number" id="statProducts">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="text-gray-400 text-sm mb-2">Total Value</div>
+          <div class="stat-number" id="statValue">£0</div>
+        </div>
+        <div class="stat-card">
+          <div class="text-gray-400 text-sm mb-2">Categories</div>
+          <div class="stat-number" id="statCategories">0</div>
+        </div>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-bold text-white mb-4">Recent Activity</h2>
+        <div id="activityLog" class="space-y-2 text-gray-400 text-sm">
+          <p>Welcome to the admin panel. Use the sidebar to manage your website.</p>
+        </div>
       </div>
     </div>
 
+    <!-- Products Section -->
     <div id="section-products" class="hidden">
       <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-white">Products</h1>
         <button onclick="showSection('addProduct')" class="btn btn-primary">+ Add New Product</button>
       </div>
       <div class="card">
-        <div class="table-row table-header"><div>SKU</div><div>Name</div><div>Type</div><div>Price</div><div>Actions</div></div>
+        <div class="table-row table-header">
+          <div>SKU</div>
+          <div>Name</div>
+          <div>Type</div>
+          <div>Price</div>
+          <div>Actions</div>
+        </div>
         <div id="productsList"></div>
       </div>
     </div>
 
+    <!-- Add/Edit Product Section -->
     <div id="section-addProduct" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6" id="productFormTitle">Add New Product</h1>
       <div class="card">
         <form id="productForm" onsubmit="saveProduct(event)">
           <input type="hidden" id="editSku">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="text-gray-400 text-sm">SKU *</label><input type="text" id="pSku" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Name *</label><input type="text" id="pName" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Type *</label><input type="text" id="pType" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Brand *</label><input type="text" id="pBrand" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Year *</label><input type="text" id="pYear" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Hours</label><input type="text" id="pHours" class="input-field"></div>
-            <div><label class="text-gray-400 text-sm">Weight</label><input type="text" id="pWeight" class="input-field"></div>
-            <div><label class="text-gray-400 text-sm">Price (without £) *</label><input type="text" id="pPrice" class="input-field" required></div>
-            <div><label class="text-gray-400 text-sm">Serial Number</label><input type="text" id="pSerial" class="input-field"></div>
-            <div><label class="text-gray-400 text-sm">Main Image URL *</label><input type="url" id="pImg" class="input-field" required></div>
+            <div>
+              <label class="text-gray-400 text-sm">SKU *</label>
+              <input type="text" id="pSku" class="input-field" placeholder="SKU-DFW-018" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Name *</label>
+              <input type="text" id="pName" class="input-field" placeholder="Machine Name" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Type *</label>
+              <input type="text" id="pType" class="input-field" placeholder="Mini Excavator" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Brand *</label>
+              <input type="text" id="pBrand" class="input-field" placeholder="JCB" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Year *</label>
+              <input type="text" id="pYear" class="input-field" placeholder="2024" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Hours</label>
+              <input type="text" id="pHours" class="input-field" placeholder="100">
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Weight</label>
+              <input type="text" id="pWeight" class="input-field" placeholder="5T">
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Price (without £) *</label>
+              <input type="text" id="pPrice" class="input-field" placeholder="25,000" required>
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Serial Number</label>
+              <input type="text" id="pSerial" class="input-field" placeholder="Optional">
+            </div>
+            <div>
+              <label class="text-gray-400 text-sm">Main Image URL *</label>
+              <input type="url" id="pImg" class="input-field" placeholder="https://..." required>
+            </div>
           </div>
-          <div><label class="text-gray-400 text-sm">Additional Images (comma-separated URLs)</label><textarea id="pImages" class="input-field" rows="3"></textarea></div>
-          <div><label class="text-gray-400 text-sm">Description *</label><textarea id="pDescription" class="input-field" rows="5" required></textarea></div>
-          <div><label class="text-gray-400 text-sm">Specifications (one per line, format: Key: Value)</label><textarea id="pSpecs" class="input-field" rows="6"></textarea></div>
+          <div>
+            <label class="text-gray-400 text-sm">Additional Images (comma-separated URLs)</label>
+            <textarea id="pImages" class="input-field" rows="3" placeholder="url1, url2, url3"></textarea>
+          </div>
+          <div>
+            <label class="text-gray-400 text-sm">Description *</label>
+            <textarea id="pDescription" class="input-field" rows="5" placeholder="Full description..." required></textarea>
+          </div>
+          <div>
+            <label class="text-gray-400 text-sm">Specifications (one per line, format: Key: Value)</label>
+            <textarea id="pSpecs" class="input-field" rows="6" placeholder="Engine: Diesel&#10;Hours: 100&#10;Weight: 5T"></textarea>
+          </div>
           <div class="flex gap-3 mt-4">
             <button type="submit" class="btn btn-primary">Save Product</button>
             <button type="button" onclick="showSection('products')" class="btn btn-secondary">Cancel</button>
@@ -120,36 +211,44 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
+    <!-- Settings Section -->
     <div id="section-settings" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Settings</h1>
       <div class="card">
-        <h2 class="text-xl font-bold text-white mb-4">Database Management</h2>
-        <p class="text-gray-400 text-sm mb-4">If your products are not showing up, use the button below to force load the 18 default machines into the database.</p>
-        <button onclick="forceLoadProducts()" class="btn btn-primary">Force Load Default Products</button>
-        <hr class="border-gray-700 my-6">
+        <h2 class="text-xl font-bold text-white mb-4">Change Admin Password</h2>
+        <input type="password" id="newPassword" class="input-field" placeholder="New password">
+        <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm password">
+        <button onclick="changePassword()" class="btn btn-primary">Update Password</button>
+        <div id="passwordMsg" class="mt-3 text-sm"></div>
+      </div>
+      <div class="card">
         <h2 class="text-xl font-bold text-white mb-4">Reset All Data</h2>
-        <p class="text-gray-400 text-sm mb-4">This will reset all products to the original 18 default machines. This cannot be undone.</p>
+        <p class="text-gray-400 text-sm mb-4">This will reset all products and settings to default. This cannot be undone.</p>
         <button onclick="resetData()" class="btn btn-danger">Reset All Data</button>
       </div>
     </div>
 
+    <!-- Backup Section -->
     <div id="section-backup" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Backup & Restore</h1>
       <div class="card">
         <h2 class="text-xl font-bold text-white mb-4">Export Data</h2>
+        <p class="text-gray-400 text-sm mb-4">Download all your products and settings as a JSON file for backup.</p>
         <button onclick="exportData()" class="btn btn-primary">Download Backup JSON</button>
       </div>
       <div class="card">
         <h2 class="text-xl font-bold text-white mb-4">Import Data</h2>
+        <p class="text-gray-400 text-sm mb-4">Restore from a previously exported JSON backup file.</p>
         <input type="file" id="importFile" accept=".json" class="input-field" onchange="importData(event)">
       </div>
     </div>
 
+    <!-- View Site Section -->
     <div id="section-viewSite" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">View Website</h1>
       <div class="card">
         <p class="text-gray-400 mb-4">Open your main website to see the changes:</p>
-        <a href="../index.html" target="_blank" class="btn btn-primary">Open Website</a>
+        <a href="index.html" target="_blank" class="btn btn-primary">Open Website</a>
       </div>
     </div>
   </div>
@@ -166,8 +265,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
-<script>
+  
 // Default products data
 const defaultProducts = [
   {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
@@ -202,51 +300,49 @@ function initData() {
   }
 }
 
-
-async function getProducts() {
-  const doc = await db.collection("website").doc("data").get();
-  if (doc.exists) return doc.data().products || [];
-  return [];
+function getProducts() {
+  return JSON.parse(localStorage.getItem('dfw_products') || '[]');
 }
 
-async function saveProductsToCloud(products) {
-  await db.collection("website").doc("data").set({ products: products });
+function saveProducts(products) {
+  localStorage.setItem('dfw_products', JSON.stringify(products));
+  logActivity('Products updated');
 }
 
-async function saveProducts(products) {
-  await saveProductsToCloud(products);
-  alert('Products saved to cloud successfully! Refresh your main website to see changes.');
+function logActivity(msg) {
+  const activity = JSON.parse(localStorage.getItem('dfw_activity') || '[]');
+  activity.unshift({time: new Date().toLocaleString(), msg});
+  if (activity.length > 20) activity.pop();
+  localStorage.setItem('dfw_activity', JSON.stringify(activity));
 }
 
-async function forceLoadProducts() {
-  if (!confirm('This will overwrite the database with the 18 default products. Continue?')) return;
-  await saveProductsToCloud(defaultProducts);
-  alert('Products loaded! Refresh the page.');
-  renderProducts();
-  updateDashboard();
-}
-
+// Login
 function doLogin() {
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
-  if (email === 'collinspeter376@gmail.com' && password === 'kAS_t239iufkjsewf') {
+  const admin = JSON.parse(localStorage.getItem('dfw_admin'));
+  if (email === admin.email && password === admin.password) {
     localStorage.setItem('dfw_loggedin', 'true');
     showAdminPanel();
   } else {
     document.getElementById('loginError').classList.remove('hidden');
   }
 }
+
 function doLogout() {
   localStorage.removeItem('dfw_loggedin');
   document.getElementById('loginPage').classList.remove('hidden');
   document.getElementById('adminPanel').classList.add('hidden');
 }
+
 function showAdminPanel() {
   document.getElementById('loginPage').classList.add('hidden');
   document.getElementById('adminPanel').classList.remove('hidden');
   updateDashboard();
   renderProducts();
 }
+
+// Sections
 function showSection(name) {
   document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
   document.getElementById('section-' + name).classList.remove('hidden');
@@ -255,16 +351,26 @@ function showSection(name) {
   if (name === 'products') renderProducts();
   if (name === 'dashboard') updateDashboard();
 }
-async function updateDashboard() {
-  const products = await getProducts();
+
+// Dashboard
+function updateDashboard() {
+  const products = getProducts();
   document.getElementById('statProducts').textContent = products.length;
   const totalValue = products.reduce((sum, p) => sum + (p.priceNum || 0), 0);
   document.getElementById('statValue').textContent = '£' + totalValue.toLocaleString();
   const categories = [...new Set(products.map(p => p.type))];
   document.getElementById('statCategories').textContent = categories.length;
+  
+  const activity = JSON.parse(localStorage.getItem('dfw_activity') || '[]');
+  const activityHtml = activity.length > 0 
+    ? activity.map(a => `<div class="flex justify-between py-2 border-b border-gray-700"><span>${a.msg}</span><span class="text-gray-500 text-xs">${a.time}</span></div>`).join('')
+    : '<p>No recent activity</p>';
+  document.getElementById('activityLog').innerHTML = activityHtml;
 }
-async function renderProducts() {
-  const products = await getProducts();
+
+// Products
+function renderProducts() {
+  const products = getProducts();
   const html = products.map(p => `
     <div class="table-row">
       <div class="text-xs text-gray-400">${p.sku}</div>
@@ -279,8 +385,9 @@ async function renderProducts() {
   `).join('');
   document.getElementById('productsList').innerHTML = html || '<p class="text-gray-400 p-4">No products yet</p>';
 }
-async function editProduct(sku) {
-  const products = await getProducts();
+
+function editProduct(sku) {
+  const products = getProducts();
   const p = products.find(x => x.sku === sku);
   if (!p) return;
   document.getElementById('productFormTitle').textContent = 'Edit Product: ' + p.name;
@@ -301,15 +408,17 @@ async function editProduct(sku) {
   document.getElementById('pSpecs').value = specsText;
   showSection('addProduct');
 }
-async function deleteProduct(sku) {
+
+function deleteProduct(sku) {
   if (!confirm('Are you sure you want to delete this product?')) return;
-  let products = await getProducts();
+  let products = getProducts();
   products = products.filter(p => p.sku !== sku);
-  await saveProducts(products);
+  saveProducts(products);
   renderProducts();
   updateDashboard();
 }
-async function saveProduct(e) {
+
+function saveProduct(e) {
   e.preventDefault();
   const editSku = document.getElementById('editSku').value;
   const sku = document.getElementById('pSku').value;
@@ -330,58 +439,110 @@ async function saveProduct(e) {
   const specs = {};
   specsText.split('\n').forEach(line => {
     const parts = line.split(':');
-    if (parts.length >= 2) specs[parts[0].trim()] = parts.slice(1).join(':').trim();
+    if (parts.length >= 2) {
+      specs[parts[0].trim()] = parts.slice(1).join(':').trim();
+    }
   });
   
   const priceNum = parseInt(price.replace(/,/g, '')) || 0;
-  const product = { sku, name, type, brand, year, hrs, weight, price, priceNum, serial: serial || undefined, img, images, description, specs };
   
-  let products = await getProducts();
+  const product = {
+    sku, name, type, brand, year, hrs, weight, price, priceNum,
+    serial: serial || undefined,
+    img, images, description, specs
+  };
+  
+  let products = getProducts();
   if (editSku) {
     const idx = products.findIndex(p => p.sku === editSku);
     if (idx >= 0) products[idx] = product;
+    logActivity('Edited product: ' + name);
   } else {
     products.push(product);
+    logActivity('Added product: ' + name);
   }
   
-  await saveProducts(products);
+  saveProducts(products);
   document.getElementById('productForm').reset();
   document.getElementById('editSku').value = '';
   document.getElementById('productFormTitle').textContent = 'Add New Product';
   showSection('products');
+  alert('Product saved successfully!');
 }
-async function resetData() {
-  if (!confirm('This will reset ALL products to the original 18 default machines. Are you sure?')) return;
-  await saveProductsToCloud(defaultProducts);
+
+// Settings
+function changePassword() {
+  const newPass = document.getElementById('newPassword').value;
+  const confirmPass = document.getElementById('confirmPassword').value;
+  const msg = document.getElementById('passwordMsg');
+  if (!newPass || newPass !== confirmPass) {
+    msg.textContent = 'Passwords do not match';
+    msg.className = 'mt-3 text-sm text-red-400';
+    return;
+  }
+  const admin = JSON.parse(localStorage.getItem('dfw_admin'));
+  admin.password = newPass;
+  localStorage.setItem('dfw_admin', JSON.stringify(admin));
+  msg.textContent = 'Password updated successfully!';
+  msg.className = 'mt-3 text-sm text-green-400';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('confirmPassword').value = '';
+}
+
+function resetData() {
+  if (!confirm('This will reset ALL data to default. Are you sure?')) return;
+  if (!confirm('This cannot be undone. Continue?')) return;
+  localStorage.removeItem('dfw_products');
+  localStorage.removeItem('dfw_activity');
+  initData();
+  alert('Data reset to default');
   updateDashboard();
   renderProducts();
-  alert('Data reset to default!');
 }
-async function exportData() {
-  const products = await getProducts();
-  const data = { products: products, exportDate: new Date().toISOString() };
+
+// Backup
+function exportData() {
+  const data = {
+    products: getProducts(),
+    admin: JSON.parse(localStorage.getItem('dfw_admin')),
+    activity: JSON.parse(localStorage.getItem('dfw_activity') || '[]'),
+    exportDate: new Date().toISOString()
+  };
   const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.href = url; a.download = 'dfw-sales-backup.json'; a.click();
+  a.href = url;
+  a.download = 'dfw-sales-backup-' + new Date().toISOString().split('T')[0] + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  logActivity('Data exported');
 }
-async function importData(event) {
+
+function importData(event) {
   const file = event.target.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = async function(e) {
+  reader.onload = function(e) {
     try {
       const data = JSON.parse(e.target.result);
       if (data.products) {
-        await saveProducts(data.products);
+        localStorage.setItem('dfw_products', JSON.stringify(data.products));
+        logActivity('Data imported from backup');
+        alert('Data imported successfully! ' + data.products.length + ' products loaded.');
         updateDashboard();
         renderProducts();
+      } else {
+        alert('Invalid backup file');
       }
-    } catch (err) { alert('Error reading file'); }
+    } catch (err) {
+      alert('Error reading file: ' + err.message);
+    }
   };
   reader.readAsText(file);
 }
 
+// Init
+initData();
 if (localStorage.getItem('dfw_loggedin') === 'true') {
   showAdminPanel();
 }
