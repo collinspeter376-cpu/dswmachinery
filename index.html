@@ -1037,5 +1037,124 @@ window.addEventListener('scroll', () => { const nav = document.querySelector('.n
 renderInventory();
 renderFeatured();
 </script>
-</body>
-</html>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
+
+<script>
+// ==========================================
+// 1. FIREBASE CONNECTION
+// ==========================================
+const firebaseConfig = {
+  apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
+  authDomain: "dfwweb-c49fd.firebaseapp.com",
+  projectId: "dfwweb-c49fd",
+  storageBucket: "dfwweb-c49fd.firebasestorage.app",
+  messagingSenderId: "86537832820",
+  appId: "1:86537832820:web:6039a7dc0220acc5868421"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+// Empty array to be filled by Firebase
+let products = [];
+
+// ==========================================
+// 2. YOUR ORIGINAL FUNCTIONS (UNCHANGED)
+// ==========================================
+function renderCard(p, featured=false) {
+return `<div class="card-dark rounded-lg overflow-hidden"><div class="relative cursor-pointer" onclick="showProduct('${p.sku}')"><img src="${p.img}" class="w-full ${featured?'h-40':'h-44'} object-cover" alt="${p.name}"><span class="absolute top-2 left-2 bg-yellow-500 text-black text-[10px] font-bold px-2 py-0.5 rounded">${p.year}</span><span class="absolute top-2 left-1/2 -translate-x-1/2 sku-badge">${p.sku}</span><button class="absolute top-2 right-2 text-white hover:text-yellow-500 transition" onclick="event.stopPropagation()"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button></div><div class="p-3"><div class="flex items-center justify-between mb-1"><h3 class="font-bold text-white text-sm">${p.name}</h3></div><p class="text-gray-400 text-xs mb-2">${p.type}</p><div class="flex flex-wrap gap-2 text-[10px] text-gray-400 mb-3"><span>⏱ ${p.hrs} HRS</span><span> ${p.weight}</span><span> ${p.year}</span></div><div class="flex items-center justify-between"><span class="text-yellow-500 font-bold text-lg">£${p.price}</span><button class="border border-yellow-500 text-yellow-500 text-[10px] font-bold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition" onclick="showProduct('${p.sku}')">VIEW DETAILS</button></div></div></div>`;
+}
+function renderFeatured() { const grid = document.getElementById('featuredGrid'); if (!grid) return; grid.innerHTML = products.slice(0, 5).map(p => renderCard(p, true)).join(''); }
+function renderInventory(list) { const grid = document.getElementById('inventoryGrid'); if (!grid) return; const items = list || products; grid.innerHTML = items.map(p => renderCard(p)).join(''); document.getElementById('showingCount').textContent = items.length; }
+function filterInventory() {
+const cat = document.getElementById('filterCategory').value;
+const brand = document.getElementById('filterBrand').value;
+const sort = document.getElementById('filterSort').value;
+let filtered = products.filter(p => {
+if (cat && p.type !== cat) return false;
+if (brand && p.brand !== brand) return false;
+return true;
+});
+if (sort === 'price-low') filtered.sort((a,b) => a.priceNum - b.priceNum);
+else if (sort === 'price-high') filtered.sort((a,b) => b.priceNum - a.priceNum);
+else if (sort === 'year-new') filtered.sort((a,b) => parseInt(b.year) - parseInt(a.year));
+renderInventory(filtered);
+}
+function showProduct(sku) {
+const p = products.find(x => x.sku === sku);
+if (!p) return;
+const content = document.getElementById('productContent');
+const mainImg = p.images[0];
+const thumbs = p.images.map((img, i) => `<img src="${img}" class="product-thumb ${i===0?'active':''}" onclick="changeMainImg('${img}', this)" alt="${p.name} view ${i+1}">`).join('');
+const specsRows = Object.entries(p.specs).map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+const relatedProducts = products.filter(x => x.sku !== sku && (x.type === p.type || x.brand === p.brand)).slice(0, 4);
+const relatedHtml = relatedProducts.map(rp => renderCard(rp)).join('');
+content.innerHTML = `<div class="grid lg:grid-cols-2 gap-8 mb-12"><div><img src="${mainImg}" id="mainProductImg" class="product-main-img mb-4" alt="${p.name}"><div class="grid grid-cols-5 gap-2">${thumbs}</div></div><div><div class="flex items-center gap-3 mb-3"><span class="sku-badge">${p.sku}</span>${p.serial ? `<span class="sku-badge bg-gray-700 text-white">Serial: ${p.serial}</span>` : ''}<span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded">IN STOCK</span></div><h1 class="text-3xl md:text-4xl font-black text-white mb-2">${p.name}</h1><p class="text-gray-400 text-sm mb-4">${p.type} | ${p.brand} | ${p.year}</p><div class="flex items-center gap-6 mb-6 text-sm"><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.hrs} Hours</span></div><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 01-1-1.6L7.55 8 4.96 4.6A1 1 0 015.8 3h-2.8z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.weight}</span></div><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.year}</span></div></div><div class="bg-[#1a1a1a] border border-yellow-500 rounded-lg p-6 mb-6"><div class="text-gray-400 text-xs mb-1">Price</div><div class="text-yellow-500 text-4xl font-black">£${p.price} <span class="text-lg font-normal text-gray-400">+ VAT</span></div><div class="text-gray-400 text-xs mt-2">Finance available from £${Math.round(p.priceNum * 0.8 * 0.069/12 * Math.pow(1+0.069/12,36)/(Math.pow(1+0.069/12,36)-1)).toLocaleString()}/month*</div></div><div class="flex flex-wrap gap-3 mb-6"><button class="btn-primary px-8 py-3 rounded text-sm" onclick="showPage('contact')">ENQUIRE NOW</button><button class="btn-outline px-8 py-3 rounded text-sm" onclick="showPage('finance')">FINANCE THIS</button><button class="border border-gray-600 text-gray-300 px-6 py-3 rounded text-sm hover:border-yellow-500 hover:text-yellow-500 transition" onclick="showPage('tradein')">PART EXCHANGE</button></div><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-4"><h3 class="text-white font-bold text-sm mb-3">Quick Contact</h3><div class="grid grid-cols-2 gap-3 text-xs"><div class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>+44 7451 259663</div><div class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>cgoode183@gmail.com</div></div></div></div></div><div class="grid lg:grid-cols-3 gap-8 mb-12"><div class="lg:col-span-2"><h2 class="text-2xl font-black text-white mb-4">Description</h2><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6"><p class="text-gray-300 text-sm leading-relaxed whitespace-pre-line">${p.description}</p></div></div><div><h2 class="text-2xl font-black text-white mb-4">Specifications</h2><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden"><table class="spec-table">${specsRows}</table></div></div></div>${relatedProducts.length > 0 ? `<div class="mb-8"><h2 class="text-2xl font-black text-white mb-6">Related Machines</h2><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">${relatedHtml}</div></div>` : ''}`;
+showPage('product');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function changeMainImg(src, el) { document.getElementById('mainProductImg').src = src; document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
+function showPage(pageId) {
+document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+const target = document.getElementById('page-' + pageId);
+if (target) {
+target.classList.add('active');
+if (pageId === 'inventory') renderInventory();
+if (pageId === 'home') renderFeatured();
+const section = target.querySelector('section');
+if (section) { section.classList.remove('fade-in'); void section.offsetWidth; section.classList.add('fade-in'); }
+}
+document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('active', 'text-yellow-500'); link.classList.add('text-gray-300'); if (link.dataset.page === pageId) { link.classList.add('active', 'text-yellow-500'); link.classList.remove('text-gray-300'); } });
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function closeMobile() { document.getElementById('mobileMenu').classList.add('hidden'); }
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+function updateFinance() {
+const price = parseInt(document.getElementById('machinePrice').value);
+const deposit = parseInt(document.getElementById('deposit').value);
+const term = parseInt(document.getElementById('term').value);
+const rate = 0.069 / 12;
+const principal = Math.max(price - deposit, 1000);
+const monthly = principal * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+document.getElementById('machinePriceDisplay').textContent = '£' + price.toLocaleString();
+document.getElementById('depositDisplay').textContent = '£' + deposit.toLocaleString();
+document.getElementById('depositPercent').textContent = Math.round((deposit / price) * 100) + '%';
+document.getElementById('termDisplay').textContent = term + ' Months';
+document.getElementById('monthlyPayment').innerHTML = '£' + Math.round(monthly).toLocaleString() + ' <span class="text-xs font-normal text-gray-400">/month*</span>';
+}
+function updateFinance2() {
+const price = parseInt(document.getElementById('machinePrice2').value);
+const deposit = parseInt(document.getElementById('deposit2').value);
+const term = parseInt(document.getElementById('term2').value);
+const rate = 0.069 / 12;
+const principal = Math.max(price - deposit, 1000);
+const monthly = principal * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+document.getElementById('machinePriceDisplay2').textContent = '£' + price.toLocaleString();
+document.getElementById('depositDisplay2').textContent = '£' + deposit.toLocaleString();
+document.getElementById('depositPercent2').textContent = Math.round((deposit / price) * 100) + '%';
+document.getElementById('termDisplay2').textContent = term + ' Months';
+document.getElementById('monthlyPayment2').innerHTML = '£' + Math.round(monthly).toLocaleString() + ' <span class="text-xs font-normal text-gray-400">/month*</span>';
+}
+
+// ==========================================
+// 3. LOAD FROM FIREBASE
+// ==========================================
+async function loadProductsFromCloud() {
+  try {
+    const doc = await db.collection("website").doc("data").get();
+    if (doc.exists) {
+      products = doc.data().products || [];
+    } else {
+      console.log("No products found in database yet.");
+    }
+    renderInventory();
+    renderFeatured();
+  } catch (error) {
+    console.error("Error loading products:", error);
+  }
+}
+
+window.addEventListener('scroll', () => { const nav = document.querySelector('.nav-bg'); nav.style.background = window.scrollY > 50 ? 'rgba(17,17,17,0.98)' : '#111'; });
+loadProductsFromCloud();
+</script>
