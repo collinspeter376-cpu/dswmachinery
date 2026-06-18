@@ -1040,11 +1040,11 @@ renderFeatured();
 <!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
-
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
 <script>
-// ==========================================
-// 1. FIREBASE CONNECTION
-// ==========================================
+// 1. Connect to Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
   authDomain: "dfwweb-c49fd.firebaseapp.com",
@@ -1056,14 +1056,28 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// Empty array to be filled by Firebase
 let products = [];
 
-// ==========================================
-// 2. YOUR ORIGINAL FUNCTIONS (UNCHANGED)
-// ==========================================
+// 2. Fetch products from Firebase
+async function loadProducts() {
+  try {
+    const doc = await db.collection("website").doc("data").get();
+    if (doc.exists) {
+      products = doc.data().products || [];
+      console.log("Loaded " + products.length + " products from Firebase.");
+    } else {
+      console.log("No products found in database. Please use the Admin Panel to load them.");
+    }
+    renderInventory();
+    renderFeatured();
+  } catch (error) {
+    console.error("Error loading products:", error);
+  }
+}
+
+// 3. Your existing render functions (kept exactly the same)
 function renderCard(p, featured=false) {
-return `<div class="card-dark rounded-lg overflow-hidden"><div class="relative cursor-pointer" onclick="showProduct('${p.sku}')"><img src="${p.img}" class="w-full ${featured?'h-40':'h-44'} object-cover" alt="${p.name}"><span class="absolute top-2 left-2 bg-yellow-500 text-black text-[10px] font-bold px-2 py-0.5 rounded">${p.year}</span><span class="absolute top-2 left-1/2 -translate-x-1/2 sku-badge">${p.sku}</span><button class="absolute top-2 right-2 text-white hover:text-yellow-500 transition" onclick="event.stopPropagation()"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button></div><div class="p-3"><div class="flex items-center justify-between mb-1"><h3 class="font-bold text-white text-sm">${p.name}</h3></div><p class="text-gray-400 text-xs mb-2">${p.type}</p><div class="flex flex-wrap gap-2 text-[10px] text-gray-400 mb-3"><span>⏱ ${p.hrs} HRS</span><span> ${p.weight}</span><span> ${p.year}</span></div><div class="flex items-center justify-between"><span class="text-yellow-500 font-bold text-lg">£${p.price}</span><button class="border border-yellow-500 text-yellow-500 text-[10px] font-bold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition" onclick="showProduct('${p.sku}')">VIEW DETAILS</button></div></div></div>`;
+return `<div class="card-dark rounded-lg overflow-hidden"><div class="relative cursor-pointer" onclick="showProduct('${p.sku}')"><img src="${p.img}" class="w-full ${featured?'h-40':'h-44'} object-cover" alt="${p.name}"><span class="absolute top-2 left-2 bg-yellow-500 text-black text-[10px] font-bold px-2 py-0.5 rounded">${p.year}</span><span class="absolute top-2 left-1/2 -translate-x-1/2 sku-badge">${p.sku}</span><button class="absolute top-2 right-2 text-white hover:text-yellow-500 transition" onclick="event.stopPropagation()"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button></div><div class="p-3"><div class="flex items-center justify-between mb-1"><h3 class="font-bold text-white text-sm">${p.name}</h3></div><p class="text-gray-400 text-xs mb-2">${p.type}</p><div class="flex flex-wrap gap-2 text-[10px] text-gray-400 mb-3"><span>⏱ ${p.hrs} HRS</span><span>⚖ ${p.weight}</span><span>📅 ${p.year}</span></div><div class="flex items-center justify-between"><span class="text-yellow-500 font-bold text-lg">£${p.price}</span><button class="border border-yellow-500 text-yellow-500 text-[10px] font-bold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition" onclick="showProduct('${p.sku}')">VIEW DETAILS</button></div></div></div>`;
 }
 function renderFeatured() { const grid = document.getElementById('featuredGrid'); if (!grid) return; grid.innerHTML = products.slice(0, 5).map(p => renderCard(p, true)).join(''); }
 function renderInventory(list) { const grid = document.getElementById('inventoryGrid'); if (!grid) return; const items = list || products; grid.innerHTML = items.map(p => renderCard(p)).join(''); document.getElementById('showingCount').textContent = items.length; }
@@ -1136,25 +1150,10 @@ document.getElementById('depositPercent2').textContent = Math.round((deposit / p
 document.getElementById('termDisplay2').textContent = term + ' Months';
 document.getElementById('monthlyPayment2').innerHTML = '£' + Math.round(monthly).toLocaleString() + ' <span class="text-xs font-normal text-gray-400">/month*</span>';
 }
-
-// ==========================================
-// 3. LOAD FROM FIREBASE
-// ==========================================
-async function loadProductsFromCloud() {
-  try {
-    const doc = await db.collection("website").doc("data").get();
-    if (doc.exists) {
-      products = doc.data().products || [];
-    } else {
-      console.log("No products found in database yet.");
-    }
-    renderInventory();
-    renderFeatured();
-  } catch (error) {
-    console.error("Error loading products:", error);
-  }
-}
-
 window.addEventListener('scroll', () => { const nav = document.querySelector('.nav-bg'); nav.style.background = window.scrollY > 50 ? 'rgba(17,17,17,0.98)' : '#111'; });
-loadProductsFromCloud();
+
+// 4. Start the app
+loadProducts();
 </script>
+</body>
+</html>
