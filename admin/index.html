@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DFW Sales - Admin Panel</title>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css">
 <style>
@@ -255,16 +253,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </div>
 
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
-  authDomain: "dfwweb-c49fd.firebaseapp.com",
-  projectId: "dfwweb-c49fd",
-  storageBucket: "dfwweb-c49fd.firebasestorage.app",
-  messagingSenderId: "86537832820",
-  appId: "1:86537832820:web:6039a7dc0220acc5868421"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// Default products data
 const defaultProducts = [
   {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
   {sku:'SKU-DFW-002',name:'Kubota U27-4',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'810',weight:'2.7T',price:'19,750',priceNum:19750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png'],description:'Reliable and efficient mini excavator perfect for landscaping and utility work.',specs:{'Engine':'Kubota D1105','Operating Weight':'2,700 kg','Digging Depth':'2.6m','Bucket Width':'Multiple options'}},
