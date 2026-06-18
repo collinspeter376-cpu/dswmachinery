@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DFW SALES LIMITED</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css">
+<style>
+@import url('https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #111; color: #fff; overflow-x: hidden; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #f5a623; border-radius: 4px; }
+.top-bar { background: #1a1a1a; }
+.nav-bg { background: #111; }
+.btn-primary { background: #f5a623; color: #000; font-weight: 700; transition: all 0.3s; }
+.btn-primary:hover { background: #e6951a; }
+.btn-outline { border: 2px solid #fff; color: #fff; font-weight: 700; transition: all 0.3s; }
+.btn-outline:hover { background: #fff; color: #000; }
+.card-dark { background: #1a1a1a; border: 1px solid #2a2a2a; transition: all 0.3s; }
+.card-dark:hover { border-color: #f5a623; transform: translateY(-2px); }
+.nav-link { position: relative; transition: color 0.3s; cursor: pointer; padding: 20px 0; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+.nav-link:hover { color: #f5a623; }
+.nav-link.active { color: #f5a623; }
+.nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #f5a623; }
+.category-card { position: relative; overflow: hidden; border: 1px solid #2a2a2a; transition: all 0.3s; }
+.category-card:hover { border-color: #f5a623; }
+.category-card img { transition: transform 0.5s; }
+.category-card:hover img { transform: scale(1.05); }
+.category-overlay { background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 60%); }
+input[type="range"] { -webkit-appearance: none; appearance: none; height: 4px; background: #333; border-radius: 2px; outline: none; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; background: #f5a623; border-radius: 50%; cursor: pointer; }
+.news-card { transition: all 0.3s; }
+.news-card:hover { transform: translateY(-4px); }
+.news-date { background: #1a1a1a; border: 1px solid #333; }
+.testimonial-card { background: #1a1a1a; border: 1px solid #2a2a2a; }
+.dot-active { background: #f5a623; }
+.dot-inactive { background: #555; }
+.footer-bg { background: #0a0a0a; }
+.footer-link { color: #999; transition: color 0.3s; }
+.footer-link:hover { color: #f5a623; }
+.form-input { background: #1a1a1a; border: 1px solid #333; color: #fff; padding: 12px 16px; border-radius: 8px; width: 100%; transition: border-color 0.3s; }
+.form-input:focus { outline: none; border-color: #f5a623; }
+.form-input::placeholder { color: #666; }
+.info-card { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; transition: all 0.3s; }
+.info-card:hover { border-color: #f5a623; }
+.service-icon-circle { width: 50px; height: 50px; border: 2px solid #f5a623; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.page { display: none; }
+.page.active { display: block; }
+.fade-in { animation: fadeIn 0.4s ease-in; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.brand-box { border: 1px solid #333; padding: 12px 20px; display: flex; align-items: center; justify-content: center; min-width: 100px; }
+.policy-content { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 40px; max-width: 900px; margin: 0 auto; }
+.policy-content h1 { color: #f5a623; font-size: 2rem; font-weight: 800; margin-bottom: 8px; }
+.policy-content h2 { color: #f5a623; font-size: 1.35rem; font-weight: 700; margin-top: 32px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #2a2a2a; }
+.policy-content h3 { color: #fff; font-size: 1.1rem; font-weight: 700; margin-top: 20px; margin-bottom: 10px; }
+.policy-content h4 { color: #e6951a; font-size: 1rem; font-weight: 600; margin-top: 16px; margin-bottom: 8px; }
+.policy-content p { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-bottom: 14px; }
+.policy-content ul { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 14px; }
+.policy-content ul li { margin-bottom: 8px; }
+.policy-content ol { color: #ccc; font-size: 0.95rem; line-height: 1.8; margin-left: 24px; margin-bottom: 14px; }
+.policy-content ol li { margin-bottom: 8px; }
+.policy-content strong { color: #fff; font-weight: 600; }
+.policy-content a { color: #f5a623; text-decoration: underline; }
+.policy-meta { color: #888; font-size: 0.85rem; font-style: italic; margin-bottom: 24px; }
+.policy-table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+.policy-table th { background: #111; color: #f5a623; padding: 12px 16px; text-align: left; border: 1px solid #2a2a2a; font-weight: 600; }
+.policy-table td { padding: 12px 16px; border: 1px solid #2a2a2a; color: #ccc; }
+.policy-table tr:nth-child(even) { background: #151515; }
+.faq-item { background: #111; border: 1px solid #2a2a2a; border-radius: 8px; margin-bottom: 8px; overflow: hidden; }
+.faq-question { padding: 16px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #fff; transition: background 0.3s; }
+.faq-question:hover { background: #1a1a1a; }
+.faq-answer { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s; color: #ccc; font-size: 0.9rem; line-height: 1.7; }
+.faq-item.open .faq-answer { padding: 0 20px 16px; max-height: 500px; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 0.3s; font-size: 1.2rem; color: #f5a623; }
+.product-main-img { width: 100%; height: 550px; object-fit: contain; background: #0a0a0a; border-radius: 12px; border: 1px solid #2a2a2a; }
+.product-thumb { width: 100%; height: 90px; object-fit: cover; border-radius: 8px; border: 2px solid #2a2a2a; cursor: pointer; transition: all 0.3s; }
+.product-thumb:hover, .product-thumb.active { border-color: #f5a623; }
+.spec-table { width: 100%; border-collapse: collapse; }
+.spec-table tr { border-bottom: 1px solid #2a2a2a; }
+.spec-table td { padding: 12px 16px; }
+.spec-table td:first-child { color: #999; font-weight: 500; width: 40%; }
+.spec-table td:last-child { color: #fff; font-weight: 600; }
+.sku-badge { background: #f5a623; color: #000; font-weight: 700; font-size: 11px; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+<!-- Top Bar -->
+<div class="top-bar py-2.5 px-4 md:px-8 border-b border-gray-800">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between text-xs">
+<div class="flex flex-wrap items-center gap-5 text-gray-400">
+<span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>Sales: +44 7451 259663</span>
+<span class="flex items-center gap-1.5 hidden md:flex"><svg class="w-3.5 h-3.5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 3.636a1 1 0 010 1.414 7 7 0 000 9.9 1 1 0 11-1.414 1.414 9 9 0 010-12.728 1 1 0 011.414 0zm9.9 0a9 9 0 010 12.728 1 1 0 11-1.414-1.414 7 7 0 000-9.9 1 1 0 111.414-1.414zM7.879 6.464a1 1 0 010 1.414 3 3 0 000 4.243 1 1 0 11-1.415 1.414 5 5 0 010-7.07 1 1 0 011.415 0zm4.242 0a5 5 0 010 7.072 1 1 0 01-1.415-1.415 3 3 0 000-4.242 1 1 0 011.415-1.415zM10 9a1 1 0 100 2 1 1 0 000-2z" clip-rule="evenodd"/></svg>Email: cgoode183@gmail.com</span>
+</div>
+<div class="flex items-center gap-5 text-gray-400 mt-1 md:mt-0">
+<a class="hover:text-white transition cursor-pointer" onclick="showPage('about')">About Us</a>
+<a class="hover:text-white transition cursor-pointer" onclick="showPage('customerservice')">Customer Service</a>
+<div class="flex items-center gap-3">
+<a class="hover:text-yellow-500 transition cursor-pointer"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+<a class="hover:text-yellow-500 transition cursor-pointer"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation -->
+<nav class="nav-bg sticky top-0 z-50 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
+<div class="flex items-center gap-2 cursor-pointer flex-shrink-0 py-3" onclick="showPage('home')">
+<div class="w-11 h-11 bg-yellow-500 rounded-full flex items-center justify-center border-2 border-yellow-600"><svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+<div><div class="text-white font-black text-base leading-tight tracking-wide">DFW SALES</div><div class="text-yellow-500 text-[10px] font-bold leading-tight tracking-wider">LIMITED</div><div class="text-gray-500 text-[8px] leading-tight">EST. 2006</div></div>
+</div>
+<div class="hidden lg:flex items-center gap-7 text-sm font-semibold">
+<a class="nav-link active text-yellow-500" data-page="home" onclick="showPage('home')">HOME</a>
+<a class="nav-link text-gray-300" data-page="inventory" onclick="showPage('inventory')">INVENTORY</a>
+<a class="nav-link text-gray-300" data-page="finance" onclick="showPage('finance')">FINANCE</a>
+<a class="nav-link text-gray-300" data-page="hire" onclick="showPage('hire')">HIRE</a>
+<a class="nav-link text-gray-300" data-page="tradein" onclick="showPage('tradein')">TRADE-IN</a>
+<a class="nav-link text-gray-300" data-page="services" onclick="showPage('services')">SERVICES</a>
+<a class="nav-link text-gray-300" data-page="about" onclick="showPage('about')">ABOUT US</a>
+<a class="nav-link text-gray-300" data-page="contact" onclick="showPage('contact')">CONTACT</a>
+</div>
+<button class="btn-primary px-6 py-2.5 rounded text-xs hidden md:block flex-shrink-0" onclick="showPage('contact')">GET A QUOTE</button>
+<button class="lg:hidden text-white" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+</div>
+<div id="mobileMenu" class="hidden lg:hidden bg-black border-t border-gray-800 px-4 py-4">
+<div class="flex flex-col gap-3 text-sm">
+<a class="text-yellow-500 font-bold cursor-pointer" onclick="showPage('home');closeMobile()">HOME</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('inventory');closeMobile()">INVENTORY</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('finance');closeMobile()">FINANCE</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('hire');closeMobile()">HIRE</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('tradein');closeMobile()">TRADE-IN</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('services');closeMobile()">SERVICES</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('about');closeMobile()">ABOUT US</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('customerservice');closeMobile()">Customer Service</a>
+<a class="text-gray-300 cursor-pointer" onclick="showPage('contact');closeMobile()">CONTACT</a>
+<button class="btn-primary px-5 py-2 rounded text-sm mt-2" onclick="showPage('contact');closeMobile()">GET A QUOTE</button>
+</div>
+</div>
+</nav>
+<!-- ==================== HOME PAGE ==================== -->
+<div id="page-home" class="page active">
+<section class="relative h-[520px] md:h-[620px] overflow-hidden">
+<img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/160e15aa9-e125-4633-966e-d53fbc7c0322.png" class="absolute inset-0 w-full h-full object-cover" alt="Hero">
+<div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent"></div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 h-full flex flex-col justify-center">
+<h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-3">QUALITY MACHINES.<br><span class="text-yellow-500">BUILT FOR WORK.</span></h1>
+<p class="text-gray-300 text-base md:text-lg max-w-md mb-8">Supplying premium new and used plant machinery to businesses across the UK.</p>
+<div class="flex flex-wrap gap-6 mb-8 text-sm">
+<div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg><div><div class="font-bold text-white text-sm">WARRANTY</div><div class="text-gray-400 text-xs">On All Machines</div></div></div>
+<div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg><div><div class="font-bold text-white text-sm">UK DELIVERY</div><div class="text-gray-400 text-xs">Nationwide</div></div></div>
+<div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><div><div class="font-bold text-white text-sm">TRUSTED DEALER</div><div class="text-gray-400 text-xs">5 Star Rated</div></div></div>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="btn-primary px-8 py-3 rounded text-sm" onclick="showPage('inventory')">BROWSE INVENTORY</button>
+<button class="btn-outline px-8 py-3 rounded text-sm" onclick="showPage('tradein')">SELL YOUR MACHINE</button>
+</div>
+</div>
+</section>
+<section class="bg-[#0d0d0d] py-6 border-b border-gray-800">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="text-gray-400 text-xs max-w-[180px] leading-tight">OFFICIAL DEALER & SUPPLIER<br>OF LEADING BRANDS</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="brand-box"><span class="text-white font-black text-lg tracking-tight">JCB</span></div>
+<div class="brand-box"><span class="text-white font-bold text-base italic">Kubota</span></div>
+<div class="brand-box"><span class="text-white font-black text-lg">CAT</span></div>
+<div class="brand-box"><span class="text-red-500 font-black text-sm">MANITOU</span></div>
+<div class="brand-box"><div class="flex items-center gap-1.5"><div class="w-7 h-7 bg-green-600 rounded-full flex items-center justify-center text-white text-[9px] font-bold">JD</div><span class="text-green-500 font-bold text-[10px]">JOHN DEERE</span></div></div>
+<div class="brand-box"><span class="text-white font-bold text-sm">TAKEUCHI</span></div>
+<div class="brand-box"><span class="text-white font-bold text-sm">VOLVO</span></div>
+<div class="brand-box"><span class="text-white font-bold text-sm">HITACHI</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12 md:py-16 bg-[#111]">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">FEATURED MACHINES</h2>
+<a class="text-yellow-500 text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer" onclick="showPage('inventory')">VIEW ALL INVENTORY <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4" id="featuredGrid"></div>
+</div>
+</section>
+<section class="py-12 md:py-16 bg-[#0a0a0a]">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl md:text-3xl font-black text-white tracking-tight">BROWSE BY CATEGORY</h2>
+<a class="text-yellow-500 text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer" onclick="showPage('inventory')">VIEW ALL CATEGORIES <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png" class="w-full h-full object-cover" alt="Mini Diggers"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">MINI DIGGERS</div><div class="text-gray-300 text-[10px]">(20+ Machines)</div></div></div></div>
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png" class="w-full h-full object-cover" alt="Excavators"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">EXCAVATORS</div><div class="text-gray-300 text-[10px]">(60+ Machines)</div></div></div></div>
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/161764409-4892-47aa-afe4-5677ac2d6bfa.png" class="w-full h-full object-cover" alt="Telehandlers"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">TELEHANDLERS</div><div class="text-gray-300 text-[10px]">(45+ Machines)</div></div></div></div>
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/17c2e0a21-ab95-47d8-af40-7c6bbb80ac95.png" class="w-full h-full object-cover" alt="Tractors"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">TRACTORS</div><div class="text-gray-300 text-[10px]">(100+ Machines)</div></div></div></div>
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18e93559a-ce3c-4372-b0b4-6e6b47602585.png" class="w-full h-full object-cover" alt="Forklifts"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">FORKLIFTS</div><div class="text-gray-300 text-[10px]">(30+ Machines)</div></div></div></div>
+<div class="category-card rounded-lg overflow-hidden cursor-pointer" onclick="showPage('inventory')"><div class="relative h-44"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1bae09ecc-6bb1-4659-ae4a-9884fdc07692.png" class="w-full h-full object-cover" alt="Attachments"><div class="category-overlay absolute inset-0"></div><div class="absolute bottom-0 left-0 right-0 p-3 z-10"><div class="text-white font-bold text-xs">ATTACHMENTS</div><div class="text-gray-300 text-[10px]">(200+ Items)</div></div></div></div>
+</div>
+</div>
+</section>
+<section class="py-12 md:py-16 bg-[#111]">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="grid lg:grid-cols-2 gap-8 items-center">
+<div>
+<div class="text-yellow-500 font-bold text-xs mb-2 tracking-wider">FLEXIBLE FINANCE SOLUTIONS</div>
+<h2 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">FINANCE THAT WORKS<br>FOR YOUR BUSINESS</h2>
+<div class="space-y-3 mb-8">
+<div class="flex items-center gap-3"><svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="text-gray-300 text-sm">Hire Purchase & Lease Options</span></div>
+<div class="flex items-center gap-3"><svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="text-gray-300 text-sm">Competitive Rates</span></div>
+<div class="flex items-center gap-3"><svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="text-gray-300 text-sm">Quick Decisions</span></div>
+<div class="flex items-center gap-3"><svg class="w-5 h-5 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span class="text-gray-300 text-sm">Tailored To Your Needs</span></div>
+</div>
+<button class="btn-primary px-8 py-3 rounded text-sm" onclick="showPage('finance')">CALCULATE PAYMENT</button>
+</div>
+<div class="bg-[#1a1a1a] border border-gray-700 rounded-lg p-6">
+<div class="text-yellow-500 font-bold text-[10px] mb-4 tracking-wider">FINANCE CALCULATOR</div>
+<div class="space-y-4">
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Machine Price</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="machinePriceDisplay">£21,995</span></div><input type="range" id="machinePrice" min="5000" max="100000" value="21995" class="w-full" oninput="updateFinance()"></div>
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Deposit</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="depositDisplay">£5,000</span></div><div class="flex items-center gap-2"><input type="range" id="deposit" min="0" max="50000" value="5000" class="w-full" oninput="updateFinance()"><span class="text-gray-400 text-[10px] w-8 text-right" id="depositPercent">20%</span></div></div>
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Term</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="termDisplay">36 Months</span></div><input type="range" id="term" min="12" max="84" value="36" step="12" class="w-full" oninput="updateFinance()"></div>
+<div class="border-t border-gray-700 pt-4 mt-4"><div class="text-gray-400 text-[10px] mb-1">Estimated Monthly Payment</div><div class="text-yellow-500 text-3xl font-black" id="monthlyPayment">£399 <span class="text-xs font-normal text-gray-400">/month*</span></div><div class="text-gray-500 text-[9px] mt-1">*Subject to status. Terms & conditions apply.</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-12 md:py-16 bg-[#f5f5f5]">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex items-start gap-4"><div class="service-icon-circle"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg></div><div><h3 class="text-black font-bold text-sm mb-1">NATIONWIDE DELIVERY</h3><p class="text-gray-600 text-xs">Fast & reliable delivery across the UK.</p></div></div>
+<div class="flex items-start gap-4"><div class="service-icon-circle"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><div><h3 class="text-black font-bold text-sm mb-1">WARRANTY OPTIONS</h3><p class="text-gray-600 text-xs">Peace of mind with comprehensive warranty</p></div></div>
+<div class="flex items-start gap-4"><div class="service-icon-circle"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><div><h3 class="text-black font-bold text-sm mb-1">PART EXCHANGE</h3><p class="text-gray-600 text-xs">Get a fair price for your current machine.</p></div></div>
+<div class="flex items-start gap-4"><div class="service-icon-circle"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg></div><div><h3 class="text-black font-bold text-sm mb-1">EXPERT SUPPORT</h3><p class="text-gray-600 text-xs">Our team is here to help you 7 days a week.</p></div></div>
+</div>
+</div>
+</section>
+<section class="py-12 md:py-16 bg-[#111]">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="grid lg:grid-cols-3 gap-8">
+<div>
+<h2 class="text-xl md:text-2xl font-black text-white mb-2 tracking-tight">WHAT OUR CUSTOMERS SAY</h2>
+<div class="flex items-center gap-2 mb-6">
+<div class="flex"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+<span class="text-white font-bold text-sm">4.9/5</span><span class="text-gray-400 text-xs">From 350+ Reviews</span>
+</div>
+<div class="testimonial-card rounded-lg p-6 relative">
+<svg class="w-8 h-8 text-yellow-500 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+<p class="text-gray-300 text-sm mb-6 leading-relaxed">Excellent service from start to finish. The machine was exactly as described and delivered on time. Highly recommended!</p>
+<div class="flex items-center gap-3"><div class="w-12 h-12 rounded-full bg-gray-600 flex items-center justify-center text-white font-bold overflow-hidden"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/14480c167-e4e7-40f3-9325-b78b358d7c3d.png" class="w-full h-full object-cover" alt="James H."></div><div><div class="text-white font-bold text-sm">James H.</div><div class="text-gray-400 text-xs">Construction Company</div></div></div>
+<svg class="w-8 h-8 text-yellow-500 absolute bottom-4 right-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl md:text-2xl font-black text-white tracking-tight">LATEST NEWS & UPDATES</h2>
+<a class="text-yellow-500 text-sm font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">VIEW ALL NEWS <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="news-card bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden"><div class="relative"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/103c253e1-7ed8-4c1f-a5e8-d84e3524de46.png" class="w-full h-40 object-cover" alt="News 1"><div class="news-date absolute top-3 right-3 rounded px-3 py-1 text-center"><div class="text-white font-black text-lg leading-tight">15</div><div class="text-yellow-500 text-[10px] font-bold">MAY</div></div></div><div class="p-4"><h3 class="text-white font-bold text-sm mb-2">Why Regular Servicing Saves You Money</h3><p class="text-gray-400 text-xs mb-3">Keep your machines running at peak performance...</p><a class="text-yellow-500 text-[10px] font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">READ MORE <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a></div></div>
+<div class="news-card bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden"><div class="relative"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1df252999-5d87-495c-8ff5-b78abc284bdc.png" class="w-full h-40 object-cover" alt="News 2"><div class="news-date absolute top-3 right-3 rounded px-3 py-1 text-center"><div class="text-white font-black text-lg leading-tight">02</div><div class="text-yellow-500 text-[10px] font-bold">MAY</div></div></div><div class="p-4"><h3 class="text-white font-bold text-sm mb-2">How to Choose the Right Excavator</h3><p class="text-gray-400 text-xs mb-3">A complete guide to selecting the perfect machine...</p><a class="text-yellow-500 text-[10px] font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">READ MORE <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a></div></div>
+<div class="news-card bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden"><div class="relative"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/12be51d56-7fad-4096-9d52-af894211d9a8.png" class="w-full h-40 object-cover" alt="News 3"><div class="news-date absolute top-3 right-3 rounded px-3 py-1 text-center"><div class="text-white font-black text-lg leading-tight">20</div><div class="text-yellow-500 text-[10px] font-bold">APR</div></div></div><div class="p-4"><h3 class="text-white font-bold text-sm mb-2">Spring Maintenance Checklist</h3><p class="text-gray-400 text-xs mb-3">Essential checklist to get your machines ready for spring...</p><a class="text-yellow-500 text-[10px] font-bold flex items-center gap-1 hover:gap-2 transition-all cursor-pointer">READ MORE <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></a></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-8 bg-[#0d0d0d] border-t border-gray-800">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+<div><h3 class="text-yellow-500 font-bold text-sm mb-1">STAY UPDATED</h3><p class="text-gray-400 text-sm">Subscribe to our newsletter for the latest deals, news and industry updates.</p></div>
+<div class="flex w-full lg:w-auto gap-3"><input type="email" placeholder="Enter your email address" class="flex-1 lg:w-80 bg-[#1a1a1a] border border-gray-700 rounded px-4 py-3 text-white text-sm focus:outline-none focus:border-yellow-500"><button class="btn-primary px-8 py-3 rounded text-sm whitespace-nowrap">SUBSCRIBE</button></div>
+<div class="flex items-center gap-2 text-gray-400 text-xs"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><span>No spam, unsubscribe anytime.</span></div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== INVENTORY PAGE ==================== -->
+<div id="page-inventory" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">OUR INVENTORY</h1><p class="text-gray-400">Browse our extensive range of new and used plant machinery. Each machine has a unique SKU for easy reference.</p></div>
+<div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-4 mb-8 flex flex-wrap gap-4 items-center">
+<select class="form-input" style="width:auto;min-width:150px" id="filterCategory" onchange="filterInventory()"><option value="">All Categories</option><option>Mini Excavator</option><option>Telehandler</option><option>Forklift</option><option>Backhoe Loader</option><option>Tractor</option><option>Excavator</option><option>Wheeled Excavator</option><option>Skid Steer Loader</option><option>Compact Utility Loader</option><option>Flatbed Trailer</option></select>
+<select class="form-input" style="width:auto;min-width:150px" id="filterBrand" onchange="filterInventory()"><option value="">All Brands</option><option>JCB</option><option>Kubota</option><option>CAT</option><option>Manitou</option><option>Toyota</option><option>Takeuchi</option><option>Volvo</option><option>Hitachi</option><option>Komatsu</option><option>John Deere</option><option>Bobcat</option><option>CFG Industrial</option><option>Reitnouer</option></select>
+<select class="form-input" style="width:auto;min-width:150px" id="filterSort" onchange="filterInventory()"><option value="default">Sort By</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="year-new">Year: Newest</option></select>
+</div>
+<div class="flex items-center justify-between mb-6"><p class="text-gray-400 text-sm">Showing <span class="text-white font-bold" id="showingCount">18</span> machines</p></div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8" id="inventoryGrid"></div>
+</div>
+</section>
+</div>
+<!-- ==================== PRODUCT DETAIL PAGE ==================== -->
+<div id="page-product" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-6">
+<a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1" onclick="showPage('inventory')">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+Back to Inventory
+</a>
+</div>
+<div id="productContent"></div>
+</div>
+</section>
+</div>
+<!-- ==================== FINANCE PAGE ==================== -->
+<div id="page-finance" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">FINANCE SOLUTIONS</h1><p class="text-gray-400 max-w-2xl">Flexible finance options tailored to your business needs.</p></div>
+<div class="grid lg:grid-cols-2 gap-8 mb-12">
+<div>
+<h2 class="text-2xl font-black text-white mb-6">Finance Options Available</h2>
+<div class="space-y-4">
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><div><h3 class="text-white font-bold mb-1">Hire Purchase (HP)</h3><p class="text-gray-400 text-sm">Spread the cost over fixed monthly payments. Own the equipment at the end of the agreement.</p><ul class="mt-3 space-y-1 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Fixed monthly payments</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ownership at end of term</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Terms from 12 to 84 months</li></ul></div></div></div>
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg></div><div><h3 class="text-white font-bold mb-1">Finance Lease</h3><p class="text-gray-400 text-sm">Lower monthly payments with the option to purchase at the end. VAT can be reclaimed on each payment.</p><ul class="mt-3 space-y-1 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>VAT reclaimable</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Purchase option available</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Off-balance sheet option</li></ul></div></div></div>
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><div><h3 class="text-white font-bold mb-1">Operating Lease</h3><p class="text-gray-400 text-sm">Pure rental with no ownership obligation. Return the equipment at the end of the term.</p><ul class="mt-3 space-y-1 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Lowest monthly payments</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Return at end of term</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Maintenance packages available</li></ul></div></div></div>
+</div>
+</div>
+<div>
+<div class="bg-[#1a1a1a] border border-gray-700 rounded-lg p-6 sticky top-24">
+<div class="text-yellow-500 font-bold text-[10px] mb-4 tracking-wider">FINANCE CALCULATOR</div>
+<div class="space-y-4">
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Machine Price</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="machinePriceDisplay2">£21,995</span></div><input type="range" id="machinePrice2" min="5000" max="100000" value="21995" class="w-full" oninput="updateFinance2()"></div>
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Deposit</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="depositDisplay2">£5,000</span></div><div class="flex items-center gap-2"><input type="range" id="deposit2" min="0" max="50000" value="5000" class="w-full" oninput="updateFinance2()"><span class="text-gray-400 text-[10px] w-8 text-right" id="depositPercent2">20%</span></div></div>
+<div><div class="flex items-center justify-between mb-1"><label class="text-gray-400 text-xs">Term</label><span class="text-white text-xs font-bold bg-[#111] px-3 py-1 rounded border border-gray-700" id="termDisplay2">36 Months</span></div><input type="range" id="term2" min="12" max="84" value="36" step="12" class="w-full" oninput="updateFinance2()"></div>
+<div class="border-t border-gray-700 pt-4 mt-4"><div class="text-gray-400 text-[10px] mb-1">Estimated Monthly Payment</div><div class="text-yellow-500 text-3xl font-black" id="monthlyPayment2">£399 <span class="text-xs font-normal text-gray-400">/month*</span></div><div class="text-gray-500 text-[9px] mt-1">*Subject to status. Terms & conditions apply.</div></div>
+<button class="btn-primary w-full py-3 rounded text-sm mt-4" onclick="showPage('contact')">APPLY FOR FINANCE</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== HIRE PAGE ==================== -->
+<div id="page-hire" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">MACHINE HIRE</h1><p class="text-gray-400 max-w-2xl">Short and long-term hire options for all types of plant machinery.</p></div>
+<div class="grid lg:grid-cols-3 gap-6 mb-10">
+<div class="info-card"><div class="text-yellow-500 font-bold text-[10px] mb-2 tracking-wider">SHORT TERM</div><h3 class="text-white font-bold text-lg mb-2">Daily / Weekly Hire</h3><p class="text-gray-400 text-sm mb-4">Perfect for short projects or when you need extra capacity.</p><ul class="space-y-2 text-gray-400 text-xs mb-4"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Minimum 1 day hire</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Delivery available</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Insurance included</li></ul><button class="btn-primary w-full py-2 rounded text-sm" onclick="showPage('contact')">GET QUOTE</button></div>
+<div class="info-card border-yellow-500"><div class="text-yellow-500 font-bold text-[10px] mb-2 tracking-wider">POPULAR</div><h3 class="text-white font-bold text-lg mb-2">Monthly Hire</h3><p class="text-gray-400 text-sm mb-4">Best value for medium-term projects.</p><ul class="space-y-2 text-gray-400 text-xs mb-4"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Minimum 4 weeks</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free delivery & collection</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full maintenance cover</li></ul><button class="btn-primary w-full py-2 rounded text-sm" onclick="showPage('contact')">GET QUOTE</button></div>
+<div class="info-card"><div class="text-yellow-500 font-bold text-[10px] mb-2 tracking-wider">LONG TERM</div><h3 class="text-white font-bold text-lg mb-2">Contract Hire</h3><p class="text-gray-400 text-sm mb-4">Ideal for ongoing projects with dedicated fleet management.</p><ul class="space-y-2 text-gray-400 text-xs mb-4"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>6-36 month contracts</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Dedicated account manager</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Priority support</li></ul><button class="btn-primary w-full py-2 rounded text-sm" onclick="showPage('contact')">GET QUOTE</button></div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== TRADE-IN PAGE ==================== -->
+<div id="page-tradein" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">TRADE-IN YOUR MACHINE</h1><p class="text-gray-400 max-w-2xl">Get a fair price for your current equipment.</p></div>
+<div class="grid lg:grid-cols-2 gap-8 mb-10">
+<div>
+<h2 class="text-2xl font-black text-white mb-6">How It Works</h2>
+<div class="space-y-6">
+<div class="flex gap-4"><div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-black font-bold flex-shrink-0">1</div><div><h3 class="text-white font-bold mb-1">Submit Your Details</h3><p class="text-gray-400 text-sm">Fill out our simple form with details about your machine.</p></div></div>
+<div class="flex gap-4"><div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-black font-bold flex-shrink-0">2</div><div><h3 class="text-white font-bold mb-1">Get a Valuation</h3><p class="text-gray-400 text-sm">Our experts will assess your machine within 24 hours.</p></div></div>
+<div class="flex gap-4"><div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-black font-bold flex-shrink-0">3</div><div><h3 class="text-white font-bold mb-1">Accept & Arrange Collection</h3><p class="text-gray-400 text-sm">Free collection from your site anywhere in the UK.</p></div></div>
+<div class="flex gap-4"><div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-black font-bold flex-shrink-0">4</div><div><h3 class="text-white font-bold mb-1">Get Paid</h3><p class="text-gray-400 text-sm">Payment made directly to your bank account on collection day.</p></div></div>
+</div>
+</div>
+<div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
+<h3 class="text-white font-bold text-lg mb-4">Request a Trade-In Valuation</h3>
+<form class="space-y-4" onsubmit="event.preventDefault();alert('Thank you! We will contact you within 24 hours.')">
+<div class="grid grid-cols-2 gap-4"><div><label class="text-gray-400 text-xs mb-1 block">Your Name *</label><input type="text" class="form-input" required placeholder="John Smith"></div><div><label class="text-gray-400 text-xs mb-1 block">Phone *</label><input type="tel" class="form-input" required placeholder="+44 7451 259663"></div></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Email *</label><input type="email" class="form-input" required placeholder="john@example.com"></div>
+<div class="grid grid-cols-2 gap-4"><div><label class="text-gray-400 text-xs mb-1 block">Machine Make *</label><input type="text" class="form-input" required placeholder="e.g. JCB"></div><div><label class="text-gray-400 text-xs mb-1 block">Model *</label><input type="text" class="form-input" required placeholder="e.g. 8035 ZTS"></div></div>
+<div class="grid grid-cols-2 gap-4"><div><label class="text-gray-400 text-xs mb-1 block">Year</label><input type="number" class="form-input" placeholder="e.g. 2020"></div><div><label class="text-gray-400 text-xs mb-1 block">Hours</label><input type="number" class="form-input" placeholder="e.g. 1500"></div></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Condition</label><select class="form-input"><option>Excellent</option><option>Good</option><option>Fair</option><option>Poor</option></select></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Additional Notes</label><textarea class="form-input" rows="3" placeholder="Any additional information..."></textarea></div>
+<button type="submit" class="btn-primary w-full py-3 rounded text-sm">REQUEST VALUATION</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== SERVICES PAGE ==================== -->
+<div id="page-services" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">OUR SERVICES</h1><p class="text-gray-400 max-w-2xl">Comprehensive after-sales support to keep your machines running at peak performance.</p></div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Servicing & Maintenance</h3><p class="text-gray-400 text-sm mb-4">Regular servicing to keep your machines in top condition.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Oil & filter changes</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Hydraulic system checks</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Safety inspections</li></ul></div>
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Repairs & Breakdown</h3><p class="text-gray-400 text-sm mb-4">Fast response breakdown service with mobile engineers.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>24/7 emergency callout</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mobile workshop units</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Genuine parts only</li></ul></div>
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Parts Supply</h3><p class="text-gray-400 text-sm mb-4">Genuine and OEM parts for all major brands.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>All major brands covered</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Next-day delivery</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Trade accounts available</li></ul></div>
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Warranty Programs</h3><p class="text-gray-400 text-sm mb-4">Extended warranty options for peace of mind.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Up to 3 years cover</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Nationwide coverage</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Transferable warranties</li></ul></div>
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Training & Certification</h3><p class="text-gray-400 text-sm mb-4">Operator training and certification courses.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>CPCS accredited</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>On-site training available</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Refresher courses</li></ul></div>
+<div class="info-card"><div class="service-icon-circle mb-4"><svg class="w-6 h-6 text-yellow-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div><h3 class="text-white font-bold text-lg mb-2">Part Exchange</h3><p class="text-gray-400 text-sm mb-4">Upgrade your fleet with our part exchange service.</p><ul class="space-y-2 text-gray-400 text-xs"><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Instant valuations</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free collection</li><li class="flex items-center gap-2"><svg class="w-3 h-3 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>All conditions accepted</li></ul></div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== ABOUT US PAGE ==================== -->
+<div id="page-about" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">ABOUT DFW SALES LIMITED</h1><p class="text-gray-400 max-w-2xl">Company Number: 05848486 | Incorporated: 16 June 2006 | Status: Active | Private Limited Company</p></div>
+<div class="grid lg:grid-cols-2 gap-8 mb-12">
+<div>
+<h2 class="text-2xl font-black text-white mb-4">Our Story</h2>
+<p class="text-gray-300 mb-4 leading-relaxed">DFW Sales Limited was incorporated on 16 June 2006 and has been serving businesses across the UK with quality construction and agricultural equipment backed by exceptional service.</p>
+<p class="text-gray-300 mb-4 leading-relaxed">As an active private limited company, we pride ourselves on our extensive knowledge, honest advice, and commitment to customer satisfaction. Our registered office is based at Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ.</p>
+<p class="text-gray-300 leading-relaxed">Today, we supply hundreds of machines every year to construction companies, farmers, contractors, and businesses of all sizes.</p>
+<div class="mt-8 bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
+<h3 class="text-yellow-500 font-bold text-sm mb-4 tracking-wider">COMPANY DETAILS</h3>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Company Name</span><span class="text-white font-bold">DFW SALES LIMITED</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Company Number</span><span class="text-white font-bold">05848486</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Status</span><span class="text-green-400 font-bold">Active</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Type</span><span class="text-white font-bold">Private Limited Company</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Incorporated</span><span class="text-white font-bold">16 June 2006</span></div>
+<div class="pt-2"><span class="text-gray-400 block mb-1">Registered Office</span><span class="text-white text-xs">Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ</span></div>
+</div>
+</div>
+</div>
+<div>
+<div class="rounded-lg overflow-hidden min-h-[300px] mb-8"><img src="https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1c373f09c-a3be-47e3-903b-d4e6b7216a27.png" class="w-full h-full object-cover" alt="Our Yard"></div>
+<div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
+<h3 class="text-yellow-500 font-bold text-sm mb-4 tracking-wider">DIRECTOR</h3>
+<div class="space-y-3 text-sm">
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Name</span><span class="text-white font-bold">BAIGENT, Ross Martin</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Role</span><span class="text-green-400 font-bold">Active Director</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Appointed</span><span class="text-white font-bold">1 March 2014</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Nationality</span><span class="text-white font-bold">British</span></div>
+<div class="flex justify-between border-b border-gray-800 pb-2"><span class="text-gray-400">Country of Residence</span><span class="text-white font-bold">England</span></div>
+<div class="pt-2"><span class="text-gray-400 block mb-1">Correspondence Address</span><span class="text-white text-xs">Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== CONTACT PAGE ==================== -->
+<div id="page-contact" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-10"><h1 class="text-3xl md:text-4xl font-black text-white mb-2">CONTACT US</h1><p class="text-gray-400 max-w-2xl">Get in touch with our friendly team. We're here to help 7 days a week.</p></div>
+<div class="grid lg:grid-cols-2 gap-8 mb-10">
+<div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6">
+<h3 class="text-white font-bold text-lg mb-4">Send Us a Message</h3>
+<form class="space-y-4" onsubmit="event.preventDefault();alert('Thank you for your message! We will get back to you within 24 hours.')">
+<div class="grid grid-cols-2 gap-4"><div><label class="text-gray-400 text-xs mb-1 block">First Name *</label><input type="text" class="form-input" required placeholder="John"></div><div><label class="text-gray-400 text-xs mb-1 block">Last Name *</label><input type="text" class="form-input" required placeholder="Smith"></div></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Email Address *</label><input type="email" class="form-input" required placeholder="john@example.com"></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Phone Number</label><input type="tel" class="form-input" placeholder="+44 7451 259663"></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Subject *</label><select class="form-input" required><option value="">Select a subject</option><option>General Enquiry</option><option>Sales Enquiry</option><option>Finance Application</option><option>Hire Enquiry</option><option>Trade-In Valuation</option><option>Service & Repairs</option><option>Parts Enquiry</option><option>Other</option></select></div>
+<div><label class="text-gray-400 text-xs mb-1 block">Message *</label><textarea class="form-input" rows="5" required placeholder="How can we help you?"></textarea></div>
+<button type="submit" class="btn-primary w-full py-3 rounded text-sm">SEND MESSAGE</button>
+</form>
+</div>
+<div class="space-y-6">
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg></div><div><h3 class="text-white font-bold mb-1">Phone</h3><p class="text-yellow-500 font-bold text-lg">+44 7451 259663</p><p class="text-gray-400 text-xs mt-1">Mon - Fri: 8am - 5pm<br>Sat: 9am - 1pm<br>Sun: Closed</p></div></div></div>
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg></div><div><h3 class="text-white font-bold mb-1">Email</h3><p class="text-yellow-500 font-bold">cgoode183@gmail.com</p><p class="text-gray-400 text-xs mt-1">We respond within 24 hours</p></div></div></div>
+<div class="info-card"><div class="flex items-start gap-4"><div class="service-icon-circle flex-shrink-0"><svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg></div><div><h3 class="text-white font-bold mb-1">Visit Us</h3><p class="text-gray-300 text-sm">DFW Sales Limited</p><p class="text-gray-400 text-sm">Cataclean House, Unit 34 Wellington Employment Park</p><p class="text-gray-400 text-sm">30-48 Dunes Way, Liverpool, Merseyside, L5 9RJ</p></div></div></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== CUSTOMER SERVICE PAGE ==================== -->
+<div id="page-customerservice" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Customer Service & Support</h1>
+<p class="text-gray-400 max-w-2xl">At DFW SALES LIMITED, we are dedicated to providing an exceptional standard of service and support to our online customers.</p></div>
+<div class="policy-content">
+<p>Whether you require assistance tracking a consignment, modifying an active order, or filing a technical warranty claim, our dedicated team is here to assist you.</p>
+<h2>1. Primary Channels of Communication</h2>
+<p>To ensure all inquiries are logged accurately and addressed by the appropriate specialist, we operate the following official communication channels:</p>
+<h3>Online Inquiry Form</h3>
+<p>For the fastest resolution, please utilize our digital contact form located on our Contact page. Submissions are automatically routed to our relevant departments based on the nature of your query.</p>
+<h3>Email Support</h3>
+<p>For direct inquiries, documentation uploads, or order updates, please email us at: <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a>.</p>
+<h3>Operational Hours</h3>
+<p>Our customer support framework operates during the following hours:</p>
+<ul>
+<li><strong>Monday to Friday:</strong> 09:00 – 17:00 (GMT)</li>
+<li><strong>Weekends & UK Bank Holidays:</strong> Closed</li>
+</ul>
+<p>Please note: We endeavor to respond to all written inquiries within <strong>24 to 48 business hours</strong>.</p>
+<h2>2. Common Support Triggers & Protocols</h2>
+<p>To assist us in expediting your request, please review the required protocols for common inquiries below:</p>
+<h3>2.1 Order Amends and Cancellations</h3>
+<p>Our fulfillment infrastructure is highly automated to ensure rapid dispatch. If you need to cancel or amend an order (e.g., changing a delivery address), you must contact us via email immediately.</p>
+<ul>
+<li><strong>Required Data:</strong> Please format your email subject line as: <em>"URGENT: Cancel/Amend Order [Your Order Number]"</em>.</li>
+<li><strong>Limitation:</strong> If your order has already progressed to our warehouse fulfillment queue or has been assigned to a courier, we will be unable to halt the shipment, and the standard terms of our Shipping and Returns Policy will apply.</li>
+</ul>
+<h3>2.2 Tracking Your Consignment</h3>
+<p>Upon dispatch from our depot, a shipping confirmation email containing a unique tracking link will be transmitted to your registered email address. If your order contains multiple items, they may be dispatched from separate regional hubs, resulting in multiple delivery slots. If an item is missing from your initial delivery, please verify the remaining tracking numbers before contacting support.</p>
+<h3>2.3 Reporting Transit Damage or Faults</h3>
+<p>If a consignment is delivered in a damaged condition, you must notify our customer service team within <strong>48 hours of receipt</strong>.</p>
+<ul>
+<li><strong>Required Evidence:</strong> We require clear photographic evidence of both the damaged packaging and the affected product, alongside your order number. Please forward these details to <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a> to initiate an expedited replacement procedure.</li>
+</ul>
+<h2>3. Escalation Process</h2>
+<p>We aim to resolve all customer queries amicably and efficiently on the first point of contact. However, if you feel your inquiry has not been resolved to your satisfaction, you may request a formal escalation.</p>
+<ul>
+<li><strong>How to Escalate:</strong> Reply directly to your active support ticket requesting an escalation, or email our management team with the word <em>"ESCALATION"</em> in the subject line.</li>
+<li><strong>Review Framework:</strong> Escalated matters will be reviewed independently by a senior team member, and a formal resolution proposal will be issued within <strong>5 working days</strong>.</li>
+</ul>
+<h2>4. Corporate Identity</h2>
+<p>This customer support infrastructure is operated exclusively on behalf of:</p>
+<p><strong>DFW SALES LIMITED</strong><br>
+Registered Company Number: 05848486<br>
+Registered Office Address: Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ<br>
+General Support Email: <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a></p>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== PRIVACY POLICY PAGE ==================== -->
+<div id="page-privacy" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Privacy Policy</h1></div>
+<div class="policy-content">
+<p class="policy-meta">Last Updated: 17 June 2026</p>
+<h2>1. Introduction and Scope</h2>
+<p>DFW SALES LIMITED ("we", "our", "us") is committed to protecting the privacy and security of your personal data. This policy sets out how we collect, use, and protect the personal data of our customers, website visitors, and other third parties. We comply with the UK General Data Protection Regulation (UK GDPR) and the Data Protection Act 2018.</p>
+<h2>2. What is Personal Data?</h2>
+<p>Personal Data means any information that identifies a living individual or relates to that individual. This includes your name, address, email address, telephone number, location data, and online identifiers such as IP addresses.</p>
+<h2>3. Personal Data Protection Principles</h2>
+<p>We adhere to the following principles regarding your data:</p>
+<ul>
+<li><strong>Lawfulness, Fairness, and Transparency:</strong> We process data only with a lawful basis.</li>
+<li><strong>Purpose Limitation:</strong> We collect data only for specified, explicit, and legitimate purposes.</li>
+<li><strong>Data Minimisation:</strong> We only collect data that is adequate, relevant, and limited to what is necessary.</li>
+<li><strong>Accuracy:</strong> We take reasonable steps to keep your data accurate and up to date.</li>
+<li><strong>Storage Limitation:</strong> We do not keep data longer than is necessary for the purposes for which it was processed.</li>
+<li><strong>Integrity and Confidentiality:</strong> We use appropriate technical measures to protect your data against unauthorised or unlawful processing.</li>
+</ul>
+<h2>4. Our Lawful Basis for Processing</h2>
+<p>We process your personal data based on one or more of the following:</p>
+<ul>
+<li><strong>Performance of a Contract:</strong> Processing is necessary to fulfill an order or manage a transaction with you.</li>
+<li><strong>Legal Obligation:</strong> Processing is necessary to comply with our tax, accounting, and legal requirements.</li>
+<li><strong>Legitimate Interests:</strong> Processing is necessary for our business interests (such as improving our services or website security), provided these are not overridden by your rights.</li>
+<li><strong>Consent:</strong> Where required, we will obtain your explicit consent for specific processing activities, such as certain marketing communications.</li>
+</ul>
+<h2>5. How We Collect and Use Your Data</h2>
+<p>We collect data when you browse our website, place an order, or contact us. This data is used to:</p>
+<ul>
+<li>Manage your orders and deliveries.</li>
+<li>Handle returns, refunds, and customer support queries.</li>
+<li>Prevent fraud and ensure website security.</li>
+<li>Keep you informed about our products and services (where permitted).</li>
+</ul>
+<h2>6. Sharing Your Data with Third Parties</h2>
+<p>We do not sell your personal data. We may share information with third-party service providers (e.g., couriers, payment processors, IT support) strictly for the purpose of providing services to you. These parties are contractually obligated to maintain the security and confidentiality of your data.</p>
+<h2>7. Data Security</h2>
+<p>We have implemented robust technical measures to protect our systems, including:</p>
+<ul>
+<li>Secure database encryption.</li>
+<li>Use of firewalls and anti-virus software.</li>
+<li>Restricted access controls to ensure that only authorized personnel have access to personal data.</li>
+</ul>
+<h2>8. Your Individual Rights</h2>
+<p>Under data protection law, you have several rights regarding your data:</p>
+<ul>
+<li><strong>Access:</strong> The right to request copies of the personal data we hold about you.</li>
+<li><strong>Rectification:</strong> The right to request that we correct inaccurate or incomplete data.</li>
+<li><strong>Erasure:</strong> The right to request that we delete your data in certain circumstances.</li>
+<li><strong>Restrict Processing:</strong> The right to request that we limit how we use your data.</li>
+<li><strong>Object:</strong> The right to object to our processing of your data for legitimate interests or direct marketing.</li>
+<li><strong>Data Portability:</strong> The right to request a transfer of your data to another service provider.</li>
+</ul>
+<h2>9. International Transfers</h2>
+<p>We do not currently transfer your personal data outside of the United Kingdom or the European Economic Area (EEA).</p>
+<h2>10. Contacting Us</h2>
+<p>If you have any questions, concerns, or wish to exercise any of your rights regarding your data, please contact our management team:</p>
+<p><strong>DFW SALES LIMITED</strong><br>
+Company Number: 05848486<br>
+Registered Address: Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ<br>
+Email: <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a></p>
+<h2>11. Changes to this Policy</h2>
+<p>We reserve the right to update this Privacy Policy at any time. Any changes will be posted on this page with an updated "Last Updated" date.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== SHIPPING & RETURNS PAGE ==================== -->
+<div id="page-shipping" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Shipping and Returns Policy</h1></div>
+<div class="policy-content">
+<p><em>This shipping and returns policy is in addition to and does not affect your consumer rights.</em></p>
+<h2>Shipping Information</h2>
+<ul>
+<li><strong>UK Mainland Delivery:</strong> Our online shop currently services customers with addresses on the UK mainland.</li>
+<li><strong>Special Locations:</strong> Shipping to Ireland and the Scottish Highlands will incur a higher delivery cost.</li>
+<li><strong>Dispatch Times:</strong> We endeavour to dispatch all items within the stated time frame. Please note that if your order contains multiple items located across our different depots, the shipping time may be longer than specified at checkout.</li>
+<li><strong>Courier Issues:</strong> In the event that our courier is unable to deliver a parcel due to the recipient's absence and no safe place being designated, the parcel will be returned to the courier's depot. You will have the option to reschedule delivery or collect your order.
+<ul>
+<li><em>Note: If you do not reschedule or collect within 14 days, the parcel will be returned to us, and the order will be cancelled and refunded (excluding shipping costs).</em></li>
+</ul>
+</li>
+</ul>
+<h2>Returns and Exchanges</h2>
+<p>If you are not completely satisfied with your purchase, we are happy to offer an exchange or refund on unused items returned within <strong>28 days of purchase</strong>.</p>
+<ul>
+<li><strong>How to Request a Return:</strong> Please email <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a> with your order number, full name, address, and the reason for the return. A member of our customer services team will respond within 48 hours.</li>
+<li><strong>Damaged or Faulty Goods:</strong> If you receive an item in a damaged or faulty condition, please email us at <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a> with photos of the damage/fault and your order number for reference.</li>
+<li><strong>Shipping Costs for Returns:</strong> It is the responsibility of the customer to arrange delivery and bear the costs to return or exchange goods when cancelling an order, unless the product is faulty or not as described.</li>
+<li><strong>Exchanges:</strong> Customers are eligible for one free exchange. If you require further exchanges, we request that you pay the shipping costs.</li>
+<li><strong>Liability:</strong> We advise that all returns are sent via recorded delivery, as DFW SALES LIMITED will not accept liability for items that go missing in transit.</li>
+</ul>
+<h2>Refunds</h2>
+<ul>
+<li><strong>Processing:</strong> Refunds will be made to the same payment method used at checkout.</li>
+<li><strong>Shipping Fees:</strong> Please note that original shipping costs may not be refunded.</li>
+<li><strong>Timeline:</strong> Please allow 3–5 working days for any refunded purchases to appear in your bank account.</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== TERMS & CONDITIONS PAGE ==================== -->
+<div id="page-terms" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Terms and Conditions</h1></div>
+<div class="policy-content">
+<p class="policy-meta">DFW SALES LIMITED — Effective Date: 17 June 2026</p>
+<p>Welcome to our website. These Terms and Conditions govern your use of our website and the purchase of any goods from our online store. By accessing our site and placing an order, you agree to be bound by these terms. If you do not agree to all of these terms, please do not use this website.</p>
+<h2>1. Definitions and Company Information</h2>
+<ul>
+<li><strong>"We", "Our", "Us"</strong> refers to DFW SALES LIMITED, a private limited company incorporated in England and Wales under company registration number 05848486. Our registered office address is: Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ.</li>
+<li><strong>"You", "Your", "Customer"</strong> refers to any individual or business entity browsing this website or placing an order through our online shop.</li>
+<li><strong>"Goods", "Products"</strong> refers to the items made available for sale on this website.</li>
+</ul>
+<h2>2. Eligibility and Use of the Site</h2>
+<ul>
+<li>To place an order through our website, you must be at least 18 years of age or have the explicit permission of a parent or legal guardian, and possess a valid payment method accepted by our system.</li>
+<li>You agree not to use this website for any unlawful purpose, or in any way that interrupts, damages, or impairs our digital services.</li>
+</ul>
+<h2>3. Basis of Sale and Contract Formation</h2>
+<ul>
+<li><strong>Order Placement:</strong> When you place an order via our online checkout system, it constitutes an offer to purchase the goods.</li>
+<li><strong>Contract Acceptance:</strong> A legally binding contract between DFW SALES LIMITED and you is only formed when we dispatch the ordered goods and send you a formal shipping confirmation email. We reserve the right to decline or cancel any order prior to dispatch for reasons including, but not limited to, pricing errors, stock unavailability, or suspected fraudulent activity.</li>
+</ul>
+<h2>4. Pricing, Payments, and Taxation</h2>
+<ul>
+<li><strong>Currency and VAT:</strong> All prices displayed on our website are in Pounds Sterling (£) and are inclusive of applicable UK Value Added Tax (VAT) unless stated otherwise.</li>
+<li><strong>Price Amendments:</strong> We reserve the right to alter prices at any time without prior notice. However, once an order is placed, the price remains fixed unless a manifest graphical or technical error occurred during the listing process.</li>
+<li><strong>Payment Processing:</strong> Payment must be made in full at the time of order placement. We utilize secure third-party payment gateways to process financial data. Goods will not be dispatched until clear funds are received.</li>
+</ul>
+<h2>5. Delivery and Logistical Framework</h2>
+<p>Our delivery services are subject to the terms set forth in our separate Shipping and Returns Policy, which is incorporated into these Terms and Conditions by reference.</p>
+<ul>
+<li>Standard shipping rates and timelines apply to the UK Mainland only. Delivery to Northern Ireland, the Republic of Ireland, and the Scottish Highlands will incur additional freight surcharges.</li>
+<li>Risk of loss and title to the goods pass to you upon successful delivery of the items to your designated shipping address or safe place.</li>
+</ul>
+<h2>6. Cancellations, Returns, and Refunds</h2>
+<p>Your rights to cancel an order, return an item, or receive a refund are governed in full by our Shipping and Returns Policy.</p>
+<ul>
+<li><strong>Satisfaction Guarantee:</strong> You have a period of 28 days from purchase to return unused, resaleable goods in their original packaging for a refund or exchange.</li>
+<li><strong>Return Costs:</strong> Unless a product is verified as faulty or misdescribed, you are entirely responsible for the arrangement and costs associated with returning the item to our facility.</li>
+</ul>
+<h2>7. Intellectual Property Rights</h2>
+<ul>
+<li>All content included on this website—including text, graphics, logos, images, digital downloads, product descriptions, and software compilations—is the exclusive property of DFW SALES LIMITED or its content suppliers and is protected by UK and international copyright, trademark, and intellectual property laws.</li>
+<li>You may not extract, copy, utilize, or reproduce any part of our website content for commercial purposes without our express written consent.</li>
+</ul>
+<h2>8. Limitation of Liability</h2>
+<ul>
+<li>DFW SALES LIMITED endeavours to ensure all information on this website is accurate and reliable. However, the website is provided on an "as is" and "as available" basis without warranties of any kind.</li>
+<li>To the fullest extent permitted by applicable UK law, DFW SALES LIMITED shall not be liable for any indirect, incidental, punitive, or consequential damages resulting from your use of, or inability to use, this website or the products purchased from it.</li>
+<li>Nothing in these terms excludes or limits our liability for death or personal injury caused by our negligence, fraud, or any other liability that cannot be legally excluded under English law.</li>
+</ul>
+<h2>9. Governing Law and Jurisdiction</h2>
+<p>These Terms and Conditions, along with all associated policies, are governed by and construed in accordance with the laws of England and Wales. Any disputes or legal claims arising out of or in connection with the use of this website or the purchase of goods shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+<h2>10. Amendments to Terms</h2>
+<p>We reserve the right to update, change, or modify these Terms and Conditions at any time to reflect operational, legal, or regulatory changes. Any such updates will be posted directly to this page, and your continued use of the website following changes constitutes acceptance of those revisions.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== WARRANTY PAGE ==================== -->
+<div id="page-warranty" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Warranty Policy</h1></div>
+<div class="policy-content">
+<p class="policy-meta">DFW SALES LIMITED — Effective Date: 17 June 2026</p>
+<p>At DFW SALES LIMITED ("we", "our", "us"), we take great pride in the quality, durability, and reliability of the products we supply. This Warranty Policy outlines the scope, limitations, and procedures regarding product warranties for items purchased through our online store.</p>
+<p>This policy is in addition to, and does not affect, your statutory rights as a consumer under the UK Consumer Rights Act 2015.</p>
+<h2>1. Warranty Coverage and Period</h2>
+<h3>1.1 Standard Product Warranty</h3>
+<p>All new products purchased directly from DFW SALES LIMITED are covered by a standard manufacturer's warranty against defects in materials and workmanship.</p>
+<ul>
+<li><strong>Duration:</strong> The precise warranty period varies depending on the specific item and manufacturer. Please refer to the technical documentation or product manual included with your shipment for individual warranty timelines.</li>
+<li><strong>Scope:</strong> This warranty applies strictly to the original purchaser of the goods and is non-transferable.</li>
+</ul>
+<h3>1.2 Our Commitment</h3>
+<p>If a product develops a legitimate manufacturing fault or defect within its specified warranty period, we will, at our discretion, arrange for one of the following:</p>
+<ul>
+<li>A complimentary repair using genuine replacement parts.</li>
+<li>A direct replacement with an identical or equivalent product.</li>
+<li>A partial or full refund if a repair or replacement is logistically unfeasible.</li>
+</ul>
+<h2>2. Warranty Exclusions and Limitations</h2>
+<p>The warranty provided by DFW SALES LIMITED covers mechanical and structural manufacturing defects only. It does not apply to scenarios involving:</p>
+<ul>
+<li><strong>Fair Wear and Tear:</strong> Gradual deterioration caused by regular use over time (e.g., cosmetic degradation, surface scratches, or natural weathering).</li>
+<li><strong>Misuse and Neglect:</strong> Damage resulting from improper storage, accidental drops, lack of reasonable maintenance, or operating the product outside its intended specifications.</li>
+<li><strong>Unauthorised Alterations:</strong> Any product that has been modified, altered, tampered with, or repaired by an unauthorised third party without our prior written consent.</li>
+<li><strong>Incorrect Installation:</strong> Faults arising from incorrect assembly or installation contrary to the provided manufacturer guidelines.</li>
+<li><strong>Commercial Use:</strong> Products designed for residential or consumer use that are deployed in a commercial, industrial, or heavy-rental environment, unless explicitly specified by the manufacturer.</li>
+</ul>
+<h2>3. How to Submit a Warranty Claim</h2>
+<p>To ensure your warranty claim is assessed and processed swiftly, please adhere to the following procedural framework:</p>
+<h3>Step 1: Gather Documentation</h3>
+<p>Before contacting us, locate your original online order number, the product serial number (if applicable), and your proof of purchase.</p>
+<h3>Step 2: Submit a Formal Claim</h3>
+<p>Email our customer support department at <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a> with the subject line <em>"Warranty Claim - Order [Your Order Number]"</em>. Your email must include:</p>
+<ul>
+<li>Your full name, delivery address, and phone number.</li>
+<li>A detailed description of the fault or technical issue.</li>
+<li><strong>Photographic or Video Evidence:</strong> Clear images or short video clips demonstrating the specific fault or defect.</li>
+</ul>
+<h3>Step 3: Technical Assessment</h3>
+<p>Our technical team will review your submission within 48 business hours. If the claim is validated, we will issue a Return Merchandise Authorisation (RMA) number along with instructions on how to return the item to our facility.</p>
+<h2>4. Return Shipping Costs for Warranty Claims</h2>
+<ul>
+<li><strong>Initial Transit:</strong> The customer is initially responsible for the arrangement and cost of shipping the item back to our designated service depot for physical inspection.</li>
+<li><strong>Reimbursement:</strong> If our technical assessment confirms that the product suffers from a genuine manufacturing defect covered under this policy, DFW SALES LIMITED will fully reimburse your reasonable return postage costs and cover the outbound shipping fee for the repaired or replacement item.</li>
+<li><strong>Invalid Claims:</strong> If the product is found to be functional, or if the fault falls under one of the exclusions listed in Section 2, the customer will be responsible for all return transport costs and any associated diagnostic fees.</li>
+</ul>
+<h2>5. Corporate Identity</h2>
+<p>This warranty policy is maintained and executed by:</p>
+<p><strong>DFW SALES LIMITED</strong><br>
+Company Registration Number: 05848486<br>
+Registered Address: Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ<br>
+Customer Support Email: <a href="mailto:cgoode183@gmail.com">cgoode183@gmail.com</a></p>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== COOKIE POLICY PAGE ==================== -->
+<div id="page-cookies" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Cookie Policy</h1></div>
+<div class="policy-content">
+<p class="policy-meta">Last Updated: 17 June 2026</p>
+<h2>1. Introduction to Cookies</h2>
+<p>At DFW SALES LIMITED, we believe in being transparent about how we collect and use data. Our website uses cookies to distinguish you from other users. This practice helps us provide you with a high-quality, personalized browsing experience and enables us to make necessary improvements to our site's functionality and performance.</p>
+<p>A cookie is a small, harmless text file of letters and numbers that we store on your browser or the hard drive of your computer, provided you have given your consent. These files contain information that is transferred to your computer's hard drive, allowing our system to recognize your device during your visit.</p>
+<h2>2. How We Categorize Cookies</h2>
+<p>We utilize different types of cookies to ensure our website functions correctly:</p>
+<ul>
+<li><strong>Essential/Strictly Necessary Cookies:</strong> These are required for the operation of our website. They include, for example, cookies that enable you to log into secure areas of our website or use a shopping cart.</li>
+<li><strong>Analytical/Performance Cookies:</strong> These allow us to recognize and count the number of visitors and see how they move around our website. This helps us improve the way our website works, for example, by ensuring that users are finding what they are looking for easily.</li>
+<li><strong>Functionality Cookies:</strong> These are used to recognize you when you return to our website, allowing us to personalize our content for you and remember your preferences.</li>
+</ul>
+<h2>3. Third-Party Cookies</h2>
+<p>Please be aware that third parties—including, for example, advertising networks and providers of external services like web traffic analysis—may also use cookies, over which we have no control. These cookies are likely to be analytical, performance, or targeting cookies. We encourage you to review the privacy and cookie policies of these external services for further information on how they handle your data.</p>
+<h2>4. Managing and Disabling Cookies</h2>
+<p>You have the right to decide whether or not to accept cookies. You can block cookies by activating the specific settings on your web browser that allow you to refuse the setting of all or some cookies.</p>
+<p><strong>Please Note:</strong> If you use your browser settings to block all cookies (including essential/strictly necessary cookies), you may find that you are unable to access all or parts of our website, as certain features rely on these files to function correctly.</p>
+<h2>5. Cookies Currently in Use</h2>
+<p>The table below outlines the specific cookies we currently utilize on our website and the purpose each serves:</p>
+<table class="policy-table">
+<thead>
+<tr><th>Cookie Name</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>PHPSESSID</strong></td><td>Identifies your unique session in PHP. This is essential for storing your preferences, managing form data (e.g., if a submission fails), and displaying status messages as you navigate between page loads.</td></tr>
+<tr><td><strong>visited</strong></td><td>A functional cookie used to determine whether you have previously visited our website, allowing us to tailor your user experience.</td></tr>
+<tr><td><strong>cookie-notice</strong></td><td>A technical cookie used to record whether you have previously dismissed our cookie consent notification banner.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== MODERN SLAVERY ACT STATEMENT ==================== -->
+<div id="page-modernslavery" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Modern Slavery Act Statement</h1></div>
+<div class="policy-content">
+<p class="policy-meta">DFW SALES LIMITED — Financial Year Covered: Ending 31st January 2026 — Last Reviewed: 17 June 2026</p>
+<h2>1. Policy Statement and Commitment</h2>
+<p>DFW SALES LIMITED ("we", "our", "us", "Company") acknowledges its responsibilities in relation to tackling modern slavery and commits to strictly complying with all provisions set out in the Modern Slavery Act 2015. We recognize that eliminating modern slavery requires an ongoing, rigorous review of both our internal labour practices and our external supply chains.</p>
+<p>We operate a zero-tolerance policy toward any form of slavery, servitude, forced or compulsory labour, and human trafficking. The Company will not knowingly enter into business relationships, whether within the United Kingdom or internationally, with any entity found to be involved in or supporting these practices.</p>
+<p>No labour provided to the Company in the pursuance of our e-commerce and retail operations is obtained by means of slavery or human trafficking. We strictly adhere to the minimum standards required under all relevant UK employment legislation.</p>
+<h2>2. Scope and Organizational Structure</h2>
+<p>This statement applies directly to DFW SALES LIMITED (Company Number: 05848486) for the financial year concluding 31st January 2026.</p>
+<ul>
+<li><strong>Corporate Structure:</strong> DFW SALES LIMITED is a private limited company incorporated in England and Wales. The business is overseen by its Board of Directors, who maintain ultimate responsibility for corporate governance and legal compliance.</li>
+<li><strong>Core Activities:</strong> Our core commercial activities include the online sale, retail distribution, and logistical fulfillment of commercial goods and related products through our online store.</li>
+<li><strong>Operational Footprint:</strong> We operate out of our primary headquarters and fulfillment facility located at Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ.</li>
+</ul>
+<h2>3. Supply Chain Structure</h2>
+<p>To fulfill our retail and commercial activities, our supply chains primarily involve sourcing manufactured products, packaging materials, and logistical/courier distribution services.</p>
+<p>Because DFW SALES LIMITED sits at the end of many of these supply chains, we primarily procure goods from established manufacturers and distributors. The vast majority of our primary supplier network consists of larger corporate entities that maintain and publish their own independent Modern Slavery statements.</p>
+<h2>4. Company Policies and Due Diligence</h2>
+<p>The Company maintains internal frameworks to ensure we operate ethically and transparently. This includes a robust recruitment policy and a commitment to ensuring safe, fair working environments.</p>
+<p>Our due diligence processes include:</p>
+<ul>
+<li><strong>Supplier Assessments:</strong> Reviewing the compliance standards of our key suppliers to verify that their practices align with the Modern Slavery Act 2015.</li>
+<li><strong>Risk Management:</strong> While we consider our overall operational exposure to modern slavery and human trafficking to be exceptionally low given our industry sector and geographic location, we actively manage potential risks through proactive oversight of our logistics and workforce partners.</li>
+</ul>
+<h2>5. Preventative Actions and Business Steps</h2>
+<p>In accordance with section 54(4) of the Modern Slavery Act 2015, DFW SALES LIMITED has implemented the following practical measures to mitigate risks:</p>
+<ol>
+<li><strong>Employment Safeguards:</strong> We conduct thorough right-to-work and eligibility checks on all direct employees to verify their legal status in the UK, safeguarding against forced labour and human trafficking.</li>
+<li><strong>Wage Compliance:</strong> We commit to full compliance with UK minimum wage and living wage legislation across our entire internal workforce.</li>
+<li><strong>Staff Awareness:</strong> We ensure that personnel involved in procurement, human resources, and supply chain management are aware of the signs of modern slavery and understand the reporting protocols.</li>
+<li><strong>Supplier Vetting:</strong> We explicitly seek to partner with reputable suppliers who can demonstrate an equivalent commitment to ethical labour standards.</li>
+</ol>
+<p>To our knowledge, DFW SALES LIMITED has not conducted business with any entity found to have violated modern slavery laws.</p>
+<h2>6. Compliance and Reporting</h2>
+<p>The Board of Directors of DFW SALES LIMITED acts as our formal compliance oversight body. All internal or external concerns, disclosures, or inquiries regarding modern slavery within our operations or supply chains should be addressed directly to the Board of Directors via our registered office address.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- ==================== FAQ PAGE ==================== -->
+<div id="page-faqs" class="page">
+<section class="py-12 md:py-16 fade-in">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="mb-8"><a class="text-yellow-500 text-sm cursor-pointer hover:underline inline-flex items-center gap-1 mb-4" onclick="showPage('home')"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg> Back to Home</a>
+<h1 class="text-3xl md:text-4xl font-black text-white mb-2">Frequently Asked Questions</h1></div>
+<div class="policy-content">
+<h2>1. Orders and Account Management</h2>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How do I know if my order was successful?<span class="faq-icon">+</span></div><div class="faq-answer">Once you complete your purchase through our secure online checkout, you will automatically receive an order confirmation email containing your unique order number and a summary of your items. If you do not see this email within a few minutes, please check your spam or junk folder.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Can I amend or cancel my order after it has been placed?<span class="faq-icon">+</span></div><div class="faq-answer">We process and dispatch orders quickly to ensure fast delivery times. If you need to change or cancel your order, please email our support team immediately at cgoode183@gmail.com with your order number. While we will do our best to accommodate your request, we cannot guarantee changes if the order has already been processed or dispatched from our depot.</div></div>
+<h2>2. Shipping and Logistics</h2>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Where do you ship to?<span class="faq-icon">+</span></div><div class="faq-answer">Standard online ordering and delivery are available to addresses within the UK Mainland.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do you deliver to Northern Ireland, the Republic of Ireland, or the Scottish Highlands?<span class="faq-icon">+</span></div><div class="faq-answer">Yes, however, shipping to these locations incurs higher delivery surcharges and may require extended transit times. These costs will be explicitly calculated and applied at checkout based on your delivery address.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Why has only part of my order arrived?<span class="faq-icon">+</span></div><div class="faq-answer">To fulfill orders efficiently, items may occasionally be dispatched from different logistical hubs or depots. If your order contains multiple items, they may arrive in separate consignments. Please refer to your shipping confirmation emails for individual tracking details.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What happens if I am not home when a delivery is attempted?<span class="faq-icon">+</span></div><div class="faq-answer">If our courier cannot complete a delivery because no one is home and no secure "safe place" was designated, the parcel will be redirected to the courier's local depot or a nearby collection point. You will have 14 calendar days to reschedule the delivery or collect the items before the parcel is returned to our warehouse, at which point the order will be cancelled and refunded (excluding outbound shipping fees).</div></div>
+<h2>3. Returns, Refunds, and Exchanges</h2>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What is your return policy?<span class="faq-icon">+</span></div><div class="faq-answer">We offer a 28-day satisfaction guarantee. If you are not completely satisfied with your purchase, you may return the item in an unused, resaleable condition and in its original packaging within 28 days of purchase for a full refund or exchange.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How do I initiate a return or exchange?<span class="faq-icon">+</span></div><div class="faq-answer">To request a return, please send an email to cgoode183@gmail.com with your full name, order number, delivery address, and the reason for the return. Our customer support team will review your request and respond with formal instructions within 48 business hours.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Who pays for the return shipping costs?<span class="faq-icon">+</span></div><div class="faq-answer">The customer is responsible for arranging and paying the transport costs for returning items under our 28-day guarantee. However, if an item is verified as fundamentally faulty, defective, or misdescribed upon arrival, DFW SALES LIMITED will cover all associated return and replacement shipping costs.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How long do refunds take to process?<span class="faq-icon">+</span></div><div class="faq-answer">Once a refund is formally approved and processed by our billing department, the funds will be credited back to your original payment method. Please allow 3 to 5 working days for the transaction to clear and appear on your statement.</div></div>
+<h2>4. Technical and Warranty Support</h2>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">What should I do if my item arrives damaged or faulty?<span class="faq-icon">+</span></div><div class="faq-answer">If an item arrives damaged, please take clear photos or a short video demonstrating the defect or fault. Email these images along with your online order number immediately to cgoode183@gmail.com so our technical team can arrange a swift replacement or refund.</div></div>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">Do the products come with a warranty?<span class="faq-icon">+</span></div><div class="faq-answer">Yes. All new products sold by DFW SALES LIMITED are backed by a standard manufacturer's warranty covering material and workmanship defects. The exact duration and terms depend on the specific product and manufacturer. Please see our dedicated Warranty Policy page for more detailed information.</div></div>
+<h2>5. Corporate Identity and Support</h2>
+<div class="faq-item"><div class="faq-question" onclick="toggleFaq(this)">How can I contact your customer support team directly?<span class="faq-icon">+</span></div><div class="faq-answer"><p style="margin-bottom:8px;">For any inquiries not answered on this page, please feel free to reach out to us:</p>
+<ul style="margin-left:20px;">
+<li><strong>Company Name:</strong> DFW SALES LIMITED</li>
+<li><strong>Registered Address:</strong> Cataclean House, Unit 34 Wellington Employment Park, 30-48 Dunes Way, Liverpool, Merseyside, England, L5 9RJ</li>
+<li><strong>Email Support:</strong> cgoode183@gmail.com</li>
+</ul></div></div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="footer-bg py-12 border-t border-gray-800">
+<div class="max-w-7xl mx-auto px-4 md:px-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+<div>
+<div class="flex items-center gap-2 mb-4 cursor-pointer" onclick="showPage('home')">
+<div class="w-11 h-11 bg-yellow-500 rounded-full flex items-center justify-center border-2 border-yellow-600"><svg class="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+<div><div class="text-white font-black text-base leading-tight tracking-wide">DFW SALES</div><div class="text-yellow-500 text-[10px] font-bold leading-tight tracking-wider">LIMITED</div><div class="text-gray-500 text-[8px] leading-tight">EST. 2006</div></div>
+</div>
+<p class="text-gray-400 text-xs leading-relaxed mb-4">DFW Sales Limited (Company No. 05848486) is a leading supplier of new and used construction and agricultural equipment across the UK.</p>
+<div class="flex items-center gap-3">
+<a class="text-gray-400 hover:text-yellow-500 transition cursor-pointer"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+<a class="text-gray-400 hover:text-yellow-500 transition cursor-pointer"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+<a class="text-gray-400 hover:text-yellow-500 transition cursor-pointer"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+<a class="text-gray-400 hover:text-yellow-500 transition cursor-pointer"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-4">QUICK LINKS</h4>
+<ul class="space-y-2">
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Inventory</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('finance')">Finance</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('hire')">Hire</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('tradein')">Trade-in</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('services')">Services</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('about')">About Us</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('customerservice')">Customer Service</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('contact')">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-4">INVENTORY</h4>
+<ul class="space-y-2">
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Mini Diggers</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Excavators</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Telehandlers</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Tractors</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Forklifts</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Skid Steers</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Compact Loaders</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">Flatbed Trailers</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('inventory')">All Inventory</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-4">CUSTOMER SERVICE</h4>
+<ul class="space-y-2">
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('customerservice')">Customer Service</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('shipping')">Shipping & Returns</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('warranty')">Warranty</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('faqs')">FAQs</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('terms')">Terms & Conditions</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('privacy')">Privacy Policy</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('cookies')">Cookie Policy</a></li>
+<li><a class="footer-link text-xs cursor-pointer" onclick="showPage('modernslavery')">Modern Slavery Statement</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-4">CONTACT US</h4>
+<ul class="space-y-3">
+<li class="flex items-start gap-2"><svg class="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg><div><div class="text-white text-sm font-bold">+44 7451 259663</div><div class="text-gray-400 text-xs">Mon - Fri 8am - 5pm</div></div></li>
+<li class="flex items-start gap-2"><svg class="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg><span class="text-gray-400 text-xs">cgoode183@gmail.com</span></li>
+<li class="flex items-start gap-2"><svg class="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg><span class="text-gray-400 text-xs">DFW Sales Limited<br>Cataclean House, Unit 34 Wellington Employment Park<br>30-48 Dunes Way, Liverpool, Merseyside, L5 9RJ</span></li>
+</ul>
+<button class="btn-primary px-6 py-2 rounded text-xs mt-4" onclick="showPage('contact')">CONTACT US</button>
+</div>
+</div>
+<div class="border-t border-gray-800 pt-6 text-center">
+<p class="text-gray-500 text-xs">© 2024 DFW Sales Limited. Company No. 05848486. Registered in England & Wales. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+const products = [
+{sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
+{sku:'SKU-DFW-002',name:'Kubota U27-4',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'810',weight:'2.7T',price:'19,750',priceNum:19750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png'],description:'Reliable and efficient mini excavator perfect for landscaping and utility work.',specs:{'Engine':'Kubota D1105','Operating Weight':'2,700 kg','Digging Depth':'2.6m','Bucket Width':'Multiple options'}},
+{sku:'SKU-DFW-003',name:'Takeuchi TB216',type:'Mini Excavator',brand:'Takeuchi',year:'2021',hrs:'950',weight:'1.6T',price:'15,950',priceNum:15950,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/10744d493-71f0-4216-b9c6-e063f2ce9c09.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/10744d493-71f0-4216-b9c6-e063f2ce9c09.png'],description:'Ultra-compact mini excavator ideal for residential and light construction work.',specs:{'Engine':'Kubota D722','Operating Weight':'1,600 kg','Digging Depth':'2.1m','Bucket Width':'Multiple options'}},
+{sku:'SKU-DFW-004',name:'Manitou MT625H',type:'Telehandler',brand:'Manitou',year:'2023',hrs:'420',weight:'2.5T',price:'27,500',priceNum:27500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/161764409-4892-47aa-afe4-5677ac2d6bfa.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/161764409-4892-47aa-afe4-5677ac2d6bfa.png'],description:'Versatile telehandler with excellent reach and lifting capacity for construction sites.',specs:{'Engine':'Perkins Diesel','Lift Capacity':'2,500 kg','Max Height':'6.0m','Engine Power':'75 HP'}},
+{sku:'SKU-DFW-005',name:'Toyota 8FBM16',type:'Forklift',brand:'Toyota',year:'2020',hrs:'1250',weight:'1.6T',price:'11,995',priceNum:11995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18e93559a-ce3c-4372-b0b4-6e6b47602585.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18e93559a-ce3c-4372-b0b4-6e6b47602585.png'],description:'Reliable electric forklift ideal for warehouse and industrial applications.',specs:{'Type':'Electric','Lift Capacity':'1,600 kg','Mast Height':'4.5m','Battery':'48V'}},
+{sku:'SKU-DFW-006',name:'CAT 308E2 CR',type:'Mini Excavator',brand:'CAT',year:'2022',hrs:'580',weight:'8.5T',price:'42,500',priceNum:42500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Powerful compact radius excavator with excellent digging performance.',specs:{'Engine':'CAT C3.3B','Operating Weight':'8,500 kg','Digging Depth':'4.4m','Bucket Width':'Multiple options'}},
+{sku:'SKU-DFW-007',name:'JCB 3CX ECO',type:'Backhoe Loader',brand:'JCB',year:'2021',hrs:'1100',weight:'7.5T',price:'35,000',priceNum:35000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18fefdbb2-fb31-41dc-9c3c-7fb4560bf041.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18fefdbb2-fb31-41dc-9c3c-7fb4560bf041.png'],description:'Versatile backhoe loader perfect for construction and agricultural work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'7,500 kg','Digging Depth':'5.5m','Loader Capacity':'1,000 kg'}},
+{sku:'SKU-DFW-008',name:'Kubota M7-172',type:'Tractor',brand:'Kubota',year:'2023',hrs:'200',weight:'7.2T',price:'68,500',priceNum:68500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1f95b74e4-e01a-4eaa-81b6-8df7ef752bf7.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1f95b74e4-e01a-4eaa-81b6-8df7ef752bf7.png'],description:'High-performance agricultural tractor with advanced features and comfort.',specs:{'Engine':'Kubota V6108','Power':'172 HP','Transmission':'Powershift','PTO':'540/1000 RPM'}},
+{sku:'SKU-DFW-009',name:'Volvo EC140E',type:'Excavator',brand:'Volvo',year:'2020',hrs:'2800',weight:'14T',price:'55,000',priceNum:55000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Mid-size excavator with excellent fuel efficiency and performance.',specs:{'Engine':'Volvo D4','Operating Weight':'14,000 kg','Digging Depth':'5.5m','Bucket Capacity':'0.6 m³'}},
+{sku:'SKU-DFW-010',name:'Hitachi ZX85USB',type:'Mini Excavator',brand:'Hitachi',year:'2022',hrs:'720',weight:'8.5T',price:'38,750',priceNum:38750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Ultra-short swing radius excavator ideal for confined spaces.',specs:{'Engine':'Isuzu 4JJ1','Operating Weight':'8,500 kg','Digging Depth':'4.4m','Swing Radius':'Ultra-short'}},
+{sku:'SKU-DFW-011',name:'Manitou MLT 633',type:'Telehandler',brand:'Manitou',year:'2021',hrs:'950',weight:'3.3T',price:'32,000',priceNum:32000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png'],description:'Compact telehandler with excellent manoeuvrability and lift capacity.',specs:{'Engine':'Perkins Diesel','Lift Capacity':'3,300 kg','Max Height':'6.0m','Engine Power':'100 HP'}},
+{sku:'SKU-DFW-012',name:'JCB 110C-1',type:'Wheeled Excavator',brand:'JCB',year:'2023',hrs:'150',weight:'11T',price:'72,000',priceNum:72000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Wheeled excavator offering high mobility and excellent digging performance.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'11,000 kg','Digging Depth':'5.2m','Max Speed':'30 km/h'}},
+{sku:'SKU-DFW-013',name:'Kubota KX165',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'1,070',weight:'5-6T',price:'27,500',priceNum:27500,serial:'60309',img:'https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg',images:['https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg','https://i.postimg.cc/vZTNndLn/imgi-109-ET5027A.jpg','https://i.postimg.cc/wjMGNdcm/imgi-110-ET5027B.jpg','https://i.postimg.cc/dV3xCKmT/imgi-111-ET5027C.jpg','https://i.postimg.cc/fRyrdhjX/imgi-112-ET5027D.jpg','https://i.postimg.cc/K8jHTyr5/imgi-113-ET5027E.jpg','https://i.postimg.cc/Cx5Q8VHm/imgi-114-ET5027F.jpg','https://i.postimg.cc/P5JRDkzc/imgi-115-ET5027G.jpg','https://i.postimg.cc/T314bXqZ/imgi-124-ET5027P.jpg','https://i.postimg.cc/GmfSJSqM/imgi-146-ET5027ZL.jpg','https://i.postimg.cc/T3sHqHC7/imgi-149-ET5027ZO.jpg','https://i.postimg.cc/K8WsrsJW/imgi-150-ET5027ZP.jpg','https://i.postimg.cc/Z5QDFDVX/imgi-151-ET5027ZQ.jpg','https://i.postimg.cc/GmfSJSX0/imgi-153-ET5027ZS.jpg','https://i.postimg.cc/P57FzFSk/imgi-159-ET5027ZY.jpg'],description:'Low-hour Kubota KX165 mini excavator, a strong and reliable 5–6 ton class machine ideal for construction, utilities, landscaping, and general excavation work. With just 1,070 hours, this unit offers excellent remaining life and dependable performance for professional contractors.\n\nPowered by a Kubota V2607 4-cylinder diesel engine, the KX165 delivers smooth hydraulic operation, strong digging power, and excellent fuel efficiency. The enclosed cab is equipped with air conditioning and heating, ensuring operator comfort in all seasons.\n\nThis machine comes fitted with a hydraulic thumb for efficient material handling, auxiliary hydraulics for attachments, and a backfill blade for grading and stability. Rubber tracks provide reduced ground disturbance and good manoeuvrability on urban and residential sites.\n\nA well-maintained and low-hour Kubota 5–6 ton excavator well suited for contractors needing a dependable, versatile machine for excavation, utilities, and landscaping projects.',specs:{'Serial Number':'60309','Hours':'1,070','Engine':'Kubota V2607 diesel','Engine Type':'4-cylinder','Transmission':'Hydrostatic','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Hydraulics':'Auxiliary hydraulics','Attachment':'Hydraulic thumb','Backfill Blade':'77" width','Stick Length':'6 ft','Bucket':'30" bucket (5-tooth)','Undercarriage':'Rubber tracks','Track Width':'15.5"','Weight Class':'5-6 ton','Price':'£27,500 + VAT'}},
+{sku:'SKU-DFW-014',name:'Komatsu PC70-8',type:'Mini Excavator',brand:'Komatsu',year:'2021',hrs:'1,098',weight:'7T',price:'28,400',priceNum:28400,serial:'KMTPC216K38C04356',img:'https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg',images:['https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg','https://i.postimg.cc/FHzzfGWs/imgi-133-EO4245A.jpg','https://i.postimg.cc/sgxxBK6f/imgi-134-EO4245B.jpg','https://i.postimg.cc/K8jjKQqY/imgi-135-EO4245C.jpg','https://i.postimg.cc/2SyyqTc6/imgi-136-EO4245D.jpg','https://i.postimg.cc/qvqqtQbN/imgi-137-EO4245E.jpg','https://i.postimg.cc/NjFFybJr/imgi-138-EO4245F.jpg','https://i.postimg.cc/HknnJ3ZM/imgi-139-EO4245G.jpg','https://i.postimg.cc/zGvvLptW/imgi-147-EO4245O.jpg','https://i.postimg.cc/pLrr9kGB/imgi-208-EO4245ZZX.jpg','https://i.postimg.cc/Dw00W5j5/imgi-214-EO4245ZZZD.jpg','https://i.postimg.cc/pLrr9kG0/imgi-215-EO4245ZZZE.jpg','https://i.postimg.cc/FH6R0c8j/imgi-219-EO4245ZZZI.jpg','https://i.postimg.cc/Bnz62DkC/imgi-222-EO4245ZZZL.jpg'],description:'Low-hour Komatsu PC70-8 mini excavator, a reliable and efficient 7-ton class machine designed for construction, utilities, landscaping, and general earthmoving applications. With just 1,098 hours, this unit offers excellent remaining service life and strong productivity potential for contractors.\n\nPowered by a Komatsu SAA4D95LE-5 4-cylinder diesel engine, the PC70-8 delivers smooth hydraulic performance, strong digging power, and dependable fuel efficiency. The enclosed cab is fitted with air conditioning and heating, ensuring operator comfort in all working conditions.\n\nThis machine features a hydraulic thumb for improved material handling, auxiliary hydraulics for attachment versatility, and a backfill blade for grading and stability. Rubber tracks provide reduced ground disturbance, making it suitable for urban and sensitive site work.\n\nA low-hour and highly capable Komatsu 7-ton excavator ideal for contractors needing a reliable, fuel-efficient machine for heavy landscaping, utilities, and general construction work.',specs:{'Serial Number':'KMTPC216K38C04356','Hours':'1,098','Engine':'Komatsu SAA4D95LE-5 diesel','Engine Type':'4-cylinder','Transmission':'Hydrostatic','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Hydraulics':'Auxiliary hydraulics','Attachment':'Hydraulic thumb','Backfill Blade':'88" width','Stick Length':'64"','Bucket':'29" bucket (5-tooth)','Undercarriage':'Rubber tracks','Track Width':'17.5"','Weight Class':'7 ton','Price':'£28,400 + VAT'}},
+{sku:'SKU-DFW-015',name:'John Deere 6615',type:'Tractor',brand:'John Deere',year:'2007',hrs:'7,900',weight:'7.5T',price:'28,000',priceNum:28000,serial:'LO6615D454857',img:'https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg',images:['https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg','https://i.postimg.cc/fbhJn6Xw/imgi-104-DZ4475X.jpg','https://i.postimg.cc/43TmkrtN/imgi-105-DZ4475Y.jpg','https://i.postimg.cc/fbhJn6XV/imgi-107-DZ4475ZA.jpg','https://i.postimg.cc/DyHS5Wwq/imgi-80-DZ4475.jpg','https://i.postimg.cc/FHS769Yy/imgi-81-DZ4475A.jpg','https://i.postimg.cc/7ZzfRx5X/imgi-82-DZ4475B.jpg','https://i.postimg.cc/Z5NCQTWD/imgi-83-DZ4475C.jpg','https://i.postimg.cc/XY5pPVrP/imgi-84-DZ4475D.jpg','https://i.postimg.cc/dVCLfq7P/imgi-85-DZ4475E.jpg','https://i.postimg.cc/cJNryVYq/imgi-86-DZ4475F.jpg','https://i.postimg.cc/LsMnKrfM/imgi-87-DZ4475G.jpg'],description:'Powerful and well-equipped John Deere 6615 tractor fitted with a John Deere 740 Classic front loader and bale spear, designed for agricultural, livestock, and heavy utility work. This high-horsepower utility tractor is well suited for demanding farm operations, material handling, and general-purpose field work.\n\nPowered by a reliable 6.8L 6-cylinder John Deere diesel engine, the 6615 delivers strong torque and consistent performance under load. The quad-range transmission (16F/16R) with left-hand reverser provides smooth shifting and excellent control for loader and field operations.\n\nThe enclosed cab includes air conditioning and heating for operator comfort in all conditions. With PTO options of 540/1000, three-point linkage, and dual rear hydraulic remotes, this tractor is highly versatile across a wide range of implements and attachments.\n\nThe John Deere 740 Classic loader with joystick control adds strong front-end lifting capability, paired with a wide bucket and bale spear for livestock and material handling tasks.\n\nA strong and versatile utility tractor package ideal for livestock farms, contracting work, and general agricultural use requiring dependable power and front-end loading capability.',specs:{'Serial Number':'LO6615D454857','Hours':'7,900 (meter replaced at ~7,921)','Engine':'John Deere 6.8L diesel','Engine Type':'6-cylinder','Transmission':'Quad-range (16F/16R)','Reverser':'Left-hand reverser','Differential Lock':'Yes','Cab':'Enclosed','Climate Control':'Air conditioning & heating','PTO':'540 / 1000 RPM','Linkage':'Three-point linkage','Hydraulic Remotes':'2 (rear)','Loader':'John Deere 740 Classic','Loader Controls':'Joystick','Bucket':'Wide bucket (99")','Attachment':'Bale spear included','Front Tires':'340/85R28','Rear Tires':'18.4R38','Price':'£28,000 + VAT'}},
+{sku:'SKU-DFW-016',name:'Bobcat T870',type:'Skid Steer Loader',brand:'Bobcat',year:'2019',hrs:'621',weight:'4.2T',price:'26,500',priceNum:26500,serial:'B47C14255',img:'https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg',images:['https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg','https://i.postimg.cc/0NwmsYrZ/imgi-88-FB8128A.jpg','https://i.postimg.cc/g0ZRWVrN/imgi-89-FB8128B.jpg','https://i.postimg.cc/Zqd3S80f/imgi-90-FB8128C.jpg','https://i.postimg.cc/0NwmsYrH/imgi-91-FB8128D.jpg','https://i.postimg.cc/HLy5gwVW/imgi-92-FB8128E.jpg','https://i.postimg.cc/TwvbYKDG/imgi-93-FB8128F.jpg','https://i.postimg.cc/pTMjXmFp/imgi-94-FB8128G.jpg','https://i.postimg.cc/LXFP6J1L/imgi-95-FB8128H.jpg','https://i.postimg.cc/RF1H3v7c/imgi-112-FB8128Y.jpg','https://i.postimg.cc/C1CqZwGs/imgi-119-FB8128ZF.jpg','https://i.postimg.cc/9MP74cdn/imgi-122-FB8128ZI.jpg','https://i.postimg.cc/NM8HyQ6Z/imgi-130-FB8128ZQ.jpg','https://i.postimg.cc/TwjDyTVz/imgi-133-FB8128ZT.jpg'],description:'Ultra-low-hour 2019 Bobcat T870 tracked skid steer loader, one of the most powerful machines in the Bobcat lineup, designed for heavy construction, forestry, demolition, land clearing, and high-output attachment work. With only 621 hours, this unit presents exceptional value and near-new working condition for a commercial machine.\n\nPowered by a 4-cylinder diesel engine with hydrostatic drive and two-speed travel, the T870 delivers outstanding pushing force, lift capacity, and hydraulic performance. The enclosed cab includes air conditioning, heating, and an electronic monitoring system for operator comfort and machine diagnostics.\n\nThis unit is equipped with high-flow hydraulics, making it suitable for demanding attachments such as forestry mulchers, cold planers, and heavy-duty augers. It includes both manual and hydraulic quick coupler capability for maximum attachment flexibility. A Fecon oil cooler is also fitted, supporting extended high-demand hydraulic operation.\n\nThe 80" bucket and Blue Diamond forks enhance versatility across material handling and site work applications, while the 18" tracks provide stability and traction in challenging ground conditions.\n\nA high-performance, ultra-low-hour T870 ideal for contractors needing maximum hydraulic power, lifting capacity, and productivity for demanding attachment-based work.',specs:{'Serial Number':'B47C14255','Hours':'621','Engine':'4-cylinder diesel','Transmission':'Hydrostatic','Travel':'Two-speed','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Monitoring':'Electronic monitoring system','Controls':'Pattern changer','Hydraulics':'High-flow hydraulics','Quick Coupler':'Manual & hydraulic','Oil Cooler':'Fecon oil cooler installed','Bucket':'80" Bobcat bucket (bolt-on cutting edge)','Forks':'Blue Diamond forks (48")','Undercarriage':'Rubber tracks','Track Width':'18"','Price':'£26,500 + VAT'}},
+{sku:'SKU-DFW-017',name:'CFG Industrial KKT(A)27',type:'Compact Utility Loader',brand:'CFG Industrial',year:'2026',hrs:'3',weight:'1.5T',price:'8,950',priceNum:8950,serial:'KKTA272025L102449',img:'https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg',images:['https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg','https://i.postimg.cc/Rhk5jxYY/imgi-75-EU5537A.jpg','https://i.postimg.cc/ZnGt1zQM/imgi-76-EU5537B.jpg','https://i.postimg.cc/0jTRL14F/imgi-77-EU5537C.jpg','https://i.postimg.cc/x8wDWVZ7/imgi-78-EU5537D.jpg','https://i.postimg.cc/C53TWpth/imgi-79-EU5537E.jpg','https://i.postimg.cc/CMXgZbKb/imgi-80-EU5537F.jpg','https://i.postimg.cc/1R2QgDzM/imgi-81-EU5537G.jpg','https://i.postimg.cc/4NcTpnKq/imgi-98-EU5537X.jpg','https://i.postimg.cc/YqFwQjGw/imgi-99-EU5537Y.jpg','https://i.postimg.cc/jdfryCwb/imgi-100-EU5537Z.jpg','https://i.postimg.cc/hPmqVhzK/imgi-101-EU5537ZA.jpg','https://i.postimg.cc/RZzxd9KR/imgi-102-EU5537ZB.jpg'],description:'Near-new 2026 CFG Industrial KKT(A)27 compact utility loader, designed for landscaping, light construction, agriculture, property maintenance, and tight-access material handling. With only 3 hours on the meter, this machine is essentially new and ready for immediate commercial use.\n\nPowered by a reliable Kubota D1105 1.1L 3-cylinder diesel engine, the KKT(A)27 delivers efficient performance with smooth hydrostatic drive and simple, responsive controls. Its compact design allows excellent manoeuvrability in confined spaces such as residential sites, gardens, farms, and indoor/outdoor maintenance environments.\n\nThis unit features auxiliary hydraulics for attachments and a manual quick coupler for fast bucket changes. The 44" bucket provides a good balance of capacity and precision work capability, while the narrow 8" track width allows access through very tight gateways and restricted areas.\n\nA virtually new compact utility loader ideal for contractors and operators needing a small, efficient, and highly manoeuvrable machine for light-duty excavation and material handling tasks.',specs:{'Serial Number':'KKTA272025L102449','Hours':'3','Engine':'Kubota D1105 diesel','Engine Type':'3-cylinder, 1.1L','Transmission':'Hydrostatic','Bucket Control':'Hand-controlled','Hydraulics':'Auxiliary hydraulics','Quick Coupler':'Manual','Bucket Width':'44"','Cutting Edge':'Weld-on cutting edge','Undercarriage':'Narrow tracks','Track Width':'8"','Price':'£8,950 + VAT'}},
+{sku:'SKU-DFW-018',name:'2025 Reitnouer 53ft Aluminum Flatbed Trailer',type:'Flatbed Trailer',brand:'Reitnouer',year:'2025',hrs:'N/A',weight:'90,000 lbs GVW',price:'17,500',priceNum:17500,serial:'1RNF53A20SR062121',img:'https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg',images:['https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg','https://i.postimg.cc/h46s6RcP/imgi-66-EW0992G.jpg','https://i.postimg.cc/HWRzR1dk/imgi-67-EW0992H.jpg','https://i.postimg.cc/T2F0FvfP/imgi-68-EW0992I.jpg','https://i.postimg.cc/1R2B21s4/imgi-72-EW0992M.jpg','https://i.postimg.cc/MZN5NJqQ/imgi-73-EW0992N.jpg','https://i.postimg.cc/J7vxvCMX/imgi-74-EW0992O.jpg','https://i.postimg.cc/3rV1VQYC/imgi-78-EW0992S.jpg','https://i.postimg.cc/v8khkwbt/imgi-79-EW0992T.jpg','https://i.postimg.cc/15FBZ73V/imgi-83-EW0992X.jpg','https://i.postimg.cc/CL87Vrx8/imgi-86-EW0992ZA.jpg','https://i.postimg.cc/TYb0XN3r/imgi-94-EW0992ZI.jpg'],description:'Modern high-spec 2025 Reitnouer flatbed trailer built for efficient long-haul freight, heavy equipment transport, and commercial logistics operations. Reitnouer is known for premium lightweight aluminium construction, offering excellent durability while maximising payload capacity and fuel efficiency.\n\nThis 53ft flatbed is equipped with air ride suspension and air brakes for smooth highway performance and improved cargo protection. The spread axle configuration enhances weight distribution and stability, making it ideal for heavy loads and long-distance transport across varied road conditions.\n\nThe aluminium deck and aluminium wheels further reduce tare weight, improving operational efficiency and allowing higher usable payload within legal limits. This unit is suited for fleet operators, logistics companies, and heavy transport specialists requiring modern, efficient equipment.\n\nA modern, lightweight, high-capacity flatbed trailer designed for efficient freight and equipment transport with excellent road performance and durability.',specs:{'VIN':'1RNF53A20SR062121','Unit #':'UE11426','Overall Length':'53\'','Deck Type':'Aluminium','Landing Gear':'Dual','Suspension':'Air suspension','Brakes':'Air brakes','Axles':'Spread axles','GVW':'90,000 lbs','GAWR':'23,000 lbs','Wheels':'Aluminium wheels','Tire Size':'295/75R22.5','Price':'£17,500 + VAT'}}
+];
+function renderCard(p, featured=false) {
+return `<div class="card-dark rounded-lg overflow-hidden"><div class="relative cursor-pointer" onclick="showProduct('${p.sku}')"><img src="${p.img}" class="w-full ${featured?'h-40':'h-44'} object-cover" alt="${p.name}"><span class="absolute top-2 left-2 bg-yellow-500 text-black text-[10px] font-bold px-2 py-0.5 rounded">${p.year}</span><span class="absolute top-2 left-1/2 -translate-x-1/2 sku-badge">${p.sku}</span><button class="absolute top-2 right-2 text-white hover:text-yellow-500 transition" onclick="event.stopPropagation()"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></button></div><div class="p-3"><div class="flex items-center justify-between mb-1"><h3 class="font-bold text-white text-sm">${p.name}</h3></div><p class="text-gray-400 text-xs mb-2">${p.type}</p><div class="flex flex-wrap gap-2 text-[10px] text-gray-400 mb-3"><span>⏱ ${p.hrs} HRS</span><span> ${p.weight}</span><span> ${p.year}</span></div><div class="flex items-center justify-between"><span class="text-yellow-500 font-bold text-lg">£${p.price}</span><button class="border border-yellow-500 text-yellow-500 text-[10px] font-bold px-3 py-1 rounded hover:bg-yellow-500 hover:text-black transition" onclick="showProduct('${p.sku}')">VIEW DETAILS</button></div></div></div>`;
+}
+function renderFeatured() { const grid = document.getElementById('featuredGrid'); if (!grid) return; grid.innerHTML = products.slice(0, 5).map(p => renderCard(p, true)).join(''); }
+function renderInventory(list) { const grid = document.getElementById('inventoryGrid'); if (!grid) return; const items = list || products; grid.innerHTML = items.map(p => renderCard(p)).join(''); document.getElementById('showingCount').textContent = items.length; }
+function filterInventory() {
+const cat = document.getElementById('filterCategory').value;
+const brand = document.getElementById('filterBrand').value;
+const sort = document.getElementById('filterSort').value;
+let filtered = products.filter(p => {
+if (cat && p.type !== cat) return false;
+if (brand && p.brand !== brand) return false;
+return true;
+});
+if (sort === 'price-low') filtered.sort((a,b) => a.priceNum - b.priceNum);
+else if (sort === 'price-high') filtered.sort((a,b) => b.priceNum - a.priceNum);
+else if (sort === 'year-new') filtered.sort((a,b) => parseInt(b.year) - parseInt(a.year));
+renderInventory(filtered);
+}
+function showProduct(sku) {
+const p = products.find(x => x.sku === sku);
+if (!p) return;
+const content = document.getElementById('productContent');
+const mainImg = p.images[0];
+const thumbs = p.images.map((img, i) => `<img src="${img}" class="product-thumb ${i===0?'active':''}" onclick="changeMainImg('${img}', this)" alt="${p.name} view ${i+1}">`).join('');
+const specsRows = Object.entries(p.specs).map(([k,v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+const relatedProducts = products.filter(x => x.sku !== sku && (x.type === p.type || x.brand === p.brand)).slice(0, 4);
+const relatedHtml = relatedProducts.map(rp => renderCard(rp)).join('');
+content.innerHTML = `<div class="grid lg:grid-cols-2 gap-8 mb-12"><div><img src="${mainImg}" id="mainProductImg" class="product-main-img mb-4" alt="${p.name}"><div class="grid grid-cols-5 gap-2">${thumbs}</div></div><div><div class="flex items-center gap-3 mb-3"><span class="sku-badge">${p.sku}</span>${p.serial ? `<span class="sku-badge bg-gray-700 text-white">Serial: ${p.serial}</span>` : ''}<span class="bg-green-600 text-white text-[10px] font-bold px-2 py-1 rounded">IN STOCK</span></div><h1 class="text-3xl md:text-4xl font-black text-white mb-2">${p.name}</h1><p class="text-gray-400 text-sm mb-4">${p.type} | ${p.brand} | ${p.year}</p><div class="flex items-center gap-6 mb-6 text-sm"><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.hrs} Hours</span></div><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 01-1-1.6L7.55 8 4.96 4.6A1 1 0 015.8 3h-2.8z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.weight}</span></div><div class="flex items-center gap-2"><svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg><span class="text-gray-300">${p.year}</span></div></div><div class="bg-[#1a1a1a] border border-yellow-500 rounded-lg p-6 mb-6"><div class="text-gray-400 text-xs mb-1">Price</div><div class="text-yellow-500 text-4xl font-black">£${p.price} <span class="text-lg font-normal text-gray-400">+ VAT</span></div><div class="text-gray-400 text-xs mt-2">Finance available from £${Math.round(p.priceNum * 0.8 * 0.069/12 * Math.pow(1+0.069/12,36)/(Math.pow(1+0.069/12,36)-1)).toLocaleString()}/month*</div></div><div class="flex flex-wrap gap-3 mb-6"><button class="btn-primary px-8 py-3 rounded text-sm" onclick="showPage('contact')">ENQUIRE NOW</button><button class="btn-outline px-8 py-3 rounded text-sm" onclick="showPage('finance')">FINANCE THIS</button><button class="border border-gray-600 text-gray-300 px-6 py-3 rounded text-sm hover:border-yellow-500 hover:text-yellow-500 transition" onclick="showPage('tradein')">PART EXCHANGE</button></div><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-4"><h3 class="text-white font-bold text-sm mb-3">Quick Contact</h3><div class="grid grid-cols-2 gap-3 text-xs"><div class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>+44 7451 259663</div><div class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>cgoode183@gmail.com</div></div></div></div></div><div class="grid lg:grid-cols-3 gap-8 mb-12"><div class="lg:col-span-2"><h2 class="text-2xl font-black text-white mb-4">Description</h2><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg p-6"><p class="text-gray-300 text-sm leading-relaxed whitespace-pre-line">${p.description}</p></div></div><div><h2 class="text-2xl font-black text-white mb-4">Specifications</h2><div class="bg-[#1a1a1a] border border-gray-800 rounded-lg overflow-hidden"><table class="spec-table">${specsRows}</table></div></div></div>${relatedProducts.length > 0 ? `<div class="mb-8"><h2 class="text-2xl font-black text-white mb-6">Related Machines</h2><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">${relatedHtml}</div></div>` : ''}`;
+showPage('product');
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function changeMainImg(src, el) { document.getElementById('mainProductImg').src = src; document.querySelectorAll('.product-thumb').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
+function showPage(pageId) {
+document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+const target = document.getElementById('page-' + pageId);
+if (target) {
+target.classList.add('active');
+if (pageId === 'inventory') renderInventory();
+if (pageId === 'home') renderFeatured();
+const section = target.querySelector('section');
+if (section) { section.classList.remove('fade-in'); void section.offsetWidth; section.classList.add('fade-in'); }
+}
+document.querySelectorAll('.nav-link').forEach(link => { link.classList.remove('active', 'text-yellow-500'); link.classList.add('text-gray-300'); if (link.dataset.page === pageId) { link.classList.add('active', 'text-yellow-500'); link.classList.remove('text-gray-300'); } });
+window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function closeMobile() { document.getElementById('mobileMenu').classList.add('hidden'); }
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+function updateFinance() {
+const price = parseInt(document.getElementById('machinePrice').value);
+const deposit = parseInt(document.getElementById('deposit').value);
+const term = parseInt(document.getElementById('term').value);
+const rate = 0.069 / 12;
+const principal = Math.max(price - deposit, 1000);
+const monthly = principal * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+document.getElementById('machinePriceDisplay').textContent = '£' + price.toLocaleString();
+document.getElementById('depositDisplay').textContent = '£' + deposit.toLocaleString();
+document.getElementById('depositPercent').textContent = Math.round((deposit / price) * 100) + '%';
+document.getElementById('termDisplay').textContent = term + ' Months';
+document.getElementById('monthlyPayment').innerHTML = '£' + Math.round(monthly).toLocaleString() + ' <span class="text-xs font-normal text-gray-400">/month*</span>';
+}
+function updateFinance2() {
+const price = parseInt(document.getElementById('machinePrice2').value);
+const deposit = parseInt(document.getElementById('deposit2').value);
+const term = parseInt(document.getElementById('term2').value);
+const rate = 0.069 / 12;
+const principal = Math.max(price - deposit, 1000);
+const monthly = principal * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+document.getElementById('machinePriceDisplay2').textContent = '£' + price.toLocaleString();
+document.getElementById('depositDisplay2').textContent = '£' + deposit.toLocaleString();
+document.getElementById('depositPercent2').textContent = Math.round((deposit / price) * 100) + '%';
+document.getElementById('termDisplay2').textContent = term + ' Months';
+document.getElementById('monthlyPayment2').innerHTML = '£' + Math.round(monthly).toLocaleString() + ' <span class="text-xs font-normal text-gray-400">/month*</span>';
+}
+window.addEventListener('scroll', () => { const nav = document.querySelector('.nav-bg'); nav.style.background = window.scrollY > 50 ? 'rgba(17,17,17,0.98)' : '#111'; });
+renderInventory();
+renderFeatured();
+</script>
+</body>
+</html>
