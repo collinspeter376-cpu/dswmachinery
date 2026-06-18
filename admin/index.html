@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DFW Sales - Admin Panel</title>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css">
 <style>
@@ -36,7 +38,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </head>
 <body>
 
-<!-- LOGIN PAGE -->
 <div id="loginPage" class="min-h-screen flex items-center justify-center">
   <div class="bg-[#1e293b] rounded-2xl p-8 w-full max-w-md shadow-2xl">
     <div class="text-center mb-8">
@@ -44,7 +45,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
         <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <h1 class="text-2xl font-bold text-white">Admin Login</h1>
-      <p class="text-gray-400 text-sm mt-2">DFW Sales Limited Admin Panel</p>
     </div>
     <div id="loginError" class="bg-red-900/50 border border-red-500 text-red-300 p-3 rounded-lg mb-4 hidden">Invalid email or password</div>
     <input type="email" id="loginEmail" class="input-field" placeholder="Email address">
@@ -53,154 +53,63 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
   </div>
 </div>
 
-<!-- ADMIN DASHBOARD -->
 <div id="adminPanel" class="hidden">
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-700">
       <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
         <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
-      <div>
-        <div class="text-white font-bold text-sm">DFW Sales</div>
-        <div class="text-yellow-500 text-xs">Admin Panel</div>
-      </div>
+      <div><div class="text-white font-bold text-sm">DFW Sales</div><div class="text-yellow-500 text-xs">Admin Panel</div></div>
     </div>
-    <div class="sidebar-link active" onclick="showSection('dashboard')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001 1h2a1 1 0 001-1v-5a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 001 1h3a1 1 0 001-1v-10l2-2"/></svg>
-      Dashboard
-    </div>
-    <div class="sidebar-link" onclick="showSection('products')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-      Products
-    </div>
-    <div class="sidebar-link" onclick="showSection('addProduct')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-      Add Product
-    </div>
-    <div class="sidebar-link" onclick="showSection('settings')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-      Settings
-    </div>
-    <div class="sidebar-link" onclick="showSection('backup')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-      Backup / Restore
-    </div>
-    <div class="sidebar-link" onclick="showSection('viewSite')">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-      View Website
-    </div>
-    <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
-      Logout
-    </div>
+    <div class="sidebar-link active" onclick="showSection('dashboard')">Dashboard</div>
+    <div class="sidebar-link" onclick="showSection('products')">Products</div>
+    <div class="sidebar-link" onclick="showSection('addProduct')">Add Product</div>
+    <div class="sidebar-link" onclick="showSection('settings')">Settings</div>
+    <div class="sidebar-link" onclick="showSection('viewSite')">View Website</div>
+    <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">Logout</div>
   </div>
 
-  <!-- Main Content Area -->
   <div class="main-content">
-    <!-- Dashboard Section -->
     <div id="section-dashboard">
       <h1 class="text-3xl font-bold text-white mb-6">Dashboard</h1>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="stat-card">
-          <div class="text-gray-400 text-sm mb-2">Total Products</div>
-          <div class="stat-number" id="statProducts">0</div>
-        </div>
-        <div class="stat-card">
-          <div class="text-gray-400 text-sm mb-2">Total Value</div>
-          <div class="stat-number" id="statValue">£0</div>
-        </div>
-        <div class="stat-card">
-          <div class="text-gray-400 text-sm mb-2">Categories</div>
-          <div class="stat-number" id="statCategories">0</div>
-        </div>
-      </div>
-      <div class="card">
-        <h2 class="text-xl font-bold text-white mb-4">Recent Activity</h2>
-        <div id="activityLog" class="space-y-2 text-gray-400 text-sm">
-          <p>Welcome to the admin panel. Use the sidebar to manage your website.</p>
-        </div>
+        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Total Products</div><div class="stat-number" id="statProducts">0</div></div>
+        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Total Value</div><div class="stat-number" id="statValue">£0</div></div>
+        <div class="stat-card"><div class="text-gray-400 text-sm mb-2">Categories</div><div class="stat-number" id="statCategories">0</div></div>
       </div>
     </div>
 
-    <!-- Products Section -->
     <div id="section-products" class="hidden">
       <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-white">Products</h1>
         <button onclick="showSection('addProduct')" class="btn btn-primary">+ Add New Product</button>
       </div>
       <div class="card">
-        <div class="table-row table-header">
-          <div>SKU</div>
-          <div>Name</div>
-          <div>Type</div>
-          <div>Price</div>
-          <div>Actions</div>
-        </div>
+        <div class="table-row table-header"><div>SKU</div><div>Name</div><div>Type</div><div>Price</div><div>Actions</div></div>
         <div id="productsList"></div>
       </div>
     </div>
 
-    <!-- Add/Edit Product Section -->
     <div id="section-addProduct" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6" id="productFormTitle">Add New Product</h1>
       <div class="card">
         <form id="productForm" onsubmit="saveProduct(event)">
           <input type="hidden" id="editSku">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="text-gray-400 text-sm">SKU *</label>
-              <input type="text" id="pSku" class="input-field" placeholder="SKU-DFW-018" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Name *</label>
-              <input type="text" id="pName" class="input-field" placeholder="Machine Name" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Type *</label>
-              <input type="text" id="pType" class="input-field" placeholder="Mini Excavator" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Brand *</label>
-              <input type="text" id="pBrand" class="input-field" placeholder="JCB" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Year *</label>
-              <input type="text" id="pYear" class="input-field" placeholder="2024" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Hours</label>
-              <input type="text" id="pHours" class="input-field" placeholder="100">
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Weight</label>
-              <input type="text" id="pWeight" class="input-field" placeholder="5T">
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Price (without £) *</label>
-              <input type="text" id="pPrice" class="input-field" placeholder="25,000" required>
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Serial Number</label>
-              <input type="text" id="pSerial" class="input-field" placeholder="Optional">
-            </div>
-            <div>
-              <label class="text-gray-400 text-sm">Main Image URL *</label>
-              <input type="url" id="pImg" class="input-field" placeholder="https://..." required>
-            </div>
+            <div><label class="text-gray-400 text-sm">SKU *</label><input type="text" id="pSku" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Name *</label><input type="text" id="pName" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Type *</label><input type="text" id="pType" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Brand *</label><input type="text" id="pBrand" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Year *</label><input type="text" id="pYear" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Hours</label><input type="text" id="pHours" class="input-field"></div>
+            <div><label class="text-gray-400 text-sm">Weight</label><input type="text" id="pWeight" class="input-field"></div>
+            <div><label class="text-gray-400 text-sm">Price (without £) *</label><input type="text" id="pPrice" class="input-field" required></div>
+            <div><label class="text-gray-400 text-sm">Serial Number</label><input type="text" id="pSerial" class="input-field"></div>
+            <div><label class="text-gray-400 text-sm">Main Image URL *</label><input type="url" id="pImg" class="input-field" required></div>
           </div>
-          <div>
-            <label class="text-gray-400 text-sm">Additional Images (comma-separated URLs)</label>
-            <textarea id="pImages" class="input-field" rows="3" placeholder="url1, url2, url3"></textarea>
-          </div>
-          <div>
-            <label class="text-gray-400 text-sm">Description *</label>
-            <textarea id="pDescription" class="input-field" rows="5" placeholder="Full description..." required></textarea>
-          </div>
-          <div>
-            <label class="text-gray-400 text-sm">Specifications (one per line, format: Key: Value)</label>
-            <textarea id="pSpecs" class="input-field" rows="6" placeholder="Engine: Diesel&#10;Hours: 100&#10;Weight: 5T"></textarea>
-          </div>
+          <div><label class="text-gray-400 text-sm">Additional Images (comma-separated URLs)</label><textarea id="pImages" class="input-field" rows="3"></textarea></div>
+          <div><label class="text-gray-400 text-sm">Description *</label><textarea id="pDescription" class="input-field" rows="5" required></textarea></div>
+          <div><label class="text-gray-400 text-sm">Specifications (one per line, format: Key: Value)</label><textarea id="pSpecs" class="input-field" rows="6"></textarea></div>
           <div class="flex gap-3 mt-4">
             <button type="submit" class="btn btn-primary">Save Product</button>
             <button type="button" onclick="showSection('products')" class="btn btn-secondary">Cancel</button>
@@ -209,39 +118,15 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- Settings Section -->
     <div id="section-settings" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Settings</h1>
       <div class="card">
-        <h2 class="text-xl font-bold text-white mb-4">Change Admin Password</h2>
-        <input type="password" id="newPassword" class="input-field" placeholder="New password">
-        <input type="password" id="confirmPassword" class="input-field" placeholder="Confirm password">
-        <button onclick="changePassword()" class="btn btn-primary">Update Password</button>
-        <div id="passwordMsg" class="mt-3 text-sm"></div>
-      </div>
-      <div class="card">
         <h2 class="text-xl font-bold text-white mb-4">Reset All Data</h2>
-        <p class="text-gray-400 text-sm mb-4">This will reset all products and settings to default. This cannot be undone.</p>
+        <p class="text-gray-400 text-sm mb-4">This will reset all products to the original 18 default machines. This cannot be undone.</p>
         <button onclick="resetData()" class="btn btn-danger">Reset All Data</button>
       </div>
     </div>
 
-    <!-- Backup Section -->
-    <div id="section-backup" class="hidden">
-      <h1 class="text-3xl font-bold text-white mb-6">Backup & Restore</h1>
-      <div class="card">
-        <h2 class="text-xl font-bold text-white mb-4">Export Data</h2>
-        <p class="text-gray-400 text-sm mb-4">Download all your products and settings as a JSON file for backup.</p>
-        <button onclick="exportData()" class="btn btn-primary">Download Backup JSON</button>
-      </div>
-      <div class="card">
-        <h2 class="text-xl font-bold text-white mb-4">Import Data</h2>
-        <p class="text-gray-400 text-sm mb-4">Restore from a previously exported JSON backup file.</p>
-        <input type="file" id="importFile" accept=".json" class="input-field" onchange="importData(event)">
-      </div>
-    </div>
-
-    <!-- View Site Section -->
     <div id="section-viewSite" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">View Website</h1>
       <div class="card">
@@ -252,297 +137,213 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
   </div>
 </div>
 
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
-
 <script>
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
-    authDomain: "dfwweb-c49fd.firebaseapp.com",
-    projectId: "dfwweb-c49fd",
-    storageBucket: "dfwweb-c49fd.firebasestorage.app",
-    messagingSenderId: "86537832820",
-    appId: "1:86537832820:web:6039a7dc0220acc5868421"
-  };
+// ==========================================
+// 1. FIREBASE CONNECTION
+// ==========================================
+const firebaseConfig = {
+  apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
+  authDomain: "dfwweb-c49fd.firebaseapp.com",
+  projectId: "dfwweb-c49fd",
+  storageBucket: "dfwweb-c49fd.firebasestorage.app",
+  messagingSenderId: "86537832820",
+  appId: "1:86537832820:web:6039a7dc0220acc5868421"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+// ==========================================
+// 2. DEFAULT PRODUCTS (Your original 18 machines)
+// ==========================================
+const defaultProducts = [
+  {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
+  {sku:'SKU-DFW-002',name:'Kubota U27-4',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'810',weight:'2.7T',price:'19,750',priceNum:19750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png'],description:'Reliable and efficient mini excavator perfect for landscaping and utility work.',specs:{'Engine':'Kubota D1105','Operating Weight':'2,700 kg','Digging Depth':'2.6m','Bucket Width':'Multiple options'}},
+  {sku:'SKU-DFW-003',name:'Takeuchi TB216',type:'Mini Excavator',brand:'Takeuchi',year:'2021',hrs:'950',weight:'1.6T',price:'15,950',priceNum:15950,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/10744d493-71f0-4216-b9c6-e063f2ce9c09.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/10744d493-71f0-4216-b9c6-e063f2ce9c09.png'],description:'Ultra-compact mini excavator ideal for residential and light construction work.',specs:{'Engine':'Kubota D722','Operating Weight':'1,600 kg','Digging Depth':'2.1m','Bucket Width':'Multiple options'}},
+  {sku:'SKU-DFW-004',name:'Manitou MT625H',type:'Telehandler',brand:'Manitou',year:'2023',hrs:'420',weight:'2.5T',price:'27,500',priceNum:27500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/161764409-4892-47aa-afe4-5677ac2d6bfa.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/161764409-4892-47aa-afe4-5677ac2d6bfa.png'],description:'Versatile telehandler with excellent reach and lifting capacity for construction sites.',specs:{'Engine':'Perkins Diesel','Lift Capacity':'2,500 kg','Max Height':'6.0m','Engine Power':'75 HP'}},
+  {sku:'SKU-DFW-005',name:'Toyota 8FBM16',type:'Forklift',brand:'Toyota',year:'2020',hrs:'1250',weight:'1.6T',price:'11,995',priceNum:11995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18e93559a-ce3c-4372-b0b4-6e6b47602585.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18e93559a-ce3c-4372-b0b4-6e6b47602585.png'],description:'Reliable electric forklift ideal for warehouse and industrial applications.',specs:{'Type':'Electric','Lift Capacity':'1,600 kg','Mast Height':'4.5m','Battery':'48V'}},
+  {sku:'SKU-DFW-006',name:'CAT 308E2 CR',type:'Mini Excavator',brand:'CAT',year:'2022',hrs:'580',weight:'8.5T',price:'42,500',priceNum:42500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Powerful compact radius excavator with excellent digging performance.',specs:{'Engine':'CAT C3.3B','Operating Weight':'8,500 kg','Digging Depth':'4.4m','Bucket Width':'Multiple options'}},
+  {sku:'SKU-DFW-007',name:'JCB 3CX ECO',type:'Backhoe Loader',brand:'JCB',year:'2021',hrs:'1100',weight:'7.5T',price:'35,000',priceNum:35000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18fefdbb2-fb31-41dc-9c3c-7fb4560bf041.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/18fefdbb2-fb31-41dc-9c3c-7fb4560bf041.png'],description:'Versatile backhoe loader perfect for construction and agricultural work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'7,500 kg','Digging Depth':'5.5m','Loader Capacity':'1,000 kg'}},
+  {sku:'SKU-DFW-008',name:'Kubota M7-172',type:'Tractor',brand:'Kubota',year:'2023',hrs:'200',weight:'7.2T',price:'68,500',priceNum:68500,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1f95b74e4-e01a-4eaa-81b6-8df7ef752bf7.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1f95b74e4-e01a-4eaa-81b6-8df7ef752bf7.png'],description:'High-performance agricultural tractor with advanced features and comfort.',specs:{'Engine':'Kubota V6108','Power':'172 HP','Transmission':'Powershift','PTO':'540/1000 RPM'}},
+  {sku:'SKU-DFW-009',name:'Volvo EC140E',type:'Excavator',brand:'Volvo',year:'2020',hrs:'2800',weight:'14T',price:'55,000',priceNum:55000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Mid-size excavator with excellent fuel efficiency and performance.',specs:{'Engine':'Volvo D4','Operating Weight':'14,000 kg','Digging Depth':'5.5m','Bucket Capacity':'0.6 m³'}},
+  {sku:'SKU-DFW-010',name:'Hitachi ZX85USB',type:'Mini Excavator',brand:'Hitachi',year:'2022',hrs:'720',weight:'8.5T',price:'38,750',priceNum:38750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Ultra-short swing radius excavator ideal for confined spaces.',specs:{'Engine':'Isuzu 4JJ1','Operating Weight':'8,500 kg','Digging Depth':'4.4m','Swing Radius':'Ultra-short'}},
+  {sku:'SKU-DFW-011',name:'Manitou MLT 633',type:'Telehandler',brand:'Manitou',year:'2021',hrs:'950',weight:'3.3T',price:'32,000',priceNum:32000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png'],description:'Compact telehandler with excellent manoeuvrability and lift capacity.',specs:{'Engine':'Perkins Diesel','Lift Capacity':'3,300 kg','Max Height':'6.0m','Engine Power':'100 HP'}},
+  {sku:'SKU-DFW-012',name:'JCB 110C-1',type:'Wheeled Excavator',brand:'JCB',year:'2023',hrs:'150',weight:'11T',price:'72,000',priceNum:72000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Wheeled excavator offering high mobility and excellent digging performance.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'11,000 kg','Digging Depth':'5.2m','Max Speed':'30 km/h'}},
+  {sku:'SKU-DFW-013',name:'Kubota KX165',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'1,070',weight:'5-6T',price:'27,500',priceNum:27500,serial:'60309',img:'https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg',images:['https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg'],description:'Low-hour Kubota KX165 mini excavator.',specs:{'Serial Number':'60309','Hours':'1,070','Engine':'Kubota V2607 diesel'}},
+  {sku:'SKU-DFW-014',name:'Komatsu PC70-8',type:'Mini Excavator',brand:'Komatsu',year:'2021',hrs:'1,098',weight:'7T',price:'28,400',priceNum:28400,serial:'KMTPC216K38C04356',img:'https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg',images:['https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg'],description:'Low-hour Komatsu PC70-8 mini excavator.',specs:{'Serial Number':'KMTPC216K38C04356','Hours':'1,098','Engine':'Komatsu SAA4D95LE-5 diesel'}},
+  {sku:'SKU-DFW-015',name:'John Deere 6615',type:'Tractor',brand:'John Deere',year:'2007',hrs:'7,900',weight:'7.5T',price:'28,000',priceNum:28000,serial:'LO6615D454857',img:'https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg',images:['https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg'],description:'Powerful and well-equipped John Deere 6615 tractor.',specs:{'Serial Number':'LO6615D454857','Hours':'7,900','Engine':'John Deere 6.8L diesel'}},
+  {sku:'SKU-DFW-016',name:'Bobcat T870',type:'Skid Steer Loader',brand:'Bobcat',year:'2019',hrs:'621',weight:'4.2T',price:'26,500',priceNum:26500,serial:'B47C14255',img:'https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg',images:['https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg'],description:'Ultra-low-hour 2019 Bobcat T870 tracked skid steer loader.',specs:{'Serial Number':'B47C14255','Hours':'621','Engine':'4-cylinder diesel'}},
+  {sku:'SKU-DFW-017',name:'CFG Industrial KKT(A)27',type:'Compact Utility Loader',brand:'CFG Industrial',year:'2026',hrs:'3',weight:'1.5T',price:'8,950',priceNum:8950,serial:'KKTA272025L102449',img:'https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg',images:['https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg'],description:'Near-new 2026 CFG Industrial KKT(A)27 compact utility loader.',specs:{'Serial Number':'KKTA272025L102449','Hours':'3','Engine':'Kubota D1105 diesel'}},
+  {sku:'SKU-DFW-018',name:'2025 Reitnouer 53ft Aluminum Flatbed Trailer',type:'Flatbed Trailer',brand:'Reitnouer',year:'2025',hrs:'N/A',weight:'90,000 lbs GVW',price:'17,500',priceNum:17500,serial:'1RNF53A20SR062121',img:'https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg',images:['https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg'],description:'Modern high-spec 2025 Reitnouer flatbed trailer.',specs:{'VIN':'1RNF53A20SR062121','Overall Length':'53\'','GVW':'90,000 lbs'}}
+];
 
-  // Default products data
-  const defaultProducts = [
-    {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
-    {sku:'SKU-DFW-002',name:'Kubota U27-4',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'810',weight:'2.7T',price:'19,750',priceNum:19750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png'],description:'Reliable and efficient mini excavator perfect for landscaping and utility work.',specs:{'Engine':'Kubota D1105','Operating Weight':'2,700 kg','Digging Depth':'2.6m','Bucket Width':'Multiple options'}}
-    // Note: I truncated the list here to save space, but you should paste your FULL defaultProducts array here!
-  ];
+// ==========================================
+// 3. CLOUD FUNCTIONS
+// ==========================================
+async function getProducts() {
+  const doc = await db.collection("website").doc("data").get();
+  if (doc.exists) return doc.data().products || [];
+  return [];
+}
 
-  // Initialize data
-  async function initData() {
-    const doc = await db.collection("website").doc("data").get();
-    if (!doc.exists || !doc.data().products) {
-      await db.collection("website").doc("data").set({ products: defaultProducts });
-    }
-    if (!localStorage.getItem('dfw_admin')) {
-      localStorage.setItem('dfw_admin', JSON.stringify({email: 'collinspeter376@gmail.com', password: 'kAS_t239iufkjsewf'}));
-    }
-    if (!localStorage.getItem('dfw_activity')) {
-      localStorage.setItem('dfw_activity', JSON.stringify([]));
-    }
+async function saveProductsToCloud(products) {
+  await db.collection("website").doc("data").set({ products: products });
+}
+
+async function saveProducts(products) {
+  await saveProductsToCloud(products);
+  alert('Products saved to cloud successfully! Refresh your main website to see changes.');
+}
+
+// ==========================================
+// 4. UI FUNCTIONS
+// ==========================================
+function doLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+  if (email === 'collinspeter376@gmail.com' && password === 'kAS_t239iufkjsewf') {
+    localStorage.setItem('dfw_loggedin', 'true');
+    showAdminPanel();
+  } else {
+    document.getElementById('loginError').classList.remove('hidden');
   }
-
-  async function getProducts() {
-    const doc = await db.collection("website").doc("data").get();
-    if (doc.exists) {
-      return doc.data().products || [];
-    }
-    return [];
-  }
-
-  async function saveProducts(products) {
-    await db.collection("website").doc("data").set({ products: products });
-    logActivity('Products updated');
-  }
-
-  function logActivity(msg) {
-    const activity = JSON.parse(localStorage.getItem('dfw_activity') || '[]');
-    activity.unshift({time: new Date().toLocaleString(), msg});
-    if (activity.length > 20) activity.pop();
-    localStorage.setItem('dfw_activity', JSON.stringify(activity));
-  }
-
-  // Login
-  function doLogin() {
-    const email = document.getElementById('loginEmail').value;
-    const password = document.getElementById('loginPassword').value;
-    const admin = JSON.parse(localStorage.getItem('dfw_admin'));
-    if (email === admin.email && password === admin.password) {
-      localStorage.setItem('dfw_loggedin', 'true');
-      showAdminPanel();
-    } else {
-      document.getElementById('loginError').classList.remove('hidden');
-    }
-  }
-
-  function doLogout() {
-    localStorage.removeItem('dfw_loggedin');
-    document.getElementById('loginPage').classList.remove('hidden');
-    document.getElementById('adminPanel').classList.add('hidden');
-  }
-
-  function showAdminPanel() {
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('adminPanel').classList.remove('hidden');
-    updateDashboard();
-    renderProducts();
-  }
-
-  // Sections
-  function showSection(name) {
-    document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
-    document.getElementById('section-' + name).classList.remove('hidden');
-    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
-    event.target.closest('.sidebar-link').classList.add('active');
-    if (name === 'products') renderProducts();
-    if (name === 'dashboard') updateDashboard();
-  }
-
-  // Dashboard
-  async function updateDashboard() {
-    const products = await getProducts();
-    document.getElementById('statProducts').textContent = products.length;
-    const totalValue = products.reduce((sum, p) => sum + (p.priceNum || 0), 0);
-    document.getElementById('statValue').textContent = '£' + totalValue.toLocaleString();
-    const categories = [...new Set(products.map(p => p.type))];
-    document.getElementById('statCategories').textContent = categories.length;
-    
-    const activity = JSON.parse(localStorage.getItem('dfw_activity') || '[]');
-    const activityHtml = activity.length > 0 
-      ? activity.map(a => `<div class="flex justify-between py-2 border-b border-gray-700"><span>${a.msg}</span><span class="text-gray-500 text-xs">${a.time}</span></div>`).join('')
-      : '<p>No recent activity</p>';
-    document.getElementById('activityLog').innerHTML = activityHtml;
-  }
-
-  // Products
-  async function renderProducts() {
-    const products = await getProducts();
-    const html = products.map(p => `
-      <div class="table-row">
-        <div class="text-xs text-gray-400">${p.sku}</div>
-        <div class="text-white">${p.name}</div>
-        <div class="text-gray-400 text-sm">${p.type}</div>
-        <div class="text-yellow-500 font-bold">£${p.price}</div>
-        <div class="flex gap-2">
-          <button onclick="editProduct('${p.sku}')" class="btn btn-secondary text-xs">Edit</button>
-          <button onclick="deleteProduct('${p.sku}')" class="btn btn-danger text-xs">Delete</button>
-        </div>
+}
+function doLogout() {
+  localStorage.removeItem('dfw_loggedin');
+  document.getElementById('loginPage').classList.remove('hidden');
+  document.getElementById('adminPanel').classList.add('hidden');
+}
+function showAdminPanel() {
+  document.getElementById('loginPage').classList.add('hidden');
+  document.getElementById('adminPanel').classList.remove('hidden');
+  updateDashboard();
+  renderProducts();
+}
+function showSection(name) {
+  document.querySelectorAll('[id^="section-"]').forEach(s => s.classList.add('hidden'));
+  document.getElementById('section-' + name).classList.remove('hidden');
+  document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+  event.target.closest('.sidebar-link').classList.add('active');
+  if (name === 'products') renderProducts();
+  if (name === 'dashboard') updateDashboard();
+}
+async function updateDashboard() {
+  const products = await getProducts();
+  document.getElementById('statProducts').textContent = products.length;
+  const totalValue = products.reduce((sum, p) => sum + (p.priceNum || 0), 0);
+  document.getElementById('statValue').textContent = '£' + totalValue.toLocaleString();
+  const categories = [...new Set(products.map(p => p.type))];
+  document.getElementById('statCategories').textContent = categories.length;
+}
+async function renderProducts() {
+  const products = await getProducts();
+  const html = products.map(p => `
+    <div class="table-row">
+      <div class="text-xs text-gray-400">${p.sku}</div>
+      <div class="text-white">${p.name}</div>
+      <div class="text-gray-400 text-sm">${p.type}</div>
+      <div class="text-yellow-500 font-bold">£${p.price}</div>
+      <div class="flex gap-2">
+        <button onclick="editProduct('${p.sku}')" class="btn btn-secondary text-xs">Edit</button>
+        <button onclick="deleteProduct('${p.sku}')" class="btn btn-danger text-xs">Delete</button>
       </div>
-    `).join('');
-    document.getElementById('productsList').innerHTML = html || '<p class="text-gray-400 p-4">No products yet</p>';
-  }
-
-  async function editProduct(sku) {
-    const products = await getProducts();
-    const p = products.find(x => x.sku === sku);
-    if (!p) return;
-    document.getElementById('productFormTitle').textContent = 'Edit Product: ' + p.name;
-    document.getElementById('editSku').value = p.sku;
-    document.getElementById('pSku').value = p.sku;
-    document.getElementById('pName').value = p.name;
-    document.getElementById('pType').value = p.type;
-    document.getElementById('pBrand').value = p.brand;
-    document.getElementById('pYear').value = p.year;
-    document.getElementById('pHours').value = p.hrs || '';
-    document.getElementById('pWeight').value = p.weight || '';
-    document.getElementById('pPrice').value = p.price || '';
-    document.getElementById('pSerial').value = p.serial || '';
-    document.getElementById('pImg').value = p.img || '';
-    document.getElementById('pImages').value = (p.images || []).join(', ');
-    document.getElementById('pDescription').value = p.description || '';
-    const specsText = Object.entries(p.specs || {}).map(([k,v]) => `${k}: ${v}`).join('\n');
-    document.getElementById('pSpecs').value = specsText;
-    showSection('addProduct');
-  }
-
-  async function deleteProduct(sku) {
-    if (!confirm('Are you sure you want to delete this product?')) return;
-    let products = await getProducts();
-    products = products.filter(p => p.sku !== sku);
-    await saveProducts(products);
-    renderProducts();
-    updateDashboard();
-  }
-
-  async function saveProduct(e) {
-    e.preventDefault();
-    const editSku = document.getElementById('editSku').value;
-    const sku = document.getElementById('pSku').value;
-    const name = document.getElementById('pName').value;
-    const type = document.getElementById('pType').value;
-    const brand = document.getElementById('pBrand').value;
-    const year = document.getElementById('pYear').value;
-    const hrs = document.getElementById('pHours').value;
-    const weight = document.getElementById('pWeight').value;
-    const price = document.getElementById('pPrice').value;
-    const serial = document.getElementById('pSerial').value;
-    const img = document.getElementById('pImg').value;
-    const imagesText = document.getElementById('pImages').value;
-    const description = document.getElementById('pDescription').value;
-    const specsText = document.getElementById('pSpecs').value;
-    
-    const images = imagesText ? imagesText.split(',').map(s => s.trim()).filter(s => s) : [img];
-    const specs = {};
-    specsText.split('\n').forEach(line => {
-      const parts = line.split(':');
-      if (parts.length >= 2) {
-        specs[parts[0].trim()] = parts.slice(1).join(':').trim();
-      }
-    });
-    
-    const priceNum = parseInt(price.replace(/,/g, '')) || 0;
-    
-    const product = {
-      sku, name, type, brand, year, hrs, weight, price, priceNum,
-      serial: serial || undefined,
-      img, images, description, specs
-    };
-    
-    let products = await getProducts();
-    if (editSku) {
-      const idx = products.findIndex(p => p.sku === editSku);
-      if (idx >= 0) products[idx] = product;
-      logActivity('Edited product: ' + name);
-    } else {
-      products.push(product);
-      logActivity('Added product: ' + name);
-    }
-    
-    await saveProducts(products);
-    document.getElementById('productForm').reset();
-    document.getElementById('editSku').value = '';
-    document.getElementById('productFormTitle').textContent = 'Add New Product';
-    showSection('products');
-    alert('Product saved successfully!');
-  }
-
-  // Settings
-  function changePassword() {
-    const newPass = document.getElementById('newPassword').value;
-    const confirmPass = document.getElementById('confirmPassword').value;
-    const msg = document.getElementById('passwordMsg');
-    if (!newPass || newPass !== confirmPass) {
-      msg.textContent = 'Passwords do not match';
-      msg.className = 'mt-3 text-sm text-red-400';
-      return;
-    }
-    const admin = JSON.parse(localStorage.getItem('dfw_admin'));
-    admin.password = newPass;
-    localStorage.setItem('dfw_admin', JSON.stringify(admin));
-    msg.textContent = 'Password updated successfully!';
-    msg.className = 'mt-3 text-sm text-green-400';
-    document.getElementById('newPassword').value = '';
-    document.getElementById('confirmPassword').value = '';
-  }
-
-  async function resetData() {
-    if (!confirm('This will reset ALL data to default. Are you sure?')) return;
-    if (!confirm('This cannot be undone. Continue?')) return;
-    await db.collection("website").doc("data").set({ products: defaultProducts });
-    localStorage.removeItem('dfw_activity');
-    alert('Data reset to default');
-    updateDashboard();
-    renderProducts();
-  }
-
-  // Backup
-  async function exportData() {
-    const products = await getProducts();
-    const data = {
-      products: products,
-      admin: JSON.parse(localStorage.getItem('dfw_admin')),
-      activity: JSON.parse(localStorage.getItem('dfw_activity') || '[]'),
-      exportDate: new Date().toISOString()
-    };
-    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'dfw-sales-backup-' + new Date().toISOString().split('T')[0] + '.json';
-    a.click();
-    URL.revokeObjectURL(url);
-    logActivity('Data exported');
-  }
-
-  async function importData(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = async function(e) {
-      try {
-        const data = JSON.parse(e.target.result);
-        if (data.products) {
-          await saveProducts(data.products);
-          logActivity('Data imported from backup');
-          alert('Data imported successfully! ' + data.products.length + ' products loaded.');
-          updateDashboard();
-          renderProducts();
-        } else {
-          alert('Invalid backup file');
-        }
-      } catch (err) {
-        alert('Error reading file: ' + err.message);
-      }
-    };
-    reader.readAsText(file);
-  }
-
-  // Init
-  initData().then(() => {
-    if (localStorage.getItem('dfw_loggedin') === 'true') {
-      showAdminPanel();
-    }
+    </div>
+  `).join('');
+  document.getElementById('productsList').innerHTML = html || '<p class="text-gray-400 p-4">No products yet</p>';
+}
+async function editProduct(sku) {
+  const products = await getProducts();
+  const p = products.find(x => x.sku === sku);
+  if (!p) return;
+  document.getElementById('productFormTitle').textContent = 'Edit Product: ' + p.name;
+  document.getElementById('editSku').value = p.sku;
+  document.getElementById('pSku').value = p.sku;
+  document.getElementById('pName').value = p.name;
+  document.getElementById('pType').value = p.type;
+  document.getElementById('pBrand').value = p.brand;
+  document.getElementById('pYear').value = p.year;
+  document.getElementById('pHours').value = p.hrs || '';
+  document.getElementById('pWeight').value = p.weight || '';
+  document.getElementById('pPrice').value = p.price || '';
+  document.getElementById('pSerial').value = p.serial || '';
+  document.getElementById('pImg').value = p.img || '';
+  document.getElementById('pImages').value = (p.images || []).join(', ');
+  document.getElementById('pDescription').value = p.description || '';
+  const specsText = Object.entries(p.specs || {}).map(([k,v]) => `${k}: ${v}`).join('\n');
+  document.getElementById('pSpecs').value = specsText;
+  showSection('addProduct');
+}
+async function deleteProduct(sku) {
+  if (!confirm('Are you sure you want to delete this product?')) return;
+  let products = await getProducts();
+  products = products.filter(p => p.sku !== sku);
+  await saveProducts(products);
+  renderProducts();
+  updateDashboard();
+}
+async function saveProduct(e) {
+  e.preventDefault();
+  const editSku = document.getElementById('editSku').value;
+  const sku = document.getElementById('pSku').value;
+  const name = document.getElementById('pName').value;
+  const type = document.getElementById('pType').value;
+  const brand = document.getElementById('pBrand').value;
+  const year = document.getElementById('pYear').value;
+  const hrs = document.getElementById('pHours').value;
+  const weight = document.getElementById('pWeight').value;
+  const price = document.getElementById('pPrice').value;
+  const serial = document.getElementById('pSerial').value;
+  const img = document.getElementById('pImg').value;
+  const imagesText = document.getElementById('pImages').value;
+  const description = document.getElementById('pDescription').value;
+  const specsText = document.getElementById('pSpecs').value;
+  
+  const images = imagesText ? imagesText.split(',').map(s => s.trim()).filter(s => s) : [img];
+  const specs = {};
+  specsText.split('\n').forEach(line => {
+    const parts = line.split(':');
+    if (parts.length >= 2) specs[parts[0].trim()] = parts.slice(1).join(':').trim();
   });
+  
+  const priceNum = parseInt(price.replace(/,/g, '')) || 0;
+  const product = { sku, name, type, brand, year, hrs, weight, price, priceNum, serial: serial || undefined, img, images, description, specs };
+  
+  let products = await getProducts();
+  if (editSku) {
+    const idx = products.findIndex(p => p.sku === editSku);
+    if (idx >= 0) products[idx] = product;
+  } else {
+    products.push(product);
+  }
+  
+  await saveProducts(products);
+  document.getElementById('productForm').reset();
+  document.getElementById('editSku').value = '';
+  document.getElementById('productFormTitle').textContent = 'Add New Product';
+  showSection('products');
+}
+async function resetData() {
+  if (!confirm('This will reset ALL products to the original 18 default machines. Are you sure?')) return;
+  await saveProductsToCloud(defaultProducts);
+  updateDashboard();
+  renderProducts();
+  alert('Data reset to default!');
+}
+
+// ==========================================
+// 5. INITIALIZATION
+// ==========================================
+async function init() {
+  // Check if database is empty, if so, seed it with the 18 default products
+  const doc = await db.collection("website").doc("data").get();
+  if (!doc.exists) {
+    await saveProductsToCloud(defaultProducts);
+  }
+  
+  if (localStorage.getItem('dfw_loggedin') === 'true') {
+    showAdminPanel();
+  }
+}
+init();
 </script>
 </body>
 </html>
