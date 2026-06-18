@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DFW Sales - Admin Panel</title>
-<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -39,7 +38,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </head>
 <body>
 
-<!-- LOGIN PAGE -->
 <div id="loginPage" class="min-h-screen flex items-center justify-center">
   <div class="bg-[#1e293b] rounded-2xl p-8 w-full max-w-md shadow-2xl">
     <div class="text-center mb-8">
@@ -56,18 +54,13 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
   </div>
 </div>
 
-<!-- ADMIN DASHBOARD -->
 <div id="adminPanel" class="hidden">
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-700">
       <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
         <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
-      <div>
-        <div class="text-white font-bold text-sm">DFW Sales</div>
-        <div class="text-yellow-500 text-xs">Admin Panel</div>
-      </div>
+      <div><div class="text-white font-bold text-sm">DFW Sales</div><div class="text-yellow-500 text-xs">Admin Panel</div></div>
     </div>
     <div class="sidebar-link active" onclick="showSection('dashboard')">Dashboard</div>
     <div class="sidebar-link" onclick="showSection('products')">Products</div>
@@ -78,9 +71,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
     <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">Logout</div>
   </div>
 
-  <!-- Main Content Area -->
   <div class="main-content">
-    <!-- Dashboard Section -->
     <div id="section-dashboard">
       <h1 class="text-3xl font-bold text-white mb-6">Dashboard</h1>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -90,7 +81,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- Products Section -->
     <div id="section-products" class="hidden">
       <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-white">Products</h1>
@@ -102,7 +92,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- Add/Edit Product Section -->
     <div id="section-addProduct" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6" id="productFormTitle">Add New Product</h1>
       <div class="card">
@@ -131,7 +120,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- Settings Section -->
     <div id="section-settings" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Settings</h1>
       <div class="card">
@@ -141,7 +129,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- Backup Section -->
     <div id="section-backup" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Backup & Restore</h1>
       <div class="card">
@@ -154,7 +141,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
-    <!-- View Site Section -->
     <div id="section-viewSite" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">View Website</h1>
       <div class="card">
@@ -166,9 +152,6 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </div>
 
 <script>
-// ==========================================
-// 1. FIREBASE CONNECTION
-// ==========================================
 const firebaseConfig = {
   apiKey: "AIzaSyBY44swARs4z0rn1dqXalDQQWRl456rgPc",
   authDomain: "dfwweb-c49fd.firebaseapp.com",
@@ -180,9 +163,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-// ==========================================
-// 2. DEFAULT PRODUCTS (Your 18 Machines)
-// ==========================================
 const defaultProducts = [
   {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
   {sku:'SKU-DFW-002',name:'Kubota U27-4',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'810',weight:'2.7T',price:'19,750',priceNum:19750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/131ca78a4-42c9-4584-b139-d14adaf134bb.png'],description:'Reliable and efficient mini excavator perfect for landscaping and utility work.',specs:{'Engine':'Kubota D1105','Operating Weight':'2,700 kg','Digging Depth':'2.6m','Bucket Width':'Multiple options'}},
@@ -196,31 +176,29 @@ const defaultProducts = [
   {sku:'SKU-DFW-010',name:'Hitachi ZX85USB',type:'Mini Excavator',brand:'Hitachi',year:'2022',hrs:'720',weight:'8.5T',price:'38,750',priceNum:38750,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Ultra-short swing radius excavator ideal for confined spaces.',specs:{'Engine':'Isuzu 4JJ1','Operating Weight':'8,500 kg','Digging Depth':'4.4m','Swing Radius':'Ultra-short'}},
   {sku:'SKU-DFW-011',name:'Manitou MLT 633',type:'Telehandler',brand:'Manitou',year:'2021',hrs:'950',weight:'3.3T',price:'32,000',priceNum:32000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1b9b53087-333d-4d4e-9291-60d6e5d2ba15.png'],description:'Compact telehandler with excellent manoeuvrability and lift capacity.',specs:{'Engine':'Perkins Diesel','Lift Capacity':'3,300 kg','Max Height':'6.0m','Engine Power':'100 HP'}},
   {sku:'SKU-DFW-012',name:'JCB 110C-1',type:'Wheeled Excavator',brand:'JCB',year:'2023',hrs:'150',weight:'11T',price:'72,000',priceNum:72000,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/19f0d4ef0-c9cd-446d-9b49-1eaeefede0f4.png'],description:'Wheeled excavator offering high mobility and excellent digging performance.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'11,000 kg','Digging Depth':'5.2m','Max Speed':'30 km/h'}},
-  {sku:'SKU-DFW-013',name:'Kubota KX165',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'1,070',weight:'5-6T',price:'27,500',priceNum:27500,serial:'60309',img:'https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg',images:['https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg'],description:'Low-hour Kubota KX165 mini excavator.',specs:{'Serial Number':'60309','Hours':'1,070','Engine':'Kubota V2607 diesel'}},
-  {sku:'SKU-DFW-014',name:'Komatsu PC70-8',type:'Mini Excavator',brand:'Komatsu',year:'2021',hrs:'1,098',weight:'7T',price:'28,400',priceNum:28400,serial:'KMTPC216K38C04356',img:'https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg',images:['https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg'],description:'Low-hour Komatsu PC70-8 mini excavator.',specs:{'Serial Number':'KMTPC216K38C04356','Hours':'1,098','Engine':'Komatsu SAA4D95LE-5 diesel'}},
-  {sku:'SKU-DFW-015',name:'John Deere 6615',type:'Tractor',brand:'John Deere',year:'2007',hrs:'7,900',weight:'7.5T',price:'28,000',priceNum:28000,serial:'LO6615D454857',img:'https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg',images:['https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg'],description:'Powerful and well-equipped John Deere 6615 tractor.',specs:{'Serial Number':'LO6615D454857','Hours':'7,900','Engine':'John Deere 6.8L diesel'}},
-  {sku:'SKU-DFW-016',name:'Bobcat T870',type:'Skid Steer Loader',brand:'Bobcat',year:'2019',hrs:'621',weight:'4.2T',price:'26,500',priceNum:26500,serial:'B47C14255',img:'https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg',images:['https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg'],description:'Ultra-low-hour 2019 Bobcat T870 tracked skid steer loader.',specs:{'Serial Number':'B47C14255','Hours':'621','Engine':'4-cylinder diesel'}},
-  {sku:'SKU-DFW-017',name:'CFG Industrial KKT(A)27',type:'Compact Utility Loader',brand:'CFG Industrial',year:'2026',hrs:'3',weight:'1.5T',price:'8,950',priceNum:8950,serial:'KKTA272025L102449',img:'https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg',images:['https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg'],description:'Near-new 2026 CFG Industrial KKT(A)27 compact utility loader.',specs:{'Serial Number':'KKTA272025L102449','Hours':'3','Engine':'Kubota D1105 diesel'}},
-  {sku:'SKU-DFW-018',name:'2025 Reitnouer 53ft Aluminum Flatbed Trailer',type:'Flatbed Trailer',brand:'Reitnouer',year:'2025',hrs:'N/A',weight:'90,000 lbs GVW',price:'17,500',priceNum:17500,serial:'1RNF53A20SR062121',img:'https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg',images:['https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg'],description:'Modern high-spec 2025 Reitnouer flatbed trailer.',specs:{'VIN':'1RNF53A20SR062121','Overall Length':'53\'','GVW':'90,000 lbs'}}
+  {sku:'SKU-DFW-013',name:'Kubota KX165',type:'Mini Excavator',brand:'Kubota',year:'2022',hrs:'1,070',weight:'5-6T',price:'27,500',priceNum:27500,serial:'60309',img:'https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg',images:['https://i.postimg.cc/hPSwSmJq/imgi-108-ET5027.jpg','https://i.postimg.cc/vZTNndLn/imgi-109-ET5027A.jpg','https://i.postimg.cc/wjMGNdcm/imgi-110-ET5027B.jpg','https://i.postimg.cc/dV3xCKmT/imgi-111-ET5027C.jpg','https://i.postimg.cc/fRyrdhjX/imgi-112-ET5027D.jpg','https://i.postimg.cc/K8jHTyr5/imgi-113-ET5027E.jpg','https://i.postimg.cc/Cx5Q8VHm/imgi-114-ET5027F.jpg','https://i.postimg.cc/P5JRDkzc/imgi-115-ET5027G.jpg','https://i.postimg.cc/T314bXqZ/imgi-124-ET5027P.jpg','https://i.postimg.cc/GmfSJSqM/imgi-146-ET5027ZL.jpg','https://i.postimg.cc/T3sHqHC7/imgi-149-ET5027ZO.jpg','https://i.postimg.cc/K8WsrsJW/imgi-150-ET5027ZP.jpg','https://i.postimg.cc/Z5QDFDVX/imgi-151-ET5027ZQ.jpg','https://i.postimg.cc/GmfSJSX0/imgi-153-ET5027ZS.jpg','https://i.postimg.cc/P57FzFSk/imgi-159-ET5027ZY.jpg'],description:'Low-hour Kubota KX165 mini excavator, a strong and reliable 5–6 ton class machine ideal for construction, utilities, landscaping, and general excavation work. With just 1,070 hours, this unit offers excellent remaining life and dependable performance for professional contractors.\n\nPowered by a Kubota V2607 4-cylinder diesel engine, the KX165 delivers smooth hydraulic operation, strong digging power, and excellent fuel efficiency. The enclosed cab is equipped with air conditioning and heating, ensuring operator comfort in all seasons.\n\nThis machine comes fitted with a hydraulic thumb for efficient material handling, auxiliary hydraulics for attachments, and a backfill blade for grading and stability. Rubber tracks provide reduced ground disturbance and good manoeuvrability on urban and residential sites.\n\nA well-maintained and low-hour Kubota 5–6 ton excavator well suited for contractors needing a dependable, versatile machine for excavation, utilities, and landscaping projects.',specs:{'Serial Number':'60309','Hours':'1,070','Engine':'Kubota V2607 diesel','Engine Type':'4-cylinder','Transmission':'Hydrostatic','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Hydraulics':'Auxiliary hydraulics','Attachment':'Hydraulic thumb','Backfill Blade':'77" width','Stick Length':'6 ft','Bucket':'30" bucket (5-tooth)','Undercarriage':'Rubber tracks','Track Width':'15.5"','Weight Class':'5-6 ton','Price':'£27,500 + VAT'}},
+  {sku:'SKU-DFW-014',name:'Komatsu PC70-8',type:'Mini Excavator',brand:'Komatsu',year:'2021',hrs:'1,098',weight:'7T',price:'28,400',priceNum:28400,serial:'KMTPC216K38C04356',img:'https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg',images:['https://i.postimg.cc/28238gwz/imgi-132-EO4245.jpg','https://i.postimg.cc/FHzzfGWs/imgi-133-EO4245A.jpg','https://i.postimg.cc/sgxxBK6f/imgi-134-EO4245B.jpg','https://i.postimg.cc/K8jjKQqY/imgi-135-EO4245C.jpg','https://i.postimg.cc/2SyyqTc6/imgi-136-EO4245D.jpg','https://i.postimg.cc/qvqqtQbN/imgi-137-EO4245E.jpg','https://i.postimg.cc/NjFFybJr/imgi-138-EO4245F.jpg','https://i.postimg.cc/HknnJ3ZM/imgi-139-EO4245G.jpg','https://i.postimg.cc/zGvvLptW/imgi-147-EO4245O.jpg','https://i.postimg.cc/pLrr9kGB/imgi-208-EO4245ZZX.jpg','https://i.postimg.cc/Dw00W5j5/imgi-214-EO4245ZZZD.jpg','https://i.postimg.cc/pLrr9kG0/imgi-215-EO4245ZZZE.jpg','https://i.postimg.cc/FH6R0c8j/imgi-219-EO4245ZZZI.jpg','https://i.postimg.cc/Bnz62DkC/imgi-222-EO4245ZZZL.jpg'],description:'Low-hour Komatsu PC70-8 mini excavator, a reliable and efficient 7-ton class machine designed for construction, utilities, landscaping, and general earthmoving applications. With just 1,098 hours, this unit offers excellent remaining service life and strong productivity potential for contractors.\n\nPowered by a Komatsu SAA4D95LE-5 4-cylinder diesel engine, the PC70-8 delivers smooth hydraulic performance, strong digging power, and dependable fuel efficiency. The enclosed cab is fitted with air conditioning and heating, ensuring operator comfort in all working conditions.\n\nThis machine features a hydraulic thumb for improved material handling, auxiliary hydraulics for attachment versatility, and a backfill blade for grading and stability. Rubber tracks provide reduced ground disturbance, making it suitable for urban and sensitive site work.\n\nA low-hour and highly capable Komatsu 7-ton excavator ideal for contractors needing a reliable, fuel-efficient machine for heavy landscaping, utilities, and general construction work.',specs:{'Serial Number':'KMTPC216K38C04356','Hours':'1,098','Engine':'Komatsu SAA4D95LE-5 diesel','Engine Type':'4-cylinder','Transmission':'Hydrostatic','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Hydraulics':'Auxiliary hydraulics','Attachment':'Hydraulic thumb','Backfill Blade':'88" width','Stick Length':'64"','Bucket':'29" bucket (5-tooth)','Undercarriage':'Rubber tracks','Track Width':'17.5"','Weight Class':'7 ton','Price':'£28,400 + VAT'}},
+  {sku:'SKU-DFW-015',name:'John Deere 6615',type:'Tractor',brand:'John Deere',year:'2007',hrs:'7,900',weight:'7.5T',price:'28,000',priceNum:28000,serial:'LO6615D454857',img:'https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg',images:['https://i.postimg.cc/yNzk4w9K/imgi-103-DZ4475W.jpg','https://i.postimg.cc/fbhJn6Xw/imgi-104-DZ4475X.jpg','https://i.postimg.cc/43TmkrtN/imgi-105-DZ4475Y.jpg','https://i.postimg.cc/fbhJn6XV/imgi-107-DZ4475ZA.jpg','https://i.postimg.cc/DyHS5Wwq/imgi-80-DZ4475.jpg','https://i.postimg.cc/FHS769Yy/imgi-81-DZ4475A.jpg','https://i.postimg.cc/7ZzfRx5X/imgi-82-DZ4475B.jpg','https://i.postimg.cc/Z5NCQTWD/imgi-83-DZ4475C.jpg','https://i.postimg.cc/XY5pPVrP/imgi-84-DZ4475D.jpg','https://i.postimg.cc/dVCLfq7P/imgi-85-DZ4475E.jpg','https://i.postimg.cc/cJNryVYq/imgi-86-DZ4475F.jpg','https://i.postimg.cc/LsMnKrfM/imgi-87-DZ4475G.jpg'],description:'Powerful and well-equipped John Deere 6615 tractor fitted with a John Deere 740 Classic front loader and bale spear, designed for agricultural, livestock, and heavy utility work. This high-horsepower utility tractor is well suited for demanding farm operations, material handling, and general-purpose field work.\n\nPowered by a reliable 6.8L 6-cylinder John Deere diesel engine, the 6615 delivers strong torque and consistent performance under load. The quad-range transmission (16F/16R) with left-hand reverser provides smooth shifting and excellent control for loader and field operations.\n\nThe enclosed cab includes air conditioning and heating for operator comfort in all conditions. With PTO options of 540/1000, three-point linkage, and dual rear hydraulic remotes, this tractor is highly versatile across a wide range of implements and attachments.\n\nThe John Deere 740 Classic loader with joystick control adds strong front-end lifting capability, paired with a wide bucket and bale spear for livestock and material handling tasks.\n\nA strong and versatile utility tractor package ideal for livestock farms, contracting work, and general agricultural use requiring dependable power and front-end loading capability.',specs:{'Serial Number':'LO6615D454857','Hours':'7,900 (meter replaced at ~7,921)','Engine':'John Deere 6.8L diesel','Engine Type':'6-cylinder','Transmission':'Quad-range (16F/16R)','Reverser':'Left-hand reverser','Differential Lock':'Yes','Cab':'Enclosed','Climate Control':'Air conditioning & heating','PTO':'540 / 1000 RPM','Linkage':'Three-point linkage','Hydraulic Remotes':'2 (rear)','Loader':'John Deere 740 Classic','Loader Controls':'Joystick','Bucket':'Wide bucket (99")','Attachment':'Bale spear included','Front Tires':'340/85R28','Rear Tires':'18.4R38','Price':'£28,000 + VAT'}},
+  {sku:'SKU-DFW-016',name:'Bobcat T870',type:'Skid Steer Loader',brand:'Bobcat',year:'2019',hrs:'621',weight:'4.2T',price:'26,500',priceNum:26500,serial:'B47C14255',img:'https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg',images:['https://i.postimg.cc/zG3KdZNJ/imgi-87-FB8128.jpg','https://i.postimg.cc/0NwmsYrZ/imgi-88-FB8128A.jpg','https://i.postimg.cc/g0ZRWVrN/imgi-89-FB8128B.jpg','https://i.postimg.cc/Zqd3S80f/imgi-90-FB8128C.jpg','https://i.postimg.cc/0NwmsYrH/imgi-91-FB8128D.jpg','https://i.postimg.cc/HLy5gwVW/imgi-92-FB8128E.jpg','https://i.postimg.cc/TwvbYKDG/imgi-93-FB8128F.jpg','https://i.postimg.cc/pTMjXmFp/imgi-94-FB8128G.jpg','https://i.postimg.cc/LXFP6J1L/imgi-95-FB8128H.jpg','https://i.postimg.cc/RF1H3v7c/imgi-112-FB8128Y.jpg','https://i.postimg.cc/C1CqZwGs/imgi-119-FB8128ZF.jpg','https://i.postimg.cc/9MP74cdn/imgi-122-FB8128ZI.jpg','https://i.postimg.cc/NM8HyQ6Z/imgi-130-FB8128ZQ.jpg','https://i.postimg.cc/TwjDyTVz/imgi-133-FB8128ZT.jpg'],description:'Ultra-low-hour 2019 Bobcat T870 tracked skid steer loader, one of the most powerful machines in the Bobcat lineup, designed for heavy construction, forestry, demolition, land clearing, and high-output attachment work. With only 621 hours, this unit presents exceptional value and near-new working condition for a commercial machine.\n\nPowered by a 4-cylinder diesel engine with hydrostatic drive and two-speed travel, the T870 delivers outstanding pushing force, lift capacity, and hydraulic performance. The enclosed cab includes air conditioning, heating, and an electronic monitoring system for operator comfort and machine diagnostics.\n\nThis unit is equipped with high-flow hydraulics, making it suitable for demanding attachments such as forestry mulchers, cold planers, and heavy-duty augers. It includes both manual and hydraulic quick coupler capability for maximum attachment flexibility. A Fecon oil cooler is also fitted, supporting extended high-demand hydraulic operation.\n\nThe 80" bucket and Blue Diamond forks enhance versatility across material handling and site work applications, while the 18" tracks provide stability and traction in challenging ground conditions.\n\nA high-performance, ultra-low-hour T870 ideal for contractors needing maximum hydraulic power, lifting capacity, and productivity for demanding attachment-based work.',specs:{'Serial Number':'B47C14255','Hours':'621','Engine':'4-cylinder diesel','Transmission':'Hydrostatic','Travel':'Two-speed','Cab':'Enclosed','Climate Control':'Air conditioning & heating','Monitoring':'Electronic monitoring system','Controls':'Pattern changer','Hydraulics':'High-flow hydraulics','Quick Coupler':'Manual & hydraulic','Oil Cooler':'Fecon oil cooler installed','Bucket':'80" Bobcat bucket (bolt-on cutting edge)','Forks':'Blue Diamond forks (48")','Undercarriage':'Rubber tracks','Track Width':'18"','Price':'£26,500 + VAT'}},
+  {sku:'SKU-DFW-017',name:'CFG Industrial KKT(A)27',type:'Compact Utility Loader',brand:'CFG Industrial',year:'2026',hrs:'3',weight:'1.5T',price:'8,950',priceNum:8950,serial:'KKTA272025L102449',img:'https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg',images:['https://i.postimg.cc/KzsyDMDL/imgi-74-EU5537.jpg','https://i.postimg.cc/Rhk5jxYY/imgi-75-EU5537A.jpg','https://i.postimg.cc/ZnGt1zQM/imgi-76-EU5537B.jpg','https://i.postimg.cc/0jTRL14F/imgi-77-EU5537C.jpg','https://i.postimg.cc/x8wDWVZ7/imgi-78-EU5537D.jpg','https://i.postimg.cc/C53TWpth/imgi-79-EU5537E.jpg','https://i.postimg.cc/CMXgZbKb/imgi-80-EU5537F.jpg','https://i.postimg.cc/1R2QgDzM/imgi-81-EU5537G.jpg','https://i.postimg.cc/4NcTpnKq/imgi-98-EU5537X.jpg','https://i.postimg.cc/YqFwQjGw/imgi-99-EU5537Y.jpg','https://i.postimg.cc/jdfryCwb/imgi-100-EU5537Z.jpg','https://i.postimg.cc/hPmqVhzK/imgi-101-EU5537ZA.jpg','https://i.postimg.cc/RZzxd9KR/imgi-102-EU5537ZB.jpg'],description:'Near-new 2026 CFG Industrial KKT(A)27 compact utility loader, designed for landscaping, light construction, agriculture, property maintenance, and tight-access material handling. With only 3 hours on the meter, this machine is essentially new and ready for immediate commercial use.\n\nPowered by a reliable Kubota D1105 1.1L 3-cylinder diesel engine, the KKT(A)27 delivers efficient performance with smooth hydrostatic drive and simple, responsive controls. Its compact design allows excellent manoeuvrability in confined spaces such as residential sites, gardens, farms, and indoor/outdoor maintenance environments.\n\nThis unit features auxiliary hydraulics for attachments and a manual quick coupler for fast bucket changes. The 44" bucket provides a good balance of capacity and precision work capability, while the narrow 8" track width allows access through very tight gateways and restricted areas.\n\nA virtually new compact utility loader ideal for contractors and operators needing a small, efficient, and highly manoeuvrable machine for light-duty excavation and material handling tasks.',specs:{'Serial Number':'KKTA272025L102449','Hours':'3','Engine':'Kubota D1105 diesel','Engine Type':'3-cylinder, 1.1L','Transmission':'Hydrostatic','Bucket Control':'Hand-controlled','Hydraulics':'Auxiliary hydraulics','Quick Coupler':'Manual','Bucket Width':'44"','Cutting Edge':'Weld-on cutting edge','Undercarriage':'Narrow tracks','Track Width':'8"','Price':'£8,950 + VAT'}},
+  {sku:'SKU-DFW-018',name:'2025 Reitnouer 53ft Aluminum Flatbed Trailer',type:'Flatbed Trailer',brand:'Reitnouer',year:'2025',hrs:'N/A',weight:'90,000 lbs GVW',price:'17,500',priceNum:17500,serial:'1RNF53A20SR062121',img:'https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg',images:['https://i.postimg.cc/VspgpPmc/imgi-65-EW0992F.jpg','https://i.postimg.cc/h46s6RcP/imgi-66-EW0992G.jpg','https://i.postimg.cc/HWRzR1dk/imgi-67-EW0992H.jpg','https://i.postimg.cc/T2F0FvfP/imgi-68-EW0992I.jpg','https://i.postimg.cc/1R2B21s4/imgi-72-EW0992M.jpg','https://i.postimg.cc/MZN5NJqQ/imgi-73-EW0992N.jpg','https://i.postimg.cc/J7vxvCMX/imgi-74-EW0992O.jpg','https://i.postimg.cc/3rV1VQYC/imgi-78-EW0992S.jpg','https://i.postimg.cc/v8khkwbt/imgi-79-EW0992T.jpg','https://i.postimg.cc/15FBZ73V/imgi-83-EW0992X.jpg','https://i.postimg.cc/CL87Vrx8/imgi-86-EW0992ZA.jpg','https://i.postimg.cc/TYb0XN3r/imgi-94-EW0992ZI.jpg'],description:'Modern high-spec 2025 Reitnouer flatbed trailer built for efficient long-haul freight, heavy equipment transport, and commercial logistics operations. Reitnouer is known for premium lightweight aluminium construction, offering excellent durability while maximising payload capacity and fuel efficiency.\n\nThis 53ft flatbed is equipped with air ride suspension and air brakes for smooth highway performance and improved cargo protection. The spread axle configuration enhances weight distribution and stability, making it ideal for heavy loads and long-distance transport across varied road conditions.\n\nThe aluminium deck and aluminium wheels further reduce tare weight, improving operational efficiency and allowing higher usable payload within legal limits. This unit is suited for fleet operators, logistics companies, and heavy transport specialists requiring modern, efficient equipment.\n\nA modern, lightweight, high-capacity flatbed trailer designed for efficient freight and equipment transport with excellent road performance and durability.',specs:{'VIN':'1RNF53A20SR062121','Unit #':'UE11426','Overall Length':'53\'','Deck Type':'Aluminium','Landing Gear':'Dual','Suspension':'Air suspension','Brakes':'Air brakes','Axles':'Spread axles','GVW':'90,000 lbs','GAWR':'23,000 lbs','Wheels':'Aluminium wheels','Tire Size':'295/75R22.5','Price':'£17,500 + VAT'}}
 ];
 
-// ==========================================
-// 3. CLOUD FUNCTIONS (Replaces localStorage)
-// ==========================================
 async function getProducts() {
   const doc = await db.collection("website").doc("data").get();
   if (doc.exists) return doc.data().products || [];
   return [];
 }
 
-async function saveProducts(products) {
+async function saveProductsToCloud(products) {
   await db.collection("website").doc("data").set({ products: products });
+}
+
+async function saveProducts(products) {
+  await saveProductsToCloud(products);
   alert('Products saved to cloud successfully! Refresh your main website to see changes.');
 }
 
-// ==========================================
-// 4. UI FUNCTIONS
-// ==========================================
 function doLogin() {
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
@@ -347,7 +325,7 @@ async function saveProduct(e) {
 }
 async function resetData() {
   if (!confirm('This will reset ALL products to the original 18 default machines. Are you sure?')) return;
-  await saveProducts(defaultProducts);
+  await saveProductsToCloud(defaultProducts);
   updateDashboard();
   renderProducts();
   alert('Data reset to default!');
@@ -377,13 +355,10 @@ async function importData(event) {
   reader.readAsText(file);
 }
 
-// ==========================================
-// 5. INITIALIZATION
-// ==========================================
 async function init() {
   const doc = await db.collection("website").doc("data").get();
   if (!doc.exists) {
-    await saveProducts(defaultProducts);
+    await saveProductsToCloud(defaultProducts);
   }
   if (localStorage.getItem('dfw_loggedin') === 'true') {
     showAdminPanel();
