@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DFW Sales - Admin Panel</title>
+<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore-compat.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -38,6 +39,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
 </head>
 <body>
 
+<!-- LOGIN PAGE -->
 <div id="loginPage" class="min-h-screen flex items-center justify-center">
   <div class="bg-[#1e293b] rounded-2xl p-8 w-full max-w-md shadow-2xl">
     <div class="text-center mb-8">
@@ -45,6 +47,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
         <svg class="w-8 h-8 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
       <h1 class="text-2xl font-bold text-white">Admin Login</h1>
+      <p class="text-gray-400 text-sm mt-2">DFW Sales Limited Admin Panel</p>
     </div>
     <div id="loginError" class="bg-red-900/50 border border-red-500 text-red-300 p-3 rounded-lg mb-4 hidden">Invalid email or password</div>
     <input type="email" id="loginEmail" class="input-field" placeholder="Email address">
@@ -53,23 +56,31 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
   </div>
 </div>
 
+<!-- ADMIN DASHBOARD -->
 <div id="adminPanel" class="hidden">
+  <!-- Sidebar -->
   <div class="sidebar">
     <div class="flex items-center gap-3 mb-8 pb-6 border-b border-gray-700">
       <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
         <svg class="w-5 h-5 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
       </div>
-      <div><div class="text-white font-bold text-sm">DFW Sales</div><div class="text-yellow-500 text-xs">Admin Panel</div></div>
+      <div>
+        <div class="text-white font-bold text-sm">DFW Sales</div>
+        <div class="text-yellow-500 text-xs">Admin Panel</div>
+      </div>
     </div>
     <div class="sidebar-link active" onclick="showSection('dashboard')">Dashboard</div>
     <div class="sidebar-link" onclick="showSection('products')">Products</div>
     <div class="sidebar-link" onclick="showSection('addProduct')">Add Product</div>
     <div class="sidebar-link" onclick="showSection('settings')">Settings</div>
+    <div class="sidebar-link" onclick="showSection('backup')">Backup / Restore</div>
     <div class="sidebar-link" onclick="showSection('viewSite')">View Website</div>
     <div class="sidebar-link" onclick="doLogout()" style="margin-top: auto; color: #ef4444;">Logout</div>
   </div>
 
+  <!-- Main Content Area -->
   <div class="main-content">
+    <!-- Dashboard Section -->
     <div id="section-dashboard">
       <h1 class="text-3xl font-bold text-white mb-6">Dashboard</h1>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -79,6 +90,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
+    <!-- Products Section -->
     <div id="section-products" class="hidden">
       <div class="flex items-center justify-between mb-6">
         <h1 class="text-3xl font-bold text-white">Products</h1>
@@ -90,6 +102,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
+    <!-- Add/Edit Product Section -->
     <div id="section-addProduct" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6" id="productFormTitle">Add New Product</h1>
       <div class="card">
@@ -118,6 +131,7 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
+    <!-- Settings Section -->
     <div id="section-settings" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">Settings</h1>
       <div class="card">
@@ -127,6 +141,20 @@ body { font-family: 'Inter', sans-serif; background: #0f172a; color: #fff; }
       </div>
     </div>
 
+    <!-- Backup Section -->
+    <div id="section-backup" class="hidden">
+      <h1 class="text-3xl font-bold text-white mb-6">Backup & Restore</h1>
+      <div class="card">
+        <h2 class="text-xl font-bold text-white mb-4">Export Data</h2>
+        <button onclick="exportData()" class="btn btn-primary">Download Backup JSON</button>
+      </div>
+      <div class="card">
+        <h2 class="text-xl font-bold text-white mb-4">Import Data</h2>
+        <input type="file" id="importFile" accept=".json" class="input-field" onchange="importData(event)">
+      </div>
+    </div>
+
+    <!-- View Site Section -->
     <div id="section-viewSite" class="hidden">
       <h1 class="text-3xl font-bold text-white mb-6">View Website</h1>
       <div class="card">
@@ -153,7 +181,7 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 // ==========================================
-// 2. DEFAULT PRODUCTS (Your original 18 machines)
+// 2. DEFAULT PRODUCTS (Your 18 Machines)
 // ==========================================
 const defaultProducts = [
   {sku:'SKU-DFW-001',name:'JCB 8035 ZTS',type:'Mini Excavator',brand:'JCB',year:'2023',hrs:'640',weight:'3.5T',price:'21,995',priceNum:21995,img:'https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png',images:['https://image.qwenlm.ai/public_source/92e7c462-68a7-4d1e-a367-1e5c46ac09db/1baddae2a-371e-4710-a262-21900de4e0c8.png'],description:'Compact and powerful mini excavator ideal for tight spaces and urban construction work.',specs:{'Engine':'JCB Dieselmax','Operating Weight':'3,500 kg','Digging Depth':'2.8m','Bucket Width':'Multiple options'}},
@@ -177,7 +205,7 @@ const defaultProducts = [
 ];
 
 // ==========================================
-// 3. CLOUD FUNCTIONS
+// 3. CLOUD FUNCTIONS (Replaces localStorage)
 // ==========================================
 async function getProducts() {
   const doc = await db.collection("website").doc("data").get();
@@ -185,12 +213,8 @@ async function getProducts() {
   return [];
 }
 
-async function saveProductsToCloud(products) {
-  await db.collection("website").doc("data").set({ products: products });
-}
-
 async function saveProducts(products) {
-  await saveProductsToCloud(products);
+  await db.collection("website").doc("data").set({ products: products });
   alert('Products saved to cloud successfully! Refresh your main website to see changes.');
 }
 
@@ -323,22 +347,44 @@ async function saveProduct(e) {
 }
 async function resetData() {
   if (!confirm('This will reset ALL products to the original 18 default machines. Are you sure?')) return;
-  await saveProductsToCloud(defaultProducts);
+  await saveProducts(defaultProducts);
   updateDashboard();
   renderProducts();
   alert('Data reset to default!');
+}
+async function exportData() {
+  const products = await getProducts();
+  const data = { products: products, exportDate: new Date().toISOString() };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'dfw-sales-backup.json'; a.click();
+}
+async function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async function(e) {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (data.products) {
+        await saveProducts(data.products);
+        updateDashboard();
+        renderProducts();
+      }
+    } catch (err) { alert('Error reading file'); }
+  };
+  reader.readAsText(file);
 }
 
 // ==========================================
 // 5. INITIALIZATION
 // ==========================================
 async function init() {
-  // Check if database is empty, if so, seed it with the 18 default products
   const doc = await db.collection("website").doc("data").get();
   if (!doc.exists) {
-    await saveProductsToCloud(defaultProducts);
+    await saveProducts(defaultProducts);
   }
-  
   if (localStorage.getItem('dfw_loggedin') === 'true') {
     showAdminPanel();
   }
